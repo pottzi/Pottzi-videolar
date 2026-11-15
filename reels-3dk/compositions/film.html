@@ -58,16 +58,35 @@
     #f-nav { position: absolute; left: 30px; right: 30px; top: 1400px; height: 110px; border-radius: 55px; border: 2px solid #eceaf2; background: #fff; }
     #f-nav-c { position: absolute; left: 340px; top: 12px; width: 130px; height: 84px; border-radius: 42px; background: #5a2ee6; }
 
-    /* ---------- süre doldu ---------- */
-    #f-dim { position: absolute; inset: 0; background: rgba(27,21,48,0.45); opacity: 0; }
-    #f-modal { position: absolute; left: 70px; right: 70px; top: 330px; border-radius: 52px; background: #fff; padding: 56px 50px 50px; text-align: center; opacity: 0;
-      box-shadow: 0 30px 80px rgba(30,10,70,0.35); }
-    #f-m-title { font-family: "Poppins", sans-serif; font-weight: 800; font-size: 70px; color: #1b1530; line-height: 1.1; }
-    #f-m-sub { font-size: 36px; color: #55505f; margin-top: 14px; font-weight: 500; }
-    .f-row { display: flex; align-items: center; justify-content: space-between; margin-top: 26px; padding: 22px 32px; border-radius: 30px; background: #f4f1fb; font-size: 38px; font-weight: 700; color: #1d1a24; }
-    .f-check { width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, #6a4cf0, #e05aa8); display: flex; align-items: center; justify-content: center; opacity: 0; }
-    #f-m-ok { margin-top: 32px; font-family: "Poppins", sans-serif; font-size: 46px; font-weight: 800; opacity: 0;
-      background: linear-gradient(90deg, #ff6f6a, #c757c4 55%, #4652ef); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    /* ---------- süre doldu ekranı ---------- */
+    #f-end { position: absolute; inset: 0; background: #fdfdff; text-align: center; }
+    .f-dot { position: absolute; border-radius: 50%; background: #c46be0; }
+    #f-e-pill { position: absolute; left: 50%; top: 40px; margin-left: -165px; width: 330px; height: 76px; border-radius: 38px; border: 2px solid #ecd3f3; background: #fbf3fd;
+      display: flex; align-items: center; justify-content: center; gap: 14px; color: #b245d6; font-size: 36px; font-weight: 700; }
+    #f-e-glass { position: absolute; left: 234px; top: 112px; width: 380px; height: 380px; }
+    #f-e-id { position: absolute; left: 0; right: 0; top: 486px; font-size: 46px; font-weight: 800; color: #b245d6; letter-spacing: 0.02em; }
+    #f-e-title { position: absolute; left: 0; right: 0; top: 546px; font-size: 58px; font-weight: 800; color: #1d1a24; }
+    #f-e-sub { position: absolute; left: 0; right: 0; top: 626px; font-size: 34px; color: #6c6875; font-weight: 500; }
+    .f-e-row { position: absolute; left: 80px; right: 60px; display: flex; align-items: center; gap: 26px; text-align: left; font-size: 36px; font-weight: 600; color: #1d1a24; line-height: 1.3; }
+    .f-e-ic { flex: 0 0 68px; height: 68px; border-radius: 50%; background: #f6eefa; display: flex; align-items: center; justify-content: center; }
+    #f-e-r1 { top: 690px; }
+    #f-e-r2 { top: 772px; }
+    .f-e-hl { color: #b245d6; }
+    #f-e-karar { position: absolute; left: 110px; right: 110px; top: 896px; height: 76px; border-radius: 38px; background: #f8f1fb;
+      display: flex; align-items: center; justify-content: center; gap: 14px; color: #b245d6; font-size: 36px; font-weight: 800; }
+    #f-e-btns { position: absolute; left: 50px; right: 50px; top: 990px; height: 108px; }
+    #f-e-ayril { position: absolute; left: 0; top: 0; width: 240px; height: 108px; border-radius: 24px; border: 2px solid #f1eaf4; background: #fff;
+      display: flex; align-items: center; justify-content: center; color: #7d55e8; font-size: 40px; font-weight: 700; }
+    #f-e-devam { position: absolute; left: 266px; right: 0; top: 0; height: 108px; border-radius: 24px; background: linear-gradient(90deg, #6a2ff0, #62b6f5);
+      box-shadow: 0 16px 40px rgba(106,47,240,0.3); color: #fff; font-size: 42px; font-weight: 800; overflow: hidden; }
+    .f-e-lbl { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 14px; }
+    #f-e-lbl2 { opacity: 0; }
+    #f-e-tap { position: absolute; left: 50%; top: 50%; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; background: rgba(255,255,255,0.55); opacity: 0; }
+    #f-toast { position: absolute; left: 40px; right: 40px; top: 60px; border-radius: 40px; background: #fff; padding: 30px 34px; display: flex; align-items: center; gap: 26px; text-align: left;
+      box-shadow: 0 24px 60px rgba(60,30,120,0.25); opacity: 0; }
+    #f-toast-ic { flex: 0 0 84px; height: 84px; border-radius: 50%; background: linear-gradient(135deg, #6a4cf0, #e05aa8); display: flex; align-items: center; justify-content: center; }
+    #f-toast-1 { font-size: 40px; font-weight: 800; color: #1d1a24; }
+    #f-toast-2 { font-size: 32px; font-weight: 500; color: #6c6875; margin-top: 6px; }
   </style>
   <div id="root" data-composition-id="film" data-width="1080" data-height="1920">
     <div id="f-blob1" class="f-blob" data-layout-ignore></div>
@@ -106,13 +125,25 @@
         </div>
         <div id="f-nav"><div id="f-nav-c"></div></div>
 
-        <div id="f-dim"></div>
-        <div id="f-modal" data-layout-allow-occlusion>
-          <div id="f-m-title">Süre doldu!</div>
-          <div id="f-m-sub">Sohbete devam edilsin mi?</div>
-          <div class="f-row"><span>Sen</span><div id="f-c1" class="f-check"><svg width="32" height="32" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-          <div class="f-row"><span>P-1854</span><div id="f-c2" class="f-check"><svg width="32" height="32" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-          <div id="f-m-ok">İkiniz de devam dediniz!</div>
+        <div id="f-end" data-layout-allow-occlusion>
+          <i class="f-dot" style="left:420px;top:40px;width:16px;height:16px"></i>
+          <i class="f-dot" style="left:10px;top:150px;width:30px;height:30px"></i>
+          <i class="f-dot" style="left:780px;top:110px;width:22px;height:22px"></i>
+          <i class="f-dot" style="left:120px;top:470px;width:20px;height:20px"></i>
+          <i class="f-dot" style="left:700px;top:460px;width:18px;height:18px"></i>
+          <div id="f-e-pill"><svg width="38" height="38" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#b245d6" stroke-width="2" fill="none"/><path d="M12 7v5l3 2" stroke="#b245d6" stroke-width="2" fill="none" stroke-linecap="round"/></svg><span>Süre Doldu</span></div>
+          <img id="f-e-glass" src="assets/kum-saati.png" alt="" />
+          <div id="f-e-id">P-1854</div>
+          <div id="f-e-title">3 Dakika Doldu!</div>
+          <div id="f-e-sub">İkiniz de devam etmeyi seçerseniz:</div>
+          <div id="f-e-r1" class="f-e-row"><div class="f-e-ic"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M6.5 15.5c-2 0-3.5-1.6-3.5-3.5S4.5 8.5 6.5 8.5c3 0 8 7 11 7 2 0 3.5-1.6 3.5-3.5S19.5 8.5 17.5 8.5c-3 0-8 7-11 7z" stroke="#b245d6" stroke-width="2" fill="none"/></svg></div><span>Sohbet sınırsız devam eder.</span></div>
+          <div id="f-e-r2" class="f-e-row"><div class="f-e-ic"><svg width="38" height="38" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" stroke="#b245d6" stroke-width="2" fill="none"/><path d="M4 20c1.5-4 4.5-5 8-5s6.5 1 8 5" stroke="#b245d6" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><span>Birbirinizi <b class="f-e-hl">Bağlantılar</b> bölümüne eklersiniz.</span></div>
+          <div id="f-e-karar"><svg width="38" height="38" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#b245d6" stroke-width="2" fill="none"/><path d="M12 7v5l3 2" stroke="#b245d6" stroke-width="2" fill="none" stroke-linecap="round"/></svg><span><span id="f-e-sn">30</span> saniye içinde karar ver</span></div>
+          <div id="f-e-btns">
+            <div id="f-e-ayril">Ayrıl</div>
+            <div id="f-e-devam"><div id="f-e-tap"></div><div id="f-e-lbl1" class="f-e-lbl">Devam Et <span>→</span></div><div id="f-e-lbl2" class="f-e-lbl">Devam ettin ✓</div></div>
+          </div>
+          <div id="f-toast"><div id="f-toast-ic"><svg width="46" height="46" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div id="f-toast-1">P-1854 de devam etti!</div><div id="f-toast-2">Artık Bağlantılarındasınız.</div></div></div>
         </div>
       </div>
     </div>
@@ -181,14 +212,27 @@
             transformOrigin: m.me ? "100% 100%" : "0% 100%" }, m.t);
         });
 
-        // süre doldu
-        tl.fromTo("#f-dim", { opacity: 0 }, { opacity: 1, duration: 0.25 }, T_ZERO);
-        tl.fromTo("#f-modal", { opacity: 0, y: 80, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, T_ZERO + 0.05);
-        tl.fromTo("#f-c1", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, T_ZERO + 0.45);
-        tl.fromTo("#f-c2", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, T_ZERO + 0.75);
-        tl.fromTo("#f-m-ok", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, T_ZERO + 0.95);
+        // süre doldu ekranı
+        const T_END = T_ZERO;
+                tl.fromTo("#f-end", { yPercent: 100 }, { yPercent: 0, duration: 0.4, ease: "power3.out" }, T_END);
+        tl.to(["#f-header", "#f-chat", "#f-bar-track"], { opacity: 0, duration: 0.01 }, T_END + 0.4);
+        tl.fromTo("#f-e-pill", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, T_END + 0.2);
+        tl.fromTo("#f-e-glass", { rotation: -180, scale: 0.6, opacity: 0 }, { rotation: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.4)" }, T_END + 0.15);
+        tl.fromTo(".f-dot", { y: 0 }, { y: -26, duration: 3.2, ease: "sine.inOut", stagger: 0.15 }, T_END + 0.3);
+        tl.fromTo(["#f-e-id", "#f-e-title", "#f-e-sub", "#f-e-r1", "#f-e-r2", "#f-e-karar", "#f-e-btns"], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.05 }, T_END + 0.3);
+        const sn = document.getElementById("f-e-sn");
+        const kc = { s: 30 };
+        tl.fromTo(kc, { s: 30 }, { s: 27, duration: 3, ease: "none", onUpdate: () => { sn.textContent = Math.ceil(kc.s - 1e-6); } }, T_END + 0.9);
+        // Devam Et'e dokunma
+        const TAP = T_END + 1.35;
+        tl.fromTo("#f-e-devam", { scale: 1 }, { scale: 0.94, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1 }, TAP);
+        tl.fromTo("#f-e-tap", { opacity: 0.9, scale: 0.2 }, { opacity: 0, scale: 6, duration: 0.5, ease: "power2.out" }, TAP);
+        tl.to("#f-e-lbl1", { opacity: 0, duration: 0.12 }, TAP + 0.12);
+        tl.fromTo("#f-e-lbl2", { opacity: 0 }, { opacity: 1, duration: 0.15 }, TAP + 0.18);
+        // karşı taraf da devam etti
+        tl.fromTo("#f-toast", { opacity: 0, y: -60, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, TAP + 0.55);
 
-        tl.set({}, {}, 13.6);
+        tl.set({}, {}, 15.2);
         window.__timelines["film"] = tl;
       }
       document.fonts.ready.then(build);
