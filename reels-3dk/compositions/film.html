@@ -58,25 +58,6 @@
     #f-nav { position: absolute; left: 30px; right: 30px; top: 1400px; height: 110px; border-radius: 55px; border: 2px solid #eceaf2; background: #fff; }
     #f-nav-c { position: absolute; left: 340px; top: 12px; width: 130px; height: 84px; border-radius: 42px; background: #5a2ee6; }
 
-    /* ---------- sohbet bulundu ---------- */
-    #f-match { position: absolute; inset: 0; background: #fdfdff; text-align: center; }
-    #f-k-pill { position: absolute; left: 50%; top: 40px; margin-left: -210px; width: 420px; height: 80px; border-radius: 40px; border: 2px solid #e2e0e6; background: #fff;
-      display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 36px; font-weight: 600; color: #3a3540; }
-    #f-k-pill i { width: 26px; height: 26px; border-radius: 50%; background: #9b5cf0; display: inline-block; }
-    #f-orb { position: absolute; left: 164px; top: 130px; width: 520px; height: 520px; border-radius: 50%;
-      background: linear-gradient(135deg, #8a46ea 0%, #b24fd4 50%, #d955b6 100%); -webkit-mask-image: radial-gradient(circle, #000 0%, #000 44%, rgba(0,0,0,0.5) 58%, transparent 71%); mask-image: radial-gradient(circle, #000 0%, #000 44%, rgba(0,0,0,0.5) 58%, transparent 71%); }
-    #f-orb svg { position: absolute; left: 175px; top: 175px; }
-    #f-k-title { position: absolute; left: 0; right: 0; top: 670px; font-size: 56px; font-weight: 800; color: #1d1a24; }
-    #f-k-sub { position: absolute; left: 90px; right: 90px; top: 748px; font-size: 34px; font-weight: 500; color: #6c6875; line-height: 1.35; }
-    #f-k-ids { position: absolute; left: 0; right: 0; top: 862px; font-size: 42px; font-weight: 800; letter-spacing: 0.02em; display: flex; justify-content: center; gap: 30px; align-items: center; }
-    #f-k-ids .a { color: #b245d6; } #f-k-ids .b { color: #d86fb6; } #f-k-ids i { width: 16px; height: 16px; border-radius: 50%; background: #9b5cf0; display: inline-block; }
-    #f-k-cd { position: absolute; left: 40px; right: 40px; top: 934px; font-size: 34px; font-weight: 700; color: #b245d6; }
-    #f-k-join { position: absolute; left: 90px; right: 90px; top: 1000px; height: 108px; border-radius: 28px; background: linear-gradient(90deg, #6a4cf0, #ef4fa6);
-      color: #fff; font-size: 42px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 16px; overflow: hidden; }
-    #f-k-tap { position: absolute; left: 50%; top: 50%; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; background: rgba(255,255,255,0.55); opacity: 0; }
-    #f-k-no { position: absolute; left: 90px; right: 90px; top: 1128px; height: 108px; border-radius: 28px; background: #f6f3fc; border: 2px solid #efe9f6;
-      color: #7d55e8; font-size: 40px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 16px; }
-
     /* ---------- süre doldu ekranı ---------- */
     #f-end { position: absolute; inset: 0; background: #fdfdff; text-align: center; }
     .f-dot { position: absolute; border-radius: 50%; background: #c46be0; }
@@ -133,7 +114,8 @@
             <div id="f-m5" class="f-msg me"><div class="f-b"><span>En sevdiğin yer?</span><span class="f-t">13:39 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
             <div id="f-m6" class="f-msg them"><div class="f-b"><span>Sahil, gün batımında</span><span class="f-t">13:40</span></div></div>
             <div id="f-m7" class="f-msg me"><div class="f-b"><span>Ciddi misin, ben de!</span><span class="f-t">13:40 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
-            <div id="f-m8" class="f-msg them"><div class="f-b"><span>3 dakika az geliyor ama...</span><span class="f-t">13:41</span></div></div>
+            <div id="f-m8" class="f-msg them"><div class="f-b"><span>Bu kadar hızlı mı anlaştık?</span><span class="f-t">13:40</span></div></div>
+            <div id="f-m9" class="f-msg me"><div class="f-b"><span>3 dakika az geliyor ama...</span><span class="f-t">13:41 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
           </div>
         </div>
 
@@ -142,17 +124,6 @@
           <div id="f-input"><span>Mesaj yaz...</span><div id="f-send"><svg width="42" height="42" viewBox="0 0 24 24"><path d="M3 11.5 21 3l-8.5 18-2.2-7.3L3 11.5Z" fill="#fff"/></svg></div></div>
         </div>
         <div id="f-nav"><div id="f-nav-c"></div></div>
-
-        <div id="f-match" data-layout-allow-occlusion data-layout-allow-caption-zone>
-          <div id="f-k-pill"><i></i>Sohbet Bulundu</div>
-          <div id="f-orb" data-layout-ignore><svg width="170" height="170" viewBox="0 0 24 24"><path id="f-check" d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="60" stroke-dashoffset="0"/></svg></div>
-          <div id="f-k-title">Sohbet Bulundu</div>
-          <div id="f-k-sub">Konuşmaya başlaman için karşı taraf seni bekliyor.</div>
-          <div id="f-k-ids"><span class="a">P-7128</span><i></i><span class="b">P-1854</span></div>
-          <div id="f-k-cd">Konuşmaya başlaman için <span id="f-k-sn">27</span> saniyen var</div>
-          <div id="f-k-join"><div id="f-k-tap"></div><span>✓</span><span>Sohbete Katıl</span></div>
-          <div id="f-k-no"><span>✕</span><span>Şimdi Değil</span></div>
-        </div>
 
         <div id="f-end" data-layout-allow-occlusion>
           <i class="f-dot" style="left:420px;top:40px;width:16px;height:16px"></i>
@@ -185,8 +156,8 @@
   </div>
   <script>
     (function () {
-      const MSGS = [{"t": 3.9, "me": false}, {"t": 4.5, "me": true}, {"t": 5.0, "me": false}, {"t": 5.8, "me": true}, {"t": 6.5, "me": false}, {"t": 7.2, "me": true}, {"t": 7.9, "me": false}, {"t": 8.6, "me": true}, {"t": 9.4, "me": false}];
-      const T_IN = 2.1, T_PH = 2.8, T_LAND = 3.7, T_FAST_END = 10.0, T_ZERO = 11.3;
+      const MSGS = [{"t": 2.95, "me": false}, {"t": 3.6, "me": true}, {"t": 4.3, "me": false}, {"t": 5.15, "me": true}, {"t": 5.85, "me": false}, {"t": 6.6, "me": true}, {"t": 7.3, "me": false}, {"t": 8.0, "me": true}, {"t": 8.8, "me": false}, {"t": 9.6, "me": true}];
+      const T_IN = 2.1, T_LAND = 2.8, T_FAST_END = 10.0, T_ZERO = 11.3;
       const tl = gsap.timeline({ paused: true });
 
       function build() {
@@ -198,23 +169,20 @@
         // kanca: ilk karede yazı hazır, hafif yaşar
         tl.fromTo("#f-hook-1", { y: 0 }, { y: -10, duration: 1.8, ease: "sine.inOut" }, 0);
         tl.fromTo("#f-hook-2", { scale: 1 }, { scale: 1.04, duration: 1.8, ease: "sine.inOut" }, 0);
-        tl.fromTo("#f-bigpill", { scale: 1 }, { scale: 1.06, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 3 }, 0.5);
+        tl.fromTo("#f-bigpill", { scale: 1 }, { scale: 1.06, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 3 }, 0.6);
         tl.to("#f-hook", { opacity: 0, y: -90, duration: 0.3, ease: "power2.in" }, 1.85);
 
-        tl.to("#f-bigpill", { opacity: 0, y: -60, duration: 0.3, ease: "power2.in" }, 1.9);
-        // telefon aşağıdan gelir: önce "Sohbet Bulundu" ekranı
+        // telefon aşağıdan gelir
         const phone = document.getElementById("f-phone");
-        tl.fromTo(phone, { y: 1800 }, { y: 0, duration: T_PH - T_IN, ease: "power3.out" }, T_IN);
-        tl.fromTo("#f-orb", { scale: 0.85 }, { scale: 1.05, duration: 0.6, ease: "back.out(1.6)" }, T_PH - 0.25);
-        tl.fromTo("#f-check", { strokeDashoffset: 60 }, { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, T_PH - 0.1);
-        const ms = document.getElementById("f-k-sn");
-        const mc = { s: 27 };
-        tl.fromTo(mc, { s: 27 }, { s: 25, duration: 1.2, ease: "none", onUpdate: () => { ms.textContent = Math.ceil(mc.s - 1e-6); } }, T_IN + 0.3);
-        const JOIN = T_PH + 0.55;
-        tl.fromTo("#f-k-join", { scale: 1 }, { scale: 0.94, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1 }, JOIN);
-        tl.fromTo("#f-k-tap", { opacity: 0.9, scale: 0.2 }, { immediateRender: false, opacity: 0, scale: 7, duration: 0.45, ease: "power2.out" }, JOIN);
-        tl.to("#f-match", { xPercent: -100, duration: 0.35, ease: "power3.inOut" }, T_LAND - 0.3);
-        tl.fromTo(["#f-header", "#f-bar-track", "#f-composer"], { opacity: 0 }, { opacity: 1, duration: 0.2 }, T_LAND - 0.25);
+        const pill = document.getElementById("f-pill").getBoundingClientRect();
+        const big = document.getElementById("f-bigpill").getBoundingClientRect();
+        tl.fromTo(phone, { y: 1800 }, { y: 0, duration: T_LAND - T_IN, ease: "power3.out" }, T_IN);
+        // büyük sayaç başlıktaki sayaca uçar
+        const dx = (pill.left + pill.width / 2) - (big.left + big.width / 2);
+        const dy = (pill.top + pill.height / 2) - (big.top + big.height / 2);
+        tl.fromTo("#f-bigpill", { x: 0, y: 0, scale: 1 }, { x: dx, y: dy, scale: pill.width / big.width, duration: T_LAND - T_IN, ease: "power3.inOut", immediateRender: false }, T_IN);
+        tl.fromTo("#f-pill", { opacity: 0 }, { opacity: 1, duration: 0.05 }, T_LAND - 0.05);
+        tl.to("#f-bigpill", { opacity: 0, duration: 0.05 }, T_LAND);
 
         // sayaç: 03:00 -> 00:10 hızlı, sonra 00:10 -> 00:00
         const d1 = document.getElementById("f-pill-digits");
@@ -258,7 +226,7 @@
         // Devam Et'e dokunma
         const TAP = T_END + 1.35;
         tl.fromTo("#f-e-devam", { scale: 1 }, { scale: 0.94, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1 }, TAP);
-        tl.fromTo("#f-e-tap", { opacity: 0.9, scale: 0.2 }, { immediateRender: false, opacity: 0, scale: 6, duration: 0.5, ease: "power2.out" }, TAP);
+        tl.fromTo("#f-e-tap", { opacity: 0.9, scale: 0.2 }, { opacity: 0, scale: 6, duration: 0.5, ease: "power2.out" }, TAP);
         tl.to("#f-e-lbl1", { opacity: 0, duration: 0.12 }, TAP + 0.12);
         tl.fromTo("#f-e-lbl2", { opacity: 0 }, { opacity: 1, duration: 0.15 }, TAP + 0.18);
         // karşı taraf da devam etti
