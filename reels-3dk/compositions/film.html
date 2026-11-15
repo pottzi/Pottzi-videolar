@@ -1,0 +1,197 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; background: #f6f3ff; }
+    .f-blob { position: absolute; border-radius: 50%; }
+    #f-blob1 { width: 1100px; height: 1100px; left: -420px; top: -300px; background: radial-gradient(circle, rgba(255,111,106,0.30) 0%, rgba(255,111,106,0) 65%); }
+    #f-blob2 { width: 1200px; height: 1200px; left: 380px; top: 900px; background: radial-gradient(circle, rgba(70,82,239,0.24) 0%, rgba(70,82,239,0) 65%); }
+    #f-blob3 { width: 900px; height: 900px; left: 420px; top: -200px; background: radial-gradient(circle, rgba(176,87,204,0.26) 0%, rgba(176,87,204,0) 65%); }
+
+    /* ---------- kanca ---------- */
+    #f-hook { position: absolute; left: 80px; right: 80px; top: 560px; text-align: center; }
+    #f-hook-1 { font-family: "Poppins", sans-serif; font-weight: 800; font-size: 100px; line-height: 1.05; color: #1b1530; letter-spacing: -0.02em; }
+    #f-hook-2 { font-family: "Poppins", sans-serif; font-weight: 800; font-size: 124px; line-height: 1.1; letter-spacing: -0.02em;
+      background: linear-gradient(90deg, #ff6f6a 0%, #c757c4 55%, #4652ef 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    #f-bigpill { position: absolute; left: 340px; top: 920px; width: 400px; height: 170px; border-radius: 85px;
+      background: linear-gradient(90deg, #6a4cf0, #e05aa8); color: #fff; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 104px; font-variant-numeric: tabular-nums; box-shadow: 0 24px 60px rgba(106,76,240,0.35); }
+
+    /* ---------- telefon ---------- */
+    #f-phone { position: absolute; left: 100px; top: 250px; width: 880px; height: 1560px; border-radius: 96px; background: #15111f; padding: 16px;
+      box-shadow: 0 40px 90px rgba(60,30,120,0.28); }
+    #f-screen { position: relative; width: 100%; height: 100%; border-radius: 82px; overflow: hidden; background: #fdfdff; }
+    #f-header { position: absolute; left: 0; right: 0; top: 46px; height: 130px; }
+    #f-x { position: absolute; left: 40px; top: 24px; width: 82px; height: 82px; border-radius: 26px; border: 2px solid #e4e1ec; background: #fff; }
+    #f-x svg { position: absolute; left: 21px; top: 21px; }
+    #f-id { position: absolute; left: 150px; top: 18px; font-weight: 700; font-size: 44px; letter-spacing: 0.01em;
+      background: linear-gradient(90deg, #d76fd8, #7fb2f5); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    #f-online { position: absolute; left: 150px; top: 76px; font-size: 30px; color: #55505f; display: flex; align-items: center; gap: 12px; }
+    #f-online i { width: 12px; height: 12px; border-radius: 50%; background: #5cc96b; display: inline-block; }
+    #f-pill { position: absolute; right: 108px; top: 22px; width: 220px; height: 92px; border-radius: 46px;
+      background: linear-gradient(90deg, #6a4cf0, #e05aa8); color: #fff; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 52px; font-variant-numeric: tabular-nums; }
+    #f-pill-hot { position: absolute; inset: 0; border-radius: 46px; background: linear-gradient(90deg, #ff4f5e, #e0306a); opacity: 0; }
+    #f-pill-digits { position: relative; }
+    #f-dots { position: absolute; right: 44px; top: 42px; display: flex; flex-direction: column; gap: 7px; }
+    #f-dots i { width: 10px; height: 10px; border-radius: 50%; background: #2b2633; display: block; }
+    #f-bar-track { position: absolute; left: 0; right: 0; top: 190px; height: 6px; background: #ece8f7; }
+    #f-bar { position: absolute; inset: 0; background: linear-gradient(90deg, #5ab4d6, #6a8cf0); transform-origin: 0 50%; }
+
+    #f-chat { position: absolute; left: 0; right: 0; top: 200px; height: 800px; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 40px); mask-image: linear-gradient(to bottom, transparent 0, #000 40px); }
+    #f-col { position: absolute; left: 40px; right: 40px; top: 36px; display: flex; flex-direction: column; gap: 22px; }
+    .f-msg { display: flex; opacity: 0; max-width: 640px; }
+    .f-msg.them { align-self: flex-start; }
+    .f-msg.me { align-self: flex-end; }
+    .f-b { display: flex; align-items: flex-end; gap: 16px; padding: 24px 34px; font-size: 40px; line-height: 1.3; font-weight: 600; }
+    .them .f-b { background: #fff; color: #1d1a24; border-radius: 40px 40px 40px 10px; box-shadow: 0 8px 26px rgba(80,60,140,0.10); }
+    .me .f-b { background: linear-gradient(90deg, #6a4cf0, #e05aa8); color: #fff; border-radius: 40px 40px 10px 40px; }
+    .f-t { font-size: 28px; font-weight: 500; white-space: nowrap; padding-bottom: 4px; }
+    .them .f-t { color: #77727f; }
+    .me .f-t { color: rgba(255,255,255,0.88); }
+
+    #f-composer { position: absolute; left: 30px; right: 30px; top: 1250px; height: 110px; }
+    #f-spark { position: absolute; left: 0; top: 0; width: 110px; height: 110px; border-radius: 50%; background: linear-gradient(135deg, #e07ad8, #6fb4f5); }
+    #f-spark svg { position: absolute; left: 27px; top: 27px; }
+    #f-input { position: absolute; left: 130px; right: 0; top: 0; height: 110px; border-radius: 55px; background: #fff; box-shadow: 0 8px 26px rgba(80,60,140,0.10); }
+    #f-input span { position: absolute; left: 40px; top: 32px; font-size: 38px; color: #8e8a96; font-weight: 500; }
+    #f-send { position: absolute; right: 10px; top: 10px; width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, #6a4cf0, #e05aa8); }
+    #f-send svg { position: absolute; left: 24px; top: 24px; }
+    #f-nav { position: absolute; left: 30px; right: 30px; top: 1400px; height: 110px; border-radius: 55px; border: 2px solid #eceaf2; background: #fff; }
+    #f-nav-c { position: absolute; left: 340px; top: 12px; width: 130px; height: 84px; border-radius: 42px; background: #5a2ee6; }
+
+    /* ---------- süre doldu ---------- */
+    #f-dim { position: absolute; inset: 0; background: rgba(27,21,48,0.45); opacity: 0; }
+    #f-modal { position: absolute; left: 70px; right: 70px; top: 330px; border-radius: 52px; background: #fff; padding: 56px 50px 50px; text-align: center; opacity: 0;
+      box-shadow: 0 30px 80px rgba(30,10,70,0.35); }
+    #f-m-title { font-family: "Poppins", sans-serif; font-weight: 800; font-size: 70px; color: #1b1530; line-height: 1.1; }
+    #f-m-sub { font-size: 36px; color: #55505f; margin-top: 14px; font-weight: 500; }
+    .f-row { display: flex; align-items: center; justify-content: space-between; margin-top: 26px; padding: 22px 32px; border-radius: 30px; background: #f4f1fb; font-size: 38px; font-weight: 700; color: #1d1a24; }
+    .f-check { width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, #6a4cf0, #e05aa8); display: flex; align-items: center; justify-content: center; opacity: 0; }
+    #f-m-ok { margin-top: 32px; font-family: "Poppins", sans-serif; font-size: 46px; font-weight: 800; opacity: 0;
+      background: linear-gradient(90deg, #ff6f6a, #c757c4 55%, #4652ef); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  </style>
+  <div id="root" data-composition-id="film" data-width="1080" data-height="1920">
+    <div id="f-blob1" class="f-blob" data-layout-ignore></div>
+    <div id="f-blob2" class="f-blob" data-layout-ignore></div>
+    <div id="f-blob3" class="f-blob" data-layout-ignore></div>
+
+    <div id="f-phone" data-layout-allow-overflow data-layout-allow-caption-zone>
+      <div id="f-screen">
+        <div id="f-header">
+          <div id="f-x"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" stroke="#2b2633" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+          <div id="f-id">P-1854</div>
+          <div id="f-online"><i></i>Çevrimiçi</div>
+          <div id="f-pill"><div id="f-pill-hot"></div><span id="f-pill-digits">03:00</span></div>
+          <div id="f-dots"><i></i><i></i><i></i></div>
+        </div>
+        <div id="f-bar-track"><div id="f-bar"></div></div>
+
+        <div id="f-chat" data-layout-allow-overlap>
+          <div id="f-col">
+            <div id="f-m0" class="f-msg them"><div class="f-b"><span>Slm</span><span class="f-t">13:38</span></div></div>
+            <div id="f-m1" class="f-msg me"><div class="f-b"><span>Selam! Nasılsın?</span><span class="f-t">13:38 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+            <div id="f-m2" class="f-msg them"><div class="f-b"><span>İyiyim. Hızlı soru: kahve mi çay mı?</span><span class="f-t">13:38</span></div></div>
+            <div id="f-m3" class="f-msg me"><div class="f-b"><span>Çay. Tartışmaya kapalı.</span><span class="f-t">13:39 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+            <div id="f-m4" class="f-msg them"><div class="f-b"><span>Tamam, anlaşıyoruz :)</span><span class="f-t">13:39</span></div></div>
+            <div id="f-m5" class="f-msg me"><div class="f-b"><span>En sevdiğin yer?</span><span class="f-t">13:39 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+            <div id="f-m6" class="f-msg them"><div class="f-b"><span>Sahil, gün batımında</span><span class="f-t">13:40</span></div></div>
+            <div id="f-m7" class="f-msg me"><div class="f-b"><span>Ciddi misin, ben de!</span><span class="f-t">13:40 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+            <div id="f-m8" class="f-msg them"><div class="f-b"><span>Bu kadar hızlı mı anlaştık?</span><span class="f-t">13:40</span></div></div>
+            <div id="f-m9" class="f-msg me"><div class="f-b"><span>3 dakika az geliyor ama...</span><span class="f-t">13:41 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+          </div>
+        </div>
+
+        <div id="f-composer">
+          <div id="f-spark"><svg width="56" height="56" viewBox="0 0 24 24"><path d="M10 3l1.8 5.2L17 10l-5.2 1.8L10 17l-1.8-5.2L3 10l5.2-1.8L10 3zm8 10l.9 2.1L21 16l-2.1.9L18 19l-.9-2.1L15 16l2.1-.9L18 13z" fill="#fff"/></svg></div>
+          <div id="f-input"><span>Mesaj yaz...</span><div id="f-send"><svg width="42" height="42" viewBox="0 0 24 24"><path d="M3 11.5 21 3l-8.5 18-2.2-7.3L3 11.5Z" fill="#fff"/></svg></div></div>
+        </div>
+        <div id="f-nav"><div id="f-nav-c"></div></div>
+
+        <div id="f-dim"></div>
+        <div id="f-modal" data-layout-allow-occlusion>
+          <div id="f-m-title">Süre doldu!</div>
+          <div id="f-m-sub">Sohbete devam edilsin mi?</div>
+          <div class="f-row"><span>Sen</span><div id="f-c1" class="f-check"><svg width="32" height="32" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+          <div class="f-row"><span>P-1854</span><div id="f-c2" class="f-check"><svg width="32" height="32" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+          <div id="f-m-ok">İkiniz de devam dediniz!</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="f-hook">
+      <div id="f-hook-1">Bir yabancıyla</div>
+      <div id="f-hook-2">3 dakikan var.</div>
+    </div>
+    <div id="f-bigpill"><span id="f-bigpill-digits">03:00</span></div>
+  </div>
+  <script>
+    (function () {
+      const MSGS = [{"t": 2.95, "me": false}, {"t": 3.6, "me": true}, {"t": 4.3, "me": false}, {"t": 5.15, "me": true}, {"t": 5.85, "me": false}, {"t": 6.6, "me": true}, {"t": 7.3, "me": false}, {"t": 8.0, "me": true}, {"t": 8.8, "me": false}, {"t": 9.6, "me": true}];
+      const T_IN = 2.1, T_LAND = 2.8, T_FAST_END = 10.0, T_ZERO = 11.3;
+      const tl = gsap.timeline({ paused: true });
+
+      function build() {
+        // arka plan yavaş hareket
+        tl.fromTo("#f-blob1", { x: 0, y: 0 }, { x: 120, y: 160, duration: 13, ease: "sine.inOut" }, 0);
+        tl.fromTo("#f-blob2", { x: 0, y: 0 }, { x: -160, y: -120, duration: 13, ease: "sine.inOut" }, 0);
+        tl.fromTo("#f-blob3", { x: 0, y: 0 }, { x: -100, y: 120, duration: 13, ease: "sine.inOut" }, 0);
+
+        // kanca: ilk karede yazı hazır, hafif yaşar
+        tl.fromTo("#f-hook-1", { y: 0 }, { y: -10, duration: 1.8, ease: "sine.inOut" }, 0);
+        tl.fromTo("#f-hook-2", { scale: 1 }, { scale: 1.04, duration: 1.8, ease: "sine.inOut" }, 0);
+        tl.fromTo("#f-bigpill", { scale: 1 }, { scale: 1.06, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 3 }, 0.6);
+        tl.to("#f-hook", { opacity: 0, y: -90, duration: 0.3, ease: "power2.in" }, 1.85);
+
+        // telefon aşağıdan gelir
+        const phone = document.getElementById("f-phone");
+        const pill = document.getElementById("f-pill").getBoundingClientRect();
+        const big = document.getElementById("f-bigpill").getBoundingClientRect();
+        tl.fromTo(phone, { y: 1800 }, { y: 0, duration: T_LAND - T_IN, ease: "power3.out" }, T_IN);
+        // büyük sayaç başlıktaki sayaca uçar
+        const dx = (pill.left + pill.width / 2) - (big.left + big.width / 2);
+        const dy = (pill.top + pill.height / 2) - (big.top + big.height / 2);
+        tl.fromTo("#f-bigpill", { x: 0, y: 0, scale: 1 }, { x: dx, y: dy, scale: pill.width / big.width, duration: T_LAND - T_IN, ease: "power3.inOut", immediateRender: false }, T_IN);
+        tl.fromTo("#f-pill", { opacity: 0 }, { opacity: 1, duration: 0.05 }, T_LAND - 0.05);
+        tl.to("#f-bigpill", { opacity: 0, duration: 0.05 }, T_LAND);
+
+        // sayaç: 03:00 -> 00:10 hızlı, sonra 00:10 -> 00:00
+        const d1 = document.getElementById("f-pill-digits");
+        const fmt = (v) => { const s = Math.max(0, Math.ceil(v - 1e-6)); return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0"); };
+        const clock = { s: 180 };
+        tl.fromTo(clock, { s: 180 }, { s: 10, duration: T_FAST_END - T_LAND, ease: "power1.in", onUpdate: () => { d1.textContent = fmt(clock.s); } }, T_LAND);
+        tl.fromTo(clock, { s: 10 }, { s: 0, duration: T_ZERO - T_FAST_END, ease: "none", immediateRender: false, onUpdate: () => { d1.textContent = fmt(clock.s); } }, T_FAST_END);
+        tl.fromTo("#f-bar", { scaleX: 1 }, { scaleX: 10 / 180, duration: T_FAST_END - T_LAND, ease: "power1.in" }, T_LAND);
+        tl.fromTo("#f-bar", { scaleX: 10 / 180 }, { scaleX: 0, duration: T_ZERO - T_FAST_END, ease: "none", immediateRender: false }, T_FAST_END);
+        // son 10 saniye: kırmızı ve nabız
+        tl.fromTo("#f-pill-hot", { opacity: 0 }, { opacity: 1, duration: 0.3 }, T_FAST_END);
+        for (let k = 0; k < 5; k++) tl.fromTo("#f-pill", { scale: 1 }, { scale: 1.12, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1 }, T_FAST_END + k * 0.26);
+
+        // mesajlar
+        const H = document.getElementById("f-chat").clientHeight;
+        const top0 = 36;
+        let lastY = 0;
+        MSGS.forEach((m, i) => {
+          const el = document.getElementById("f-m" + i);
+          const bottom = top0 + el.offsetTop + el.offsetHeight;
+          const y = Math.min(0, H - 30 - bottom);
+          if (y !== lastY) {
+            tl.fromTo("#f-col", { y: lastY }, { y: y, duration: 0.3, ease: "power3.out", immediateRender: false }, m.t - 0.04);
+            lastY = y;
+          }
+          tl.fromTo(el, { opacity: 0, y: 30, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(1.8)",
+            transformOrigin: m.me ? "100% 100%" : "0% 100%" }, m.t);
+        });
+
+        // süre doldu
+        tl.fromTo("#f-dim", { opacity: 0 }, { opacity: 1, duration: 0.25 }, T_ZERO);
+        tl.fromTo("#f-modal", { opacity: 0, y: 80, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, T_ZERO + 0.05);
+        tl.fromTo("#f-c1", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, T_ZERO + 0.45);
+        tl.fromTo("#f-c2", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, T_ZERO + 0.75);
+        tl.fromTo("#f-m-ok", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, T_ZERO + 0.95);
+
+        tl.set({}, {}, 13.6);
+        window.__timelines["film"] = tl;
+      }
+      document.fonts.ready.then(build);
+    })();
+  </script>
+</template>
