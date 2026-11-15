@@ -48,12 +48,6 @@
     .them .f-t { color: #77727f; }
     .me .f-t { color: rgba(255,255,255,0.88); }
 
-    .f-topic { align-self: center; width: 640px; border-radius: 34px; padding: 26px 34px; text-align: center; opacity: 0;
-      background: linear-gradient(#fff, #fff) padding-box, linear-gradient(90deg, #FF6B5B, #E6458C, #7A5CF5) border-box; border: 3px solid transparent;
-      box-shadow: 0 12px 34px rgba(122,92,245,0.16); }
-    .f-topic-l { font-size: 28px; font-weight: 700; letter-spacing: 0.18em; color: #7A5CF5; }
-    .f-topic-q { font-size: 38px; font-weight: 700; color: #15131F; line-height: 1.3; margin-top: 6px; }
-    #f-spark-tap { position: absolute; left: 0; top: 0; width: 110px; height: 110px; border-radius: 50%; background: rgba(230,69,140,0.35); opacity: 0; }
     #f-composer { position: absolute; left: 30px; right: 30px; top: 1250px; height: 110px; }
     #f-spark { position: absolute; left: 0; top: 0; width: 110px; height: 110px; border-radius: 50%; background: linear-gradient(135deg, #e07ad8, #6fb4f5); }
     #f-spark svg { position: absolute; left: 27px; top: 27px; }
@@ -112,20 +106,21 @@
 
         <div id="f-chat" data-layout-allow-overlap>
           <div id="f-col">
-            <div id="f-topic" class="f-topic"><div class="f-topic-l">KONU</div><div class="f-topic-q">Kimseye söylemediğin saçma bir korkun var mı?</div></div>
-            <div id="f-m0" class="f-msg them"><div class="f-b"><span>Kelebekler. Kanat sesleri beni geriyor :D</span><span class="f-t">14:02</span></div></div>
-            <div id="f-m1" class="f-msg me"><div class="f-b"><span>Ciddi misin? Ben de güvercinlerden kaçıyorum</span><span class="f-t">14:02 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
-            <div id="f-m2" class="f-msg them"><div class="f-b"><span>Kanatlılardan korkanlar kulübü kuruldu</span><span class="f-t">14:02</span></div></div>
-            <div id="f-m3" class="f-msg me"><div class="f-b"><span>Bunu kimseye söylememiştim bu arada</span><span class="f-t">14:03 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
-            <div id="f-m4" class="f-msg them"><div class="f-b"><span>Ben de. Tanımadığın birine anlatmak daha kolaymış</span><span class="f-t">14:03</span></div></div>
-            <div id="f-m5" class="f-msg me"><div class="f-b"><span>Aynen, kimse yargılamıyor</span><span class="f-t">14:04 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
-            <div id="f-m6" class="f-msg them"><div class="f-b"><span>Süre bitiyor ama...</span><span class="f-t">14:04</span></div></div>
-            <div id="f-m7" class="f-msg me"><div class="f-b"><span>Devam edelim mi?</span><span class="f-t">14:05 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+            <div id="f-m0" class="f-msg them"><div class="f-b"><span>Selam</span><span class="f-t">14:02</span></div></div>
+            <div id="f-m1" class="f-msg me"><div class="f-b"><span>Selam, nasılsın?</span><span class="f-t">14:02 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+            <div id="f-m2" class="f-msg them"><div class="f-b"><span>İyiyim, sen? Saçma bir soru sorayım mı?</span><span class="f-t">14:02</span></div></div>
+            <div id="f-m3" class="f-msg me"><div class="f-b"><span>İyiyim. Sor bakalım :D</span><span class="f-t">14:02 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+            <div id="f-m4" class="f-msg them"><div class="f-b"><span>Kimseye söylemediğin saçma bir korkun var mı?</span><span class="f-t">14:03</span></div></div>
+            <div id="f-m5" class="f-msg me"><div class="f-b"><span>Kelebekler. Kanat sesleri beni geriyor</span><span class="f-t">14:03 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+            <div id="f-m6" class="f-msg them"><div class="f-b"><span>Ciddi misin? Ben de güvercinlerden kaçıyorum :D</span><span class="f-t">14:03</span></div></div>
+            <div id="f-m7" class="f-msg me"><div class="f-b"><span>Bunu kimseye söylememiştim bu arada</span><span class="f-t">14:04 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+            <div id="f-m8" class="f-msg them"><div class="f-b"><span>Ben de. Tanımadığın birine anlatmak daha kolaymış</span><span class="f-t">14:04</span></div></div>
+            <div id="f-m9" class="f-msg me"><div class="f-b"><span>Devam edelim mi?</span><span class="f-t">14:05 <svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
           </div>
         </div>
 
         <div id="f-composer">
-          <div id="f-spark"><div id="f-spark-tap"></div><svg width="56" height="56" viewBox="0 0 24 24"><path d="M10 3l1.8 5.2L17 10l-5.2 1.8L10 17l-1.8-5.2L3 10l5.2-1.8L10 3zm8 10l.9 2.1L21 16l-2.1.9L18 19l-.9-2.1L15 16l2.1-.9L18 13z" fill="#fff"/></svg></div>
+          <div id="f-spark"><svg width="56" height="56" viewBox="0 0 24 24"><path d="M10 3l1.8 5.2L17 10l-5.2 1.8L10 17l-1.8-5.2L3 10l5.2-1.8L10 3zm8 10l.9 2.1L21 16l-2.1.9L18 19l-.9-2.1L15 16l2.1-.9L18 13z" fill="#fff"/></svg></div>
           <div id="f-input"><span>Mesaj yaz...</span><div id="f-send"><svg width="42" height="42" viewBox="0 0 24 24"><path d="M3 11.5 21 3l-8.5 18-2.2-7.3L3 11.5Z" fill="#fff"/></svg></div></div>
         </div>
         <div id="f-nav"><div id="f-nav-c"></div></div>
@@ -161,7 +156,7 @@
   </div>
   <script>
     (function () {
-      const MSGS = [{"id": "f-topic", "t": 3.5, "al": "50% 100%"}, {"id": "f-m0", "t": 4.2, "al": "0% 100%"}, {"id": "f-m1", "t": 5.0, "al": "100% 100%"}, {"id": "f-m2", "t": 5.8, "al": "0% 100%"}, {"id": "f-m3", "t": 6.6, "al": "100% 100%"}, {"id": "f-m4", "t": 7.4, "al": "0% 100%"}, {"id": "f-m5", "t": 8.2, "al": "100% 100%"}, {"id": "f-m6", "t": 9.0, "al": "0% 100%"}, {"id": "f-m7", "t": 9.8, "al": "100% 100%"}];
+      const MSGS = [{"id": "f-m0", "t": 3.2, "al": "0% 100%"}, {"id": "f-m1", "t": 3.9, "al": "100% 100%"}, {"id": "f-m2", "t": 4.6, "al": "0% 100%"}, {"id": "f-m3", "t": 5.35, "al": "100% 100%"}, {"id": "f-m4", "t": 6.1, "al": "0% 100%"}, {"id": "f-m5", "t": 6.85, "al": "100% 100%"}, {"id": "f-m6", "t": 7.6, "al": "0% 100%"}, {"id": "f-m7", "t": 8.35, "al": "100% 100%"}, {"id": "f-m8", "t": 9.1, "al": "0% 100%"}, {"id": "f-m9", "t": 9.85, "al": "100% 100%"}];
       const T_IN = 2.1, T_LAND = 2.8, T_FAST_END = 10.4, T_ZERO = 11.6;
       const tl = gsap.timeline({ paused: true });
 
@@ -200,11 +195,6 @@
         // son 10 saniye: kırmızı ve nabız
         tl.fromTo("#f-pill-hot", { opacity: 0 }, { opacity: 1, duration: 0.3 }, T_FAST_END);
         for (let k = 0; k < 5; k++) tl.fromTo("#f-pill", { scale: 1 }, { scale: 1.12, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1 }, T_FAST_END + k * 0.26);
-
-        // Konu aç: ✨ butonuna dokunma
-        tl.fromTo("#f-spark", { scale: 1 }, { scale: 0.88, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1 }, T_LAND + 0.3);
-        tl.fromTo("#f-spark-tap", { opacity: 0, scale: 1 }, { immediateRender: false, opacity: 0.9, scale: 1, duration: 0.01 }, T_LAND + 0.3);
-        tl.to("#f-spark-tap", { opacity: 0, scale: 2.6, duration: 0.5, ease: "power2.out" }, T_LAND + 0.31);
 
         // mesajlar
         const H = document.getElementById("f-chat").clientHeight;
