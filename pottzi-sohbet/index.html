@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="tr" data-resolution="portrait"
+  data-composition-variables='[{"id":"c-orange","type":"color","label":"Turuncu","default":"#f2711c"},{"id":"c-pink","type":"color","label":"Pembe","default":"#e8337f"},{"id":"c-purple","type":"color","label":"Mor","default":"#6d2bd6"}]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root { --c-orange: #f2711c; --c-pink: #e8337f; --c-purple: #6d2bd6; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--c-pink); }
+      #root { position: relative; width: 100%; height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="180" data-width="1080" data-height="1920">
+      <div id="chat" class="clip" data-composition-id="chat" data-composition-src="compositions/chat.html"
+        data-start="0" data-duration="180" data-track-index="0" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="outro" class="clip" data-composition-id="outro" data-composition-src="compositions/outro.html"
+        data-start="176" data-duration="4" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index: 2"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
