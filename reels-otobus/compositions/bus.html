@@ -1,0 +1,125 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Poppins", sans-serif; background: #0f0b1f; color: #fff; }
+    #b-bg { position: absolute; inset: 0; background: linear-gradient(180deg, #0f0b1f 0%, #1b1133 100%); }
+    #b-win { position: absolute; left: 70px; top: 230px; width: 940px; height: 1360px; border-radius: 80px; overflow: hidden;
+      border: 20px solid #231a3a; box-shadow: 0 40px 120px rgba(0,0,0,0.6), inset 0 0 80px rgba(0,0,0,0.6); }
+    #b-sky { position: absolute; inset: 0; background: linear-gradient(180deg, #120f2e 0%, #24184a 45%, #4a2160 75%, #6a2a5c 100%); }
+    #b-far { position: absolute; left: 0; top: 0; width: 2400px; height: 100%; }
+    .b-dot { position: absolute; border-radius: 50%; }
+    .b-lamp { position: absolute; left: 0; top: 180px; width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,214,150,0.95) 0%, rgba(255,150,90,0.55) 22%, rgba(255,107,91,0.18) 45%, rgba(255,107,91,0) 70%); }
+    .b-streak { position: absolute; left: 0; height: 6px; border-radius: 3px; }
+    #b-s1 { top: 1180px; width: 380px; background: linear-gradient(90deg, rgba(230,69,140,0), rgba(230,69,140,0.8)); }
+    #b-s2 { top: 1230px; width: 260px; background: linear-gradient(90deg, rgba(255,180,90,0), rgba(255,180,90,0.7)); }
+    #b-glass { position: absolute; inset: 0; background: linear-gradient(120deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.05) 75%, rgba(255,255,255,0) 90%); }
+    #b-shade { position: absolute; inset: 0; background: rgba(10,6,24,0.0); }
+
+    #b-hook { position: absolute; left: 150px; right: 150px; top: 610px; text-align: center; font-weight: 800; font-size: 86px; line-height: 1.12; letter-spacing: -0.02em;
+      text-shadow: 0 6px 30px rgba(0,0,0,0.5); }
+    #b-hook .g { background: linear-gradient(90deg, #FF6B5B, #E6458C 55%, #a98bff); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; }
+
+    #b-chat { position: absolute; left: 150px; right: 150px; top: 520px; display: flex; flex-direction: column; gap: 30px; }
+    .b-msg { display: flex; flex-direction: column; max-width: 640px; opacity: 0; }
+    .b-msg.them { align-self: flex-start; align-items: flex-start; }
+    .b-msg.me { align-self: flex-end; align-items: flex-end; }
+    .b-who { font-size: 28px; font-weight: 600; color: rgba(255,255,255,0.85); margin: 0 12px 8px; letter-spacing: 0.04em; }
+    .b-txt { font-size: 40px; line-height: 1.3; font-weight: 500; padding: 24px 34px; }
+    .them .b-txt { background: rgba(255,255,255,0.14); border: 2px solid rgba(255,255,255,0.32); border-radius: 40px 40px 40px 10px; }
+    .me .b-txt { background: linear-gradient(90deg, #7A5CF5, #E6458C); border-radius: 40px 40px 10px 40px; box-shadow: 0 14px 40px rgba(230,69,140,0.35); }
+
+    #b-l2 { position: absolute; left: 150px; right: 150px; top: 700px; text-align: center; font-weight: 800; font-size: 80px; line-height: 1.15; letter-spacing: -0.02em; opacity: 0;
+      text-shadow: 0 6px 30px rgba(0,0,0,0.5); }
+    #b-l2 .g { background: linear-gradient(90deg, #FF6B5B, #E6458C 55%, #a98bff); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; }
+    #b-l3 { position: absolute; left: 150px; right: 150px; top: 600px; display: flex; flex-direction: column; align-items: center; text-align: center; opacity: 0; }
+    #b-l3 img { width: 150px; height: 191px; }
+    #b-l3 div { margin-top: 40px; font-weight: 800; font-size: 74px; line-height: 1.15; letter-spacing: -0.02em; text-shadow: 0 6px 30px rgba(0,0,0,0.5); }
+  </style>
+  <div id="root" data-composition-id="bus" data-width="1080" data-height="1920">
+    <div id="b-bg"></div>
+    <div id="b-win" data-layout-ignore>
+      <div id="b-sky"></div>
+      <div id="b-far">
+        <i class="b-dot" style="left:1326px;top:837px;width:43px;height:43px;background:radial-gradient(circle, rgba(255,107,91,0.38) 0%, rgba(255,107,91,0) 70%)"></i>
+        <i class="b-dot" style="left:2194px;top:808px;width:41px;height:41px;background:radial-gradient(circle, rgba(255,140,120,0.38) 0%, rgba(255,140,120,0) 70%)"></i>
+        <i class="b-dot" style="left:2078px;top:869px;width:20px;height:20px;background:radial-gradient(circle, rgba(255,107,91,0.55) 0%, rgba(255,107,91,0) 70%)"></i>
+        <i class="b-dot" style="left:286px;top:883px;width:23px;height:23px;background:radial-gradient(circle, rgba(255,140,120,0.54) 0%, rgba(255,140,120,0) 70%)"></i>
+        <i class="b-dot" style="left:507px;top:874px;width:58px;height:58px;background:radial-gradient(circle, rgba(255,140,120,0.78) 0%, rgba(255,140,120,0) 70%)"></i>
+        <i class="b-dot" style="left:1624px;top:785px;width:32px;height:32px;background:radial-gradient(circle, rgba(255,107,91,0.6) 0%, rgba(255,107,91,0) 70%)"></i>
+        <i class="b-dot" style="left:545px;top:908px;width:44px;height:44px;background:radial-gradient(circle, rgba(230,69,140,0.59) 0%, rgba(230,69,140,0) 70%)"></i>
+        <i class="b-dot" style="left:1263px;top:1046px;width:70px;height:70px;background:radial-gradient(circle, rgba(230,69,140,0.4) 0%, rgba(230,69,140,0) 70%)"></i>
+        <i class="b-dot" style="left:769px;top:950px;width:24px;height:24px;background:radial-gradient(circle, rgba(255,140,120,0.67) 0%, rgba(255,140,120,0) 70%)"></i>
+        <i class="b-dot" style="left:244px;top:1076px;width:31px;height:31px;background:radial-gradient(circle, rgba(255,180,90,0.66) 0%, rgba(255,180,90,0) 70%)"></i>
+        <i class="b-dot" style="left:1751px;top:920px;width:47px;height:47px;background:radial-gradient(circle, rgba(255,140,120,0.77) 0%, rgba(255,140,120,0) 70%)"></i>
+        <i class="b-dot" style="left:1481px;top:913px;width:33px;height:33px;background:radial-gradient(circle, rgba(230,69,140,0.66) 0%, rgba(230,69,140,0) 70%)"></i>
+        <i class="b-dot" style="left:999px;top:801px;width:54px;height:54px;background:radial-gradient(circle, rgba(122,92,245,0.59) 0%, rgba(122,92,245,0) 70%)"></i>
+        <i class="b-dot" style="left:1406px;top:989px;width:36px;height:36px;background:radial-gradient(circle, rgba(255,140,120,0.79) 0%, rgba(255,140,120,0) 70%)"></i>
+        <i class="b-dot" style="left:483px;top:1022px;width:44px;height:44px;background:radial-gradient(circle, rgba(230,69,140,0.69) 0%, rgba(230,69,140,0) 70%)"></i>
+        <i class="b-dot" style="left:622px;top:1010px;width:44px;height:44px;background:radial-gradient(circle, rgba(255,107,91,0.78) 0%, rgba(255,107,91,0) 70%)"></i>
+        <i class="b-dot" style="left:317px;top:1045px;width:54px;height:54px;background:radial-gradient(circle, rgba(122,92,245,0.5) 0%, rgba(122,92,245,0) 70%)"></i>
+        <i class="b-dot" style="left:1434px;top:1064px;width:49px;height:49px;background:radial-gradient(circle, rgba(255,140,120,0.71) 0%, rgba(255,140,120,0) 70%)"></i>
+        <i class="b-dot" style="left:281px;top:807px;width:35px;height:35px;background:radial-gradient(circle, rgba(255,180,90,0.66) 0%, rgba(255,180,90,0) 70%)"></i>
+        <i class="b-dot" style="left:266px;top:791px;width:64px;height:64px;background:radial-gradient(circle, rgba(122,92,245,0.64) 0%, rgba(122,92,245,0) 70%)"></i>
+        <i class="b-dot" style="left:1825px;top:905px;width:63px;height:63px;background:radial-gradient(circle, rgba(255,180,90,0.75) 0%, rgba(255,180,90,0) 70%)"></i>
+        <i class="b-dot" style="left:1421px;top:771px;width:47px;height:47px;background:radial-gradient(circle, rgba(122,92,245,0.43) 0%, rgba(122,92,245,0) 70%)"></i>
+      </div>
+      <div id="b-l1" class="b-lamp"></div>
+      <div id="b-l2lamp" class="b-lamp"></div>
+      <div id="b-s1" class="b-streak"></div>
+      <div id="b-s2" class="b-streak"></div>
+      <div id="b-glass"></div>
+      <div id="b-shade"></div>
+    </div>
+
+    <div id="b-hook"><span>Hiç uzun yolda</span><br /><span>yanındakine</span><br /><span class="g">içini döktün mü?</span></div>
+
+    <div id="b-chat">
+      <div id="b-m0" class="b-msg them"><span class="b-who">1854</span><span class="b-txt">Uyuyamadın mı sen de?</span></div>
+      <div id="b-m1" class="b-msg me"><span class="b-who">7128</span><span class="b-txt">Yok. Kafamda çok şey var</span></div>
+      <div id="b-m2" class="b-msg them"><span class="b-who">1854</span><span class="b-txt">Anlat istersen. Nasılsa tanımıyoruz :)</span></div>
+      <div id="b-m3" class="b-msg me"><span class="b-who">7128</span><span class="b-txt">Kimseye söylemediğim bir şey var aslında...</span></div>
+    </div>
+
+    <div id="b-l2">Onu bir daha<br />görmeyeceğin için<br /><span class="g">dürüsttün.</span></div>
+    <div id="b-l3"><img src="assets/logo.png" alt="Pottzi" /><div>Pottzi'de her sohbet<br />o yolculuk.</div></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const END = 15.0;
+      // dış dünya akıyor
+      tl.fromTo("#b-far", { x: 0 }, { x: -1300, duration: END, ease: "none" }, 0);
+      const lamps = ["#b-l1", "#b-l2lamp"];
+      let k = 0;
+      for (let t = -0.6; t < END; t += 1.35) {
+        tl.fromTo(lamps[k % 2], { x: 1000 }, { x: -420, duration: 1.5, ease: "none", immediateRender: k < 2 }, t);
+        k++;
+      }
+      let j = 0;
+      for (let t = 0; t < END; t += 0.55) {
+        const sel = j % 2 ? "#b-s2" : "#b-s1";
+        tl.fromTo(sel, { x: 1000 }, { x: -450, duration: 0.5, ease: "none", immediateRender: j < 2 }, t);
+        j++;
+      }
+      // kanca: ilk karede hazır
+      tl.fromTo("#b-hook", { y: 0 }, { y: -14, duration: 3.6, ease: "sine.inOut" }, 0);
+      tl.to("#b-hook", { opacity: 0, y: -80, duration: 0.35, ease: "power2.in" }, 3.65);
+      // mesajlar camda belirir
+      const M = [3.95, 4.8, 5.7, 6.5];
+      M.forEach((t, i) => {
+        tl.fromTo("#b-m" + i, { opacity: 0, y: 30, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.6)",
+          transformOrigin: i % 2 ? "100% 100%" : "0% 100%" }, t);
+      });
+      tl.to("#b-chat", { opacity: 0, y: -40, duration: 0.4, ease: "power2.in" }, 8.2);
+      tl.to("#b-shade", { backgroundColor: "rgba(10,6,24,0.45)", duration: 0.6 }, 8.2);
+      // ikinci cümle
+      tl.fromTo("#b-l2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 8.5);
+      tl.to("#b-l2", { opacity: 0, y: -40, duration: 0.35, ease: "power2.in" }, 11.75);
+      // üçüncü cümle
+      tl.fromTo("#b-l3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 12.05);
+      tl.fromTo("#b-l3 img", { scale: 0.6, rotation: -10 }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.8)" }, 12.05);
+      tl.set({}, {}, END);
+      window.__timelines["bus"] = tl;
+    })();
+  </script>
+</template>
