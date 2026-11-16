@@ -135,9 +135,6 @@
     <div id="o-b4" class="bub boy"><span class="who">1854</span>Anlat istersen. Nasılsa tanımıyoruz</div>
     <div id="o-b5" class="bub girl"><span class="who">7128</span>Kimseye söylemedim ama işimi bırakıp resim yapmak istiyorum</div>
     <div id="o-b6" class="bub boy"><span class="who">1854</span>Bence çok cesurca. Neden olmasın?</div>
-    <div id="o-b8" class="bub boy"><span class="who">1854</span>Yabancılar iyi dinler :)</div>
-    <div id="o-b9" class="bub boy"><span class="who">1854</span>Benim durak bu. İyi yolculuklar 7128!</div>
-    <div id="o-b10" class="bub girl"><span class="who">7128</span>Sana da 1854 :)</div>
 
     <div id="o-dim"></div>
     <div id="o-hook" class="o-line">Hiç uzun yolda<br />yanındakine<br /><span class="o-g">içini döktün mü?</span></div>
@@ -151,23 +148,19 @@
       const B = [
         { id: "o-b0", t: 3.9, d: 1.72, w: "b" }, { id: "o-b1", t: 5.9, d: 2.85, w: "g" }, { id: "o-b2", t: 9.5, d: 3.08, w: "b" },
         { id: "o-b3", t: 13.3, d: 3.08, w: "g" }, { id: "o-b4", t: 16.6, d: 2.69, w: "b" }, { id: "o-b5", t: 19.5, d: 4.44, w: "g" },
-        { id: "o-b6", t: 24.2, d: 2.77, w: "b" }, { id: "o-b8", t: 27.2, d: 1.8, w: "b" }, { id: "o-b9", t: 29.7, d: 2.51, w: "b" },
-        { id: "o-b10", t: 32.4, d: 1.07, w: "g" }
+        { id: "o-b6", t: 24.2, d: 2.77, w: "b" }
       ];
-      const END = 38.5, STOP0 = 29.25, STOP1 = 33.6, EXIT = 33.6, N2 = 34.7;
+      const END = 31.6, N2 = 27.8;
 
       // ---------- dış dünya ----------
-      tl.fromTo("#o-far", { x: 0 }, { x: -900, duration: STOP0, ease: "none" }, 0);
-      tl.fromTo("#o-far", { x: -900 }, { x: -1250, duration: END - STOP1, ease: "power1.in", immediateRender: false }, STOP1);
+      tl.fromTo("#o-far", { x: 0 }, { x: -1100, duration: END, ease: "none" }, 0);
       let k = 0;
       for (let t = -0.6; t < END; t += 1.35) {
-        if (t > STOP0 - 1.4 && t < STOP1) continue;
         const sel = k % 2 ? "#o-lamp2" : "#o-lamp1";
         tl.fromTo(sel, { x: 1180 }, { x: -260, duration: 1.5, ease: "none", immediateRender: k < 2 }, t);
         k++;
       }
-      tl.fromTo("#o-cabin", { y: 0 }, { y: 4, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 64 }, 0);
-      tl.fromTo("#o-cabin", { x: 0 }, { x: -14, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, STOP0);
+      tl.fromTo("#o-cabin", { y: 0 }, { y: 4, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 69 }, 0);
 
       // ---------- yüz yardımcıları ----------
       const parts = { g: ["#o-g-eo", "#o-g-eh", "#o-g-mf", "#o-g-ms", "#o-g-ml", "#o-g-mt"], b: ["#o-b-eo", "#o-b-eh", "#o-b-mf", "#o-b-ms", "#o-b-ml", "#o-b-mt"] };
@@ -194,9 +187,9 @@
 
       face("g", "open", "flat", 0); face("b", "open", "smile", 0);
       look("g", -7, 0, 0.01); eyesTo("g", -6, 0);
-      [1.2, 3.1, 11.4, 18.0, 23.0, 26.1, 35.6, 37.4].forEach((t) => blink("g", t));
+      [1.2, 3.1, 11.4, 18.0, 23.0, 26.1, 29.4].forEach((t) => blink("g", t));
       [2.0, 5.0, 14.6, 21.2, 25.9].forEach((t) => blink("b", t));
-      tl.fromTo("#o-g-head", { y: 0 }, { y: 2, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 23 }, 0);
+      tl.fromTo("#o-g-head", { y: 0 }, { y: 2, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 19 }, 0);
 
       // ---------- balonlar ----------
       const H = B.map((b) => document.getElementById(b.id).offsetHeight);
@@ -205,7 +198,7 @@
         if (B[i + 1]) tl.to("#" + b.id, { y: -(H[i + 1] + 26), duration: 0.35, ease: "power2.inOut" }, B[i + 1].t);
         if (B[i + 2]) tl.to("#" + b.id, { opacity: 0, y: -(H[i + 1] + 26) - 60, duration: 0.3, ease: "power2.in" }, B[i + 2].t);
       });
-      tl.to(["#o-b9", "#o-b10"], { opacity: 0, y: "-=40", duration: 0.35 }, N2 - 0.4);
+      tl.to(["#o-b5", "#o-b6"], { opacity: 0, y: "-=40", duration: 0.35 }, N2 - 0.4);
 
       // ---------- ifadeler (seslere göre) ----------
       const T = (i) => B[i].t + 0.1, D = (i) => B[i].d;
@@ -220,15 +213,8 @@
       talk("b", T(4), D(4), ["open", "smile"]);
       look("g", 6, T(4) + D(4) - 0.3); eyesTo("g", 5, T(4) + D(4) - 0.3);
       talk("g", T(5), D(5), ["open", "flat"]);
-      talk("b", T(6), D(6), ["open", "smile"]); face("g", "open", "smile", T(6) + 1.2);
-      talk("b", T(7), D(7), ["happy", "smile"]); face("g", "happy", "smile", T(7) + 0.6);
-      face("g", "open", "smile", STOP0 - 0.1); face("b", "open", "smile", STOP0 - 0.1);
-      talk("b", T(8), D(8), ["happy", "smile"]);
-      tl.set("#o-b-armdown", { opacity: 0 }, T(8) + 0.1); tl.set("#o-b-armup", { opacity: 1 }, T(8) + 0.1);
-      tl.fromTo("#o-b-armup", { rotation: -8 }, { rotation: 10, svgOrigin: "158 250", duration: 0.22, ease: "sine.inOut", yoyo: true, repeat: 7 }, T(8) + 0.1);
-      talk("g", T(9), D(9), ["happy", "smile"]);
-      tl.to("#o-boy", { x: 620, y: -30, duration: 0.9, ease: "power2.in" }, EXIT);
-      look("g", -7, EXIT + 0.9, 0.7); eyesTo("g", -6, EXIT + 0.9); face("g", "open", "smile", EXIT + 1.0);
+      talk("b", T(6), D(6), ["happy", "smile"]); face("g", "open", "smile", T(6) + 1.0);
+      face("g", "happy", "smile", T(6) + D(6) - 0.3); face("b", "open", "smile", T(6) + D(6) + 0.4);
 
       // ---------- metinler ----------
       tl.fromTo("#o-hook", { y: 0 }, { y: -12, duration: 3.5, ease: "sine.inOut" }, 0);
