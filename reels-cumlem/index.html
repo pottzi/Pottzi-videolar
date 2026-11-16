@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="tr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #ECE8F6; }
+      #root { position: relative; width: 100%; height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="22.8" data-width="1080" data-height="1920">
+      <div id="cm" class="clip" data-composition-id="cm" data-composition-src="compositions/cm.html"
+        data-start="0" data-duration="19.2" data-track-index="0" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="outro" class="clip" data-composition-id="outro" data-composition-src="compositions/outro.html"
+        data-start="19.05" data-duration="3.75" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index: 2"></div>
+      <audio id="g1" class="clip" src="assets/audio/g1.mp3" data-start="0.3" data-track-index="2" data-volume="1.58"></audio>
+      <audio id="g2" class="clip" src="assets/audio/g2.mp3" data-start="3.4" data-track-index="3" data-volume="1.58"></audio>
+      <audio id="g3" class="clip" src="assets/audio/g3.mp3" data-start="14.9" data-track-index="4" data-volume="1.58"></audio>
+      <audio id="vo4" class="clip" src="assets/audio/vo4.mp3" data-start="19.3" data-track-index="5" data-volume="1.58"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

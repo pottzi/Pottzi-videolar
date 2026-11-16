@@ -1,0 +1,264 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Poppins", sans-serif; color: #15131F; }
+    #c-bg { position: absolute; inset: 0; background: linear-gradient(180deg, #ECE8F6 0%, #DCD8EA 100%); }
+    #c-cold { position: absolute; inset: 0; background: linear-gradient(180deg, #C9CEDC 0%, #B5BACB 100%); opacity: 0; }
+    #c-warm { position: absolute; inset: 0; background: linear-gradient(180deg, #FFE6DA 0%, #F8DDF0 60%, #E9DDFB 100%); opacity: 0; }
+    .c-blob { position: absolute; border-radius: 50%; }
+    #c-blob1 { left: -300px; top: 900px; width: 900px; height: 900px; background: radial-gradient(circle, rgba(255,107,91,0.28), rgba(255,107,91,0) 65%); opacity: 0; }
+    #c-blob2 { left: 500px; top: 200px; width: 900px; height: 900px; background: radial-gradient(circle, rgba(122,92,245,0.25), rgba(122,92,245,0) 65%); opacity: 0; }
+
+    .c-cap { position: absolute; left: 150px; right: 150px; top: 250px; text-align: center; }
+    .c-cap span { display: inline-block; padding: 18px 34px; border-radius: 40px; background: rgba(255,255,255,0.92); font-size: 42px; font-weight: 600; line-height: 1.3;
+      box-shadow: 0 14px 40px rgba(40,20,80,0.14); }
+    #c-cap2 { opacity: 0; }
+
+    #c-phone { position: absolute; left: 210px; top: 380px; width: 660px; height: 960px; border-radius: 80px; background: #15111f; padding: 14px;
+      box-shadow: 0 40px 90px rgba(40,20,90,0.28); }
+    #c-screen { position: relative; width: 100%; height: 100%; border-radius: 68px; overflow: hidden; background: #fff; }
+    .c-s { position: absolute; inset: 0; }
+
+    /* --- genel sosyal akış (marka değil) --- */
+    #s-feed { background: #fff; }
+    #f-top { position: absolute; left: 34px; right: 34px; top: 44px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    #f-top b { font-size: 36px; font-weight: 700; }
+    #f-top i { display: inline-block; width: 40px; height: 40px; border-radius: 12px; border: 3px solid #2a2633; margin-left: 18px; }
+    #f-head { position: absolute; left: 34px; top: 130px; display: flex; align-items: center; gap: 18px; }
+    #f-av { width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, #FF6B5B, #E6458C); }
+    #f-name { font-size: 30px; font-weight: 700; line-height: 1.1; }
+    #f-loc { font-size: 26px; color: #78748C; }
+    #f-photo { position: absolute; left: 0; right: 0; top: 230px; height: 470px; background: linear-gradient(160deg, #FFC9A8 0%, #F7A6C8 55%, #C6A8F7 100%); overflow: hidden; }
+    #f-acts { position: absolute; left: 34px; right: 34px; top: 718px; display: flex; align-items: center; gap: 22px; }
+    #f-likes { font-size: 32px; font-weight: 700; font-variant-numeric: tabular-nums; }
+    #f-coms { position: absolute; left: 34px; right: 34px; top: 790px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .f-c { padding: 10px 20px; border-radius: 24px; background: #F3EFFC; font-size: 28px; font-weight: 500; opacity: 0; }
+    .f-heart { position: absolute; opacity: 0; }
+    #s-feed-gray { position: absolute; inset: 0; background: rgba(150,150,165,0.45); opacity: 0; }
+
+    /* --- Talk to Many --- */
+    #s-tm { background: #fff; }
+    #t-title { position: absolute; left: 36px; top: 70px; font-size: 50px; font-weight: 800; letter-spacing: -0.01em; }
+    #t-sub { position: absolute; left: 36px; top: 142px; font-size: 26px; color: #6c6875; line-height: 1.3; width: 380px; }
+    #t-user { position: absolute; right: 130px; top: 72px; width: 84px; height: 84px; border-radius: 50%; border: 2px solid #ece9f2; background: #fafafa; }
+    #t-plus { position: absolute; right: 30px; top: 66px; width: 96px; height: 96px; border-radius: 50%; background: #6a2ff0; box-shadow: 0 14px 30px rgba(106,47,240,0.35); }
+    #t-plus::before, #t-plus::after { content: ""; position: absolute; left: 46px; top: 28px; width: 5px; height: 40px; background: #fff; border-radius: 3px; }
+    #t-plus::after { transform: rotate(90deg); }
+    #t-tap { position: absolute; right: 30px; top: 66px; width: 96px; height: 96px; border-radius: 50%; background: rgba(106,47,240,0.35); opacity: 0; }
+    .t-b { position: absolute; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff;
+      font-weight: 700; line-height: 1.2; padding: 30px; box-shadow: inset -20px -30px 60px rgba(0,0,0,0.12), inset 20px 20px 50px rgba(255,255,255,0.35); }
+    .t-b small { font-size: 26px; margin-top: 8px; font-weight: 600; }
+    #t-b1 { left: 30px; top: 250px; width: 280px; height: 280px; font-size: 30px; background: radial-gradient(circle at 35% 30%, #c9a6ff, #8a5cf0 70%); }
+    #t-b2 { left: 330px; top: 230px; width: 290px; height: 290px; font-size: 30px; background: radial-gradient(circle at 35% 30%, #ffb3e0, #e05ab8 70%); }
+    #t-b3 { left: 40px; top: 620px; width: 270px; height: 270px; font-size: 28px; background: radial-gradient(circle at 35% 30%, #ffc6a8, #f08a5c 70%); }
+    #t-b4 { left: 350px; top: 640px; width: 250px; height: 250px; font-size: 28px; background: radial-gradient(circle at 35% 30%, #a8e6ff, #4aa6e8 70%); }
+    #t-new { left: 116px; top: 330px; width: 400px; height: 400px; font-size: 34px; background: radial-gradient(circle at 35% 30%, #ffc0d8, #E6458C 55%, #7A5CF5 100%); opacity: 0; }
+    #t-newtxt { min-height: 130px; }
+
+    /* --- Düşünce odası --- */
+    #s-room { background: #fff; }
+    #r-head { position: absolute; left: 0; right: 0; top: 0; height: 360px; background: linear-gradient(180deg, #d66fb9 0%, #cf5fae 100%); }
+    #r-pill { position: absolute; left: 50%; top: 70px; margin-left: -150px; width: 300px; height: 62px; border-radius: 31px; background: #7b4aa6; color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 600; }
+    #r-title { position: absolute; left: 60px; right: 60px; top: 150px; text-align: center; color: #fff; font-size: 36px; font-weight: 800; line-height: 1.25; }
+    .r-orb { position: absolute; border-radius: 50%; }
+    #r-sheet { position: absolute; left: 0; right: 0; top: 330px; bottom: 130px; overflow: hidden; background: #fff; border-radius: 50px 50px 0 0; }
+    .r-card { position: absolute; width: 400px; min-height: 170px; border-radius: 40px; background: #fff; border: 2px solid #efe6f6; box-shadow: 0 10px 26px rgba(150,80,190,0.10);
+      padding: 22px 26px 22px 86px; opacity: 0; }
+    .r-card.l { left: 22px; } .r-card.r { left: 210px; }
+    .r-av { position: absolute; left: 24px; top: 26px; width: 46px; height: 46px; border-radius: 50%; }
+    .r-meta { font-size: 28px; font-weight: 700; display: flex; gap: 14px; align-items: baseline; }
+    .r-meta em { font-style: normal; font-size: 24px; font-weight: 500; color: #5a2fd6; }
+    .r-txt { font-size: 28px; font-weight: 500; line-height: 1.3; margin-top: 6px; }
+    #r-input { position: absolute; left: 24px; right: 24px; bottom: 30px; height: 84px; border-radius: 42px; background: #fff; box-shadow: 0 8px 26px rgba(80,60,140,0.12);
+      display: flex; align-items: center; padding-left: 34px; font-size: 26px; color: #8e8a96; }
+    #r-send { position: absolute; right: 10px; top: 10px; width: 64px; height: 64px; border-radius: 50%; background: #6a2ff0; }
+
+    #c-girlwrap { position: absolute; left: 0; top: 0; }
+    #c-dim { position: absolute; inset: 0; background: rgba(21,19,31,0.72); opacity: 0; }
+    #c-final { position: absolute; left: 150px; right: 150px; top: 640px; text-align: center; color: #fff; font-size: 76px; font-weight: 800; line-height: 1.18; letter-spacing: -0.02em; opacity: 0; }
+    #c-final .g { background: linear-gradient(90deg, #FF6B5B, #E6458C 55%, #a98bff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  </style>
+  <div id="root" data-composition-id="cm" data-width="1080" data-height="1920">
+    <div id="c-bg"></div><div id="c-cold"></div><div id="c-warm"></div>
+    <div id="c-blob1" class="c-blob" data-layout-ignore></div><div id="c-blob2" class="c-blob" data-layout-ignore></div>
+
+    <div id="c-phone" data-layout-allow-overflow data-layout-allow-caption-zone>
+      <div id="c-screen">
+        <!-- akış -->
+        <div id="s-feed" class="c-s">
+          <div id="f-top"><b>akış</b><span><i></i><i></i></span></div>
+          <div id="f-head"><div id="f-av"></div><div><div id="f-name">elaa.k</div><div id="f-loc">Bursa</div></div></div>
+          <div id="f-photo">
+            <svg width="632" height="470" viewBox="0 0 632 470"><use href="#c-gface" transform="translate(316 210) scale(1.15)" /></svg>
+            <svg class="f-heart" id="f-h1" width="60" height="60" viewBox="0 0 24 24" style="left:120px;top:330px"><path d="M12 21s-7.5-4.6-9.6-9.2C.8 8.3 3 4.5 6.6 4.5c2.2 0 3.6 1.3 5.4 3.2 1.8-1.9 3.2-3.2 5.4-3.2 3.6 0 5.8 3.8 4.2 7.3C19.5 16.4 12 21 12 21z" fill="#fff" /></svg>
+            <svg class="f-heart" id="f-h2" width="46" height="46" viewBox="0 0 24 24" style="left:430px;top:350px"><path d="M12 21s-7.5-4.6-9.6-9.2C.8 8.3 3 4.5 6.6 4.5c2.2 0 3.6 1.3 5.4 3.2 1.8-1.9 3.2-3.2 5.4-3.2 3.6 0 5.8 3.8 4.2 7.3C19.5 16.4 12 21 12 21z" fill="#fff" /></svg>
+            <svg class="f-heart" id="f-h3" width="70" height="70" viewBox="0 0 24 24" style="left:280px;top:360px"><path d="M12 21s-7.5-4.6-9.6-9.2C.8 8.3 3 4.5 6.6 4.5c2.2 0 3.6 1.3 5.4 3.2 1.8-1.9 3.2-3.2 5.4-3.2 3.6 0 5.8 3.8 4.2 7.3C19.5 16.4 12 21 12 21z" fill="#fff" /></svg>
+          </div>
+          <div id="f-acts">
+            <svg width="50" height="50" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.8 8.3 3 4.5 6.6 4.5c2.2 0 3.6 1.3 5.4 3.2 1.8-1.9 3.2-3.2 5.4-3.2 3.6 0 5.8 3.8 4.2 7.3C19.5 16.4 12 21 12 21z" fill="#ff3b5c" /></svg>
+            <span id="f-likes">248 beğeni</span>
+          </div>
+          <div id="f-coms">
+            <span id="f-c1" class="f-c">çok güzelsin 😍</span><span id="f-c2" class="f-c">🔥🔥🔥</span>
+            <span id="f-c3" class="f-c">filtre ne?</span><span id="f-c4" class="f-c">❤️❤️❤️</span>
+          </div>
+          <div id="s-feed-gray"></div>
+        </div>
+
+        <!-- Talk to Many -->
+        <div id="s-tm" class="c-s">
+          <div id="t-title">Talk to Many</div>
+          <div id="t-sub">Topluluğa katıl, düşüncelerini paylaş</div>
+          <div id="t-user"></div><div id="t-tap"></div><div id="t-plus"></div>
+          <div id="t-b1" class="t-b">Bugün seni ne gülümsetti?<small>💬 12</small></div>
+          <div id="t-b2" class="t-b">Yalnız kalmayı sever misin?<small>💬 15</small></div>
+          <div id="t-b3" class="t-b">En sevdiğin şarkı<small>💬 8</small></div>
+          <div id="t-b4" class="t-b">Küçük mutluluklar<small>💬 6</small></div>
+          <div id="t-new" class="t-b"><div id="t-newtxt"></div><small>💬 0</small></div>
+        </div>
+
+        <!-- Düşünce odası -->
+        <div id="s-room" class="c-s">
+          <div id="r-head">
+            <i class="r-orb" style="left:24px;top:190px;width:70px;height:70px;background:radial-gradient(circle at 35% 30%,#c9a6ff,#7a3cf0)"></i>
+            <i class="r-orb" style="left:540px;top:150px;width:80px;height:80px;background:radial-gradient(circle at 35% 30%,#8fd8ff,#2a86d8)"></i>
+            <i class="r-orb" style="left:500px;top:270px;width:50px;height:50px;background:radial-gradient(circle at 35% 30%,#a8f0c6,#1f9a5a)"></i>
+            <div id="r-pill">💬 Düşünce odası</div>
+            <div id="r-title">Bazen herkesin içinde görünmez hissediyorum</div>
+          </div>
+          <div id="r-sheet">
+            <div id="r-c0" class="r-card l"><i class="r-av" style="background:radial-gradient(circle at 35% 30%,#a8f0c6,#1f9a5a)"></i><div class="r-meta">P-3390 <em>şimdi</em></div><div class="r-txt">Ben de. Özellikle kalabalık sofralarda.</div></div>
+            <div id="r-c1" class="r-card r"><i class="r-av" style="background:radial-gradient(circle at 35% 30%,#c9a6ff,#7a3cf0)"></i><div class="r-meta">P-8212 <em>şimdi</em></div><div class="r-txt">Yazdığın için teşekkürler. Yalnız değilmişim.</div></div>
+            <div id="r-c2" class="r-card l"><i class="r-av" style="background:radial-gradient(circle at 35% 30%,#ffc6a8,#f06a3c)"></i><div class="r-meta">P-5071 <em>şimdi</em></div><div class="r-txt">Görünmez değilsin. Şu an seni okuyoruz.</div></div>
+            <div id="r-c3" class="r-card r"><i class="r-av" style="background:radial-gradient(circle at 35% 30%,#8fd8ff,#2a86d8)"></i><div class="r-meta">P-6127 <em>şimdi</em></div><div class="r-txt">En çok susanlar, en çok hissedenlerdir.</div></div>
+          </div>
+          <div id="r-input">Bu odaya düşünceni bırak...<i id="r-send"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <svg id="c-girlwrap" width="1080" height="1920" viewBox="0 0 1080 1920" data-layout-ignore>
+      <defs>
+        <symbol id="c-gface" overflow="visible">
+          <path d="M-122,-50 C-172,80 -178,240 -146,330 L146,330 C178,240 172,80 122,-50 Z" fill="#5a3022" />
+          <rect x="-28" y="70" width="56" height="70" rx="20" fill="#e3ad88" />
+          <path d="M-165,300 C-165,190 -105,140 0,140 C105,140 165,190 165,300 L172,640 L-172,640 Z" fill="#FF6B5B" />
+          <ellipse cx="0" cy="0" rx="92" ry="104" fill="#f2c4a0" />
+          <path d="M-100,-10 C-108,-105 -45,-132 4,-130 C70,-132 112,-90 102,-5 C82,-58 30,-72 -15,-60 C-55,-48 -82,-38 -100,-10 Z" fill="#6b3a28" />
+          <path d="M-98,-15 C-125,80 -122,190 -88,262 C-76,190 -80,110 -72,30 Z" fill="#6b3a28" />
+          <path d="M98,-15 C125,80 122,190 88,262 C76,190 80,110 72,30 Z" fill="#6b3a28" />
+          <path d="M-46,14 Q-34,2 -22,14" fill="none" stroke="#2a1a14" stroke-width="7" stroke-linecap="round" />
+          <path d="M22,14 Q34,2 46,14" fill="none" stroke="#2a1a14" stroke-width="7" stroke-linecap="round" />
+          <circle cx="-56" cy="40" r="17" fill="#ff8a8a" opacity="0.45" /><circle cx="56" cy="40" r="17" fill="#ff8a8a" opacity="0.45" />
+          <path d="M-28,46 Q0,84 28,46 Z" fill="#8a2f3a" /><path d="M-20,50 Q0,60 20,50" fill="#fff" />
+        </symbol>
+        <radialGradient id="c-glow" cx="0.5" cy="0.3" r="0.6"><stop offset="0" stop-color="rgba(200,220,255,0.35)" /><stop offset="1" stop-color="rgba(200,220,255,0)" /></radialGradient>
+      </defs>
+      <g id="c-girl" transform="translate(540 1470) scale(1.05)">
+        <g id="c-g-hairback"><path d="M-122,-50 C-172,80 -178,240 -146,330 L146,330 C178,240 172,80 122,-50 Z" fill="#5a3022" /></g>
+        <rect x="-28" y="70" width="56" height="70" rx="20" fill="#e3ad88" />
+        <path d="M-165,300 C-165,190 -105,140 0,140 C105,140 165,190 165,300 L172,640 L-172,640 Z" fill="#FF6B5B" />
+        <path d="M-60,140 Q0,190 60,140" fill="none" stroke="#e85a4b" stroke-width="10" stroke-linecap="round" />
+        <g id="c-g-head">
+          <ellipse cx="0" cy="0" rx="92" ry="104" fill="#f2c4a0" />
+          <ellipse cx="-92" cy="12" rx="14" ry="22" fill="#e9b691" /><ellipse cx="92" cy="12" rx="14" ry="22" fill="#e9b691" />
+          <path d="M-100,-10 C-108,-105 -45,-132 4,-130 C70,-132 112,-90 102,-5 C82,-58 30,-72 -15,-60 C-55,-48 -82,-38 -100,-10 Z" fill="#6b3a28" />
+          <path d="M-98,-15 C-125,80 -122,190 -88,262 C-76,190 -80,110 -72,30 Z" fill="#6b3a28" />
+          <path d="M98,-15 C125,80 122,190 88,262 C76,190 80,110 72,30 Z" fill="#6b3a28" />
+          <g id="c-g-brows"><path d="M-50,-16 Q-34,-26 -18,-16" fill="none" stroke="#4a2a1d" stroke-width="6" stroke-linecap="round" /><path d="M18,-16 Q34,-26 50,-16" fill="none" stroke="#4a2a1d" stroke-width="6" stroke-linecap="round" /></g>
+          <g id="c-g-eo"><g id="c-g-pupils"><ellipse cx="-34" cy="10" rx="10" ry="13" fill="#2a1a14" /><ellipse cx="34" cy="10" rx="10" ry="13" fill="#2a1a14" /><circle cx="-31" cy="5" r="3" fill="#fff" /><circle cx="37" cy="5" r="3" fill="#fff" /></g></g>
+          <g id="c-g-eh" opacity="0"><path d="M-46,14 Q-34,2 -22,14" fill="none" stroke="#2a1a14" stroke-width="7" stroke-linecap="round" /><path d="M22,14 Q34,2 46,14" fill="none" stroke="#2a1a14" stroke-width="7" stroke-linecap="round" /></g>
+          <circle cx="-56" cy="40" r="17" fill="#ff8a8a" opacity="0.45" /><circle cx="56" cy="40" r="17" fill="#ff8a8a" opacity="0.45" />
+          <g id="c-g-mf"><path d="M-16,58 Q0,62 16,58" fill="none" stroke="#8a3b3b" stroke-width="6" stroke-linecap="round" /></g>
+          <g id="c-g-msad" opacity="0"><path d="M-18,64 Q0,54 18,64" fill="none" stroke="#8a3b3b" stroke-width="6" stroke-linecap="round" /></g>
+          <g id="c-g-ms" opacity="0"><path d="M-24,50 Q0,70 24,50" fill="none" stroke="#8a3b3b" stroke-width="6" stroke-linecap="round" /></g>
+          <ellipse cx="0" cy="-10" rx="120" ry="140" fill="url(#c-glow)" />
+        </g>
+      </g>
+    </svg>
+
+    <div id="c-cap1" class="c-cap"><span>Fotoğraflarıma hep beğeni geldi...</span></div>
+    <div id="c-cap2" class="c-cap"><span>...ama kimse ne düşündüğümü sormadı.</span></div>
+    <div id="c-dim"></div>
+    <div id="c-final">İlk kez<br />fotoğrafıma değil,<br /><span class="g">cümleme</span><br />cevap verdiler.</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function build() {
+        const END = 19.2, TM = 6.9, ROOM = 9.2, FIN = 14.6;
+        const R = [9.9, 11.1, 12.3, 13.4];
+
+        // --- akış: beğeniler artıyor ---
+        const likes = document.getElementById("f-likes");
+        const lc = { v: 248 };
+        tl.fromTo(lc, { v: 248 }, { v: 1204, duration: 5.6, ease: "power1.in", onUpdate: () => { likes.textContent = Math.round(lc.v).toLocaleString("tr-TR") + " beğeni"; } }, 0.2);
+        ["#f-h1", "#f-h2", "#f-h3"].forEach((h, i) => {
+          for (let r = 0; r < 3; r++) tl.fromTo(h, { opacity: 0, y: 0, scale: 0.6 }, { opacity: 0.95, y: -140, scale: 1, duration: 0.7, ease: "power1.out", immediateRender: r === 0 && i === 0 ? true : false }, 0.4 + i * 0.35 + r * 1.3);
+          for (let r = 0; r < 3; r++) tl.to(h, { opacity: 0, duration: 0.25 }, 1.1 + i * 0.35 + r * 1.3);
+        });
+        ["#f-c1", "#f-c2", "#f-c3", "#f-c4"].forEach((c, i) => tl.fromTo(c, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 3.4 + i * 0.45));
+        tl.fromTo("#s-feed-gray", { opacity: 0 }, { opacity: 1, duration: 1.2 }, 4.6);
+        tl.fromTo("#c-cold", { opacity: 0 }, { opacity: 1, duration: 1.2 }, 4.6);
+        // altyazılar
+        tl.fromTo("#c-cap1 span", { y: 0 }, { y: -6, duration: 3, ease: "sine.inOut" }, 0);
+        tl.to("#c-cap1", { opacity: 0, y: -30, duration: 0.3 }, 3.15);
+        tl.fromTo("#c-cap2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 3.3);
+        tl.to("#c-cap2", { opacity: 0, y: -30, duration: 0.3 }, TM - 0.2);
+
+        // --- kız: ifadeler ---
+        const P = ["#c-g-eo", "#c-g-eh", "#c-g-mf", "#c-g-msad", "#c-g-ms"];
+        function face(eyes, mouth, t) {
+          tl.set(P[0], { opacity: eyes === "open" ? 1 : 0 }, t); tl.set(P[1], { opacity: eyes === "happy" ? 1 : 0 }, t);
+          ["flat", "sad", "smile"].forEach((m, i) => tl.set(P[2 + i], { opacity: mouth === m ? 1 : 0 }, t));
+        }
+        function blink(t) { tl.fromTo("#c-g-eo", { scaleY: 1 }, { scaleY: 0.1, duration: 0.07, yoyo: true, repeat: 1, transformOrigin: "50% 50%", immediateRender: false }, t); }
+        face("open", "flat", 0);
+        tl.set("#c-g-pupils", { y: -6 }, 0);
+        tl.fromTo("#c-g-head", { y: 0 }, { y: 3, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 11 }, 0);
+        [1.6, 4.2, 7.9, 11.6, 16.2].forEach(blink);
+        face("open", "sad", 3.6);
+        tl.to("#c-g-brows", { y: 4, rotation: 0, duration: 0.4 }, 3.6);
+        tl.to(["#c-g-head", "#c-g-hairback"], { rotation: -5, svgOrigin: "0 95", duration: 0.6, ease: "power2.inOut" }, 4.2);
+        tl.to(["#c-g-head", "#c-g-hairback"], { rotation: 0, svgOrigin: "0 95", duration: 0.5, ease: "power2.inOut" }, TM);
+        face("open", "flat", TM + 0.4);
+        tl.to("#c-g-brows", { y: 0, duration: 0.4 }, R[0]);
+        face("open", "smile", R[0] + 0.3);
+        face("happy", "smile", R[2] + 0.3);
+        tl.to(["#c-g-head", "#c-g-hairback"], { rotation: 4, svgOrigin: "0 95", duration: 0.6, ease: "power2.inOut" }, R[2] + 0.3);
+
+        // --- Pottzi: Talk to Many ---
+        tl.fromTo("#s-tm", { xPercent: 100 }, { xPercent: 0, duration: 0.45, ease: "power3.inOut" }, TM);
+        tl.fromTo("#s-feed", { xPercent: 0 }, { xPercent: -30, duration: 0.45, ease: "power3.inOut" }, TM);
+        tl.fromTo(["#t-b1", "#t-b2", "#t-b3", "#t-b4"], { y: 0 }, { y: -12, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 0.2 }, TM);
+        tl.fromTo("#t-plus", { scale: 1 }, { scale: 0.88, duration: 0.1, yoyo: true, repeat: 1 }, TM + 0.7);
+        tl.fromTo("#t-tap", { opacity: 0.9, scale: 1 }, { opacity: 0, scale: 2.4, duration: 0.45, immediateRender: false }, TM + 0.7);
+        tl.to(["#t-b1", "#t-b2", "#t-b3", "#t-b4"], { opacity: 0.35, duration: 0.3 }, TM + 0.9);
+        tl.fromTo("#t-new", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, TM + 0.9);
+        const nt = document.getElementById("t-newtxt"), full = "Bazen herkesin içinde görünmez hissediyorum";
+        const tc = { n: 0 };
+        tl.fromTo(tc, { n: 0 }, { n: full.length, duration: 1.1, ease: "none", onUpdate: () => { nt.textContent = full.slice(0, Math.round(tc.n)); } }, TM + 1.2);
+        tl.fromTo("#t-new", { scale: 1 }, { scale: 0.94, duration: 0.1, yoyo: true, repeat: 1, immediateRender: false }, ROOM - 0.35);
+
+        // --- Düşünce odası ---
+        tl.fromTo("#s-room", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power3.out", transformOrigin: "50% 40%" }, ROOM - 0.2);
+        const step = 165, y0 = 30;
+        R.forEach((t, i) => {
+          tl.fromTo("#r-c" + i, { opacity: 0, y: y0 - 40, scale: 0.9 }, { opacity: 1, y: y0, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, t);
+          for (let j = 0; j < i; j++) tl.to("#r-c" + j, { y: y0 + (i - j) * step, duration: 0.4, ease: "power2.inOut" }, t);
+        });
+        tl.fromTo("#c-warm", { opacity: 0 }, { opacity: 1, duration: 2.5 }, R[0]);
+        tl.to("#c-cold", { opacity: 0, duration: 2.0 }, R[0]);
+        tl.fromTo(["#c-blob1", "#c-blob2"], { opacity: 0 }, { opacity: 1, duration: 2.5 }, R[1]);
+
+        // --- final ---
+        tl.fromTo("#c-dim", { opacity: 0 }, { opacity: 1, duration: 0.6 }, FIN);
+        tl.fromTo("#c-final", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, FIN + 0.2);
+
+        tl.set({}, {}, END);
+        window.__timelines["cm"] = tl;
+      }
+      document.fonts.ready.then(build);
+    })();
+  </script>
+</template>
