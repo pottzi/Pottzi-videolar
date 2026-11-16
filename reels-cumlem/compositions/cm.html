@@ -11,7 +11,7 @@
     .c-cap { position: absolute; left: 150px; right: 150px; top: 250px; text-align: center; }
     .c-cap span { display: inline-block; padding: 18px 34px; border-radius: 40px; background: rgba(255,255,255,0.92); font-size: 42px; font-weight: 600; line-height: 1.3;
       box-shadow: 0 14px 40px rgba(40,20,80,0.14); }
-    #c-cap2, #c-cap3 { opacity: 0; }
+    #c-cap2, #c-cap3, #c-cap4 { opacity: 0; }
 
     #c-phone { position: absolute; left: 210px; top: 380px; width: 660px; height: 960px; border-radius: 80px; background: #15111f; padding: 14px;
       box-shadow: 0 40px 90px rgba(40,20,90,0.28); }
@@ -246,7 +246,8 @@
 
     <div id="c-cap1" class="c-cap"><span>Sosyal medyada hep mutlu görünüyorum...</span></div>
     <div id="c-cap2" class="c-cap"><span>...ama aslında hiç mutlu değilim.</span></div>
-    <div id="c-cap3" class="c-cap"><span>Kendimi yalandan mutlu göstermekten bıktım.</span></div>
+    <div id="c-cap3" class="c-cap"><span>Kendimi mutlu olmadığım halde mutlu gibi göstermekten yoruldum.</span></div>
+    <div id="c-cap4" class="c-cap"><span>Hiç tanımadığım insanlardan harika fikirler geldi.</span></div>
     <div id="c-dim"></div>
     <div id="c-final">Burada ilk kez<br /><span class="g">mutlu görünmek</span><br />zorunda değildim.</div>
   </div>
@@ -254,7 +255,7 @@
     (function () {
       const tl = gsap.timeline({ paused: true });
       function build() {
-        const END = 22.6, TM = 6.9, NEW = 8.5, SHARE = 11.5, POP = 11.85, ROOM = 13.3, FIN = 18.6;
+        const END = 22.9, TM = 6.9, NEW = 8.5, SHARE = 11.5, POP = 11.85, ROOM = 13.3, FIN = 18.9;
         const R = [13.9, 15.0, 16.1, 17.2];
 
         // --- akış: mutlu fotoğraf, beğeniler ---
@@ -275,7 +276,9 @@
         tl.fromTo("#c-cap2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 3.3);
         tl.to("#c-cap2", { opacity: 0, y: -30, duration: 0.3 }, 6.35);
         tl.fromTo("#c-cap3", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 6.5);
-        tl.to("#c-cap3", { opacity: 0, y: -30, duration: 0.3 }, 9.6);
+        tl.to("#c-cap3", { opacity: 0, y: -30, duration: 0.3 }, 11.25);
+        tl.fromTo("#c-cap4", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 14.55);
+        tl.to("#c-cap4", { opacity: 0, y: -30, duration: 0.3 }, 18.55);
 
         // --- kız: ifadeler ---
         const P = ["#c-g-eo", "#c-g-eh", "#c-g-mf", "#c-g-msad", "#c-g-ms"];
