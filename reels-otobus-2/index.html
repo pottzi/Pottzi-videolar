@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="tr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #160f2b; }
+      #root { position: relative; width: 100%; height: 100%; font-family: "Poppins", sans-serif; }
+      #scene { position: absolute; inset: 0; }
+      .bubble { position: absolute; padding: 24px 34px; font-size: 40px; font-weight: 500; line-height: 1.3; border-radius: 40px; max-width: 620px; }
+      #bub-boy { right: 150px; top: 380px; background: #fff; color: #15131F; border-bottom-right-radius: 10px; box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
+      #bub-girl { left: 150px; top: 540px; background: linear-gradient(90deg, #7A5CF5, #E6458C); color: #fff; border-bottom-left-radius: 10px; box-shadow: 0 16px 40px rgba(230,69,140,0.35); }
+      .who { display: block; font-size: 28px; font-weight: 600; opacity: 0.75; margin-bottom: 4px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="3" data-width="1080" data-height="1920">
+      <svg id="scene" class="clip" data-start="0" data-duration="3" data-track-index="0" width="1080" height="1920" viewBox="0 0 1080 1920" data-layout-ignore>
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1c1845" /><stop offset="0.55" stop-color="#3a2470" /><stop offset="1" stop-color="#8a3a6e" />
+          </linearGradient>
+          <linearGradient id="interior" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1d1538" /><stop offset="1" stop-color="#120c24" />
+          </linearGradient>
+          <linearGradient id="seat" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3d2c6e" /><stop offset="1" stop-color="#2a1d4f" />
+          </linearGradient>
+          <linearGradient id="badgeG" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#7A5CF5" /><stop offset="1" stop-color="#E6458C" />
+          </linearGradient>
+          <radialGradient id="lamp" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="rgba(255,214,150,0.95)" /><stop offset="0.25" stop-color="rgba(255,150,90,0.5)" /><stop offset="0.6" stop-color="rgba(255,107,91,0.12)" /><stop offset="1" stop-color="rgba(255,107,91,0)" />
+          </radialGradient>
+          <radialGradient id="warm" cx="0.5" cy="0" r="0.8">
+            <stop offset="0" stop-color="rgba(255,190,120,0.10)" /><stop offset="1" stop-color="rgba(255,190,120,0)" />
+          </radialGradient>
+          <clipPath id="winClip"><rect x="70" y="250" width="940" height="760" rx="70" /></clipPath>
+        </defs>
+
+        <!-- iç mekan -->
+        <rect width="1080" height="1920" fill="url(#interior)" />
+        <rect x="0" y="0" width="1080" height="200" fill="#120c22" />
+        <rect x="40" y="170" width="1000" height="22" rx="11" fill="#2b2148" />
+
+        <!-- cam -->
+        <g clip-path="url(#winClip)">
+          <rect x="70" y="250" width="940" height="760" fill="url(#sky)" />
+          <g id="far">
+            <circle cx="150" cy="820" r="16" fill="rgba(255,107,91,0.6)" /><circle cx="260" cy="870" r="10" fill="rgba(255,180,90,0.7)" />
+            <circle cx="380" cy="800" r="22" fill="rgba(122,92,245,0.45)" /><circle cx="520" cy="880" r="12" fill="rgba(230,69,140,0.6)" />
+            <circle cx="640" cy="830" r="18" fill="rgba(255,180,90,0.55)" /><circle cx="760" cy="900" r="9" fill="rgba(255,107,91,0.7)" />
+            <circle cx="880" cy="815" r="24" fill="rgba(230,69,140,0.4)" /><circle cx="960" cy="870" r="11" fill="rgba(255,180,90,0.6)" />
+            <rect x="100" y="905" width="880" height="5" rx="2" fill="rgba(255,180,90,0.25)" />
+          </g>
+          <circle id="lampA" cx="820" cy="420" r="170" fill="url(#lamp)" />
+          <polygon points="70,250 380,250 160,1010 70,1010" fill="rgba(255,255,255,0.05)" />
+        </g>
+        <rect x="70" y="250" width="940" height="760" rx="70" fill="none" stroke="#2a1f45" stroke-width="22" />
+        <rect x="60" y="990" width="960" height="40" rx="20" fill="#2a1f45" />
+
+        <!-- koltuklar -->
+        <rect x="120" y="780" width="410" height="820" rx="90" fill="url(#seat)" />
+        <rect x="550" y="780" width="410" height="820" rx="90" fill="url(#seat)" />
+        <rect x="175" y="800" width="300" height="60" rx="30" fill="#4a3683" opacity="0.6" />
+        <rect x="605" y="800" width="300" height="60" rx="30" fill="#4a3683" opacity="0.6" />
+
+        <!-- dizler / kucak -->
+        <rect x="120" y="1590" width="410" height="400" rx="60" fill="#2a1d4f" /><rect x="550" y="1590" width="410" height="400" rx="60" fill="#2a1d4f" /><rect x="190" y="1570" width="135" height="330" rx="60" fill="#3b4f8f" /><rect x="335" y="1570" width="135" height="330" rx="60" fill="#36498a" /><rect x="610" y="1570" width="135" height="330" rx="60" fill="#2b2a3f" /><rect x="755" y="1570" width="135" height="330" rx="60" fill="#27263a" />
+        <!-- KIZ (7128) -->
+        <g id="girl" transform="translate(330 960) rotate(4)">
+          <path d="M-122,-50 C-172,80 -178,240 -146,330 L146,330 C178,240 172,80 122,-50 Z" fill="#5a3022" />
+          <rect x="-28" y="70" width="56" height="70" rx="20" fill="#e3ad88" />
+          <path d="M-165,300 C-165,190 -105,140 0,140 C105,140 165,190 165,300 L172,640 L-172,640 Z" fill="#FF6B5B" />
+          <path d="M-60,140 Q0,190 60,140" fill="none" stroke="#e85a4b" stroke-width="10" stroke-linecap="round" />
+          <path d="M-150,250 C-185,380 -170,520 -70,580" fill="none" stroke="#ef5e4f" stroke-width="62" stroke-linecap="round" /><path d="M150,250 C185,380 170,520 70,580" fill="none" stroke="#ef5e4f" stroke-width="62" stroke-linecap="round" /><circle cx="-48" cy="586" r="30" fill="#f2c4a0" /><circle cx="48" cy="586" r="30" fill="#f2c4a0" />
+          <ellipse cx="0" cy="0" rx="92" ry="104" fill="#f2c4a0" />
+          <ellipse cx="-92" cy="12" rx="14" ry="22" fill="#e9b691" />
+          <ellipse cx="92" cy="12" rx="14" ry="22" fill="#e9b691" />
+          <path d="M-100,-10 C-108,-105 -45,-132 4,-130 C70,-132 112,-90 102,-5 C82,-58 30,-72 -15,-60 C-55,-48 -82,-38 -100,-10 Z" fill="#6b3a28" />
+          <path d="M-98,-15 C-125,80 -122,190 -88,262 C-76,190 -80,110 -72,30 Z" fill="#6b3a28" />
+          <path d="M98,-15 C125,80 122,190 88,262 C76,190 80,110 72,30 Z" fill="#6b3a28" />
+          <path d="M-50,-14 Q-34,-24 -18,-14" fill="none" stroke="#4a2a1d" stroke-width="6" stroke-linecap="round" />
+          <path d="M18,-14 Q34,-24 50,-14" fill="none" stroke="#4a2a1d" stroke-width="6" stroke-linecap="round" />
+          <path d="M-46,14 Q-34,2 -22,14" fill="none" stroke="#2a1a14" stroke-width="7" stroke-linecap="round" />
+          <path d="M22,14 Q34,2 46,14" fill="none" stroke="#2a1a14" stroke-width="7" stroke-linecap="round" />
+          <circle cx="-56" cy="40" r="17" fill="#ff8a8a" opacity="0.45" />
+          <circle cx="56" cy="40" r="17" fill="#ff8a8a" opacity="0.45" />
+          <path d="M-28,46 Q0,84 28,46 Z" fill="#8a2f3a" />
+          <path d="M-20,50 Q0,60 20,50" fill="#fff" />
+          <g transform="translate(20 300)">
+            <rect x="0" y="0" width="128" height="58" rx="29" fill="url(#badgeG)" />
+            <text x="64" y="40" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#fff">7128</text>
+          </g>
+        </g>
+
+        <!-- ERKEK (1854) -->
+        <g id="boy" transform="translate(750 955) rotate(-4)">
+          <path d="M-120,160 C-90,110 90,110 120,160 L110,230 L-110,230 Z" fill="#5a43c9" />
+          <rect x="-30" y="72" width="60" height="70" rx="20" fill="#b9784f" />
+          <path d="M-175,300 C-175,190 -110,140 0,140 C110,140 175,190 175,300 L180,640 L-180,640 Z" fill="#7A5CF5" />
+          <path d="M-22,170 L-26,280 M22,170 L26,280" stroke="#e8e2ff" stroke-width="7" stroke-linecap="round" /><path d="M-158,250 C-192,380 -178,520 -72,585" fill="none" stroke="#6a4de6" stroke-width="66" stroke-linecap="round" /><path d="M158,250 C192,380 178,520 72,585" fill="none" stroke="#6a4de6" stroke-width="66" stroke-linecap="round" /><circle cx="-48" cy="592" r="31" fill="#c98b62" /><circle cx="48" cy="592" r="31" fill="#c98b62" />
+          <path d="M-78,150 Q0,215 78,150" fill="none" stroke="#1d1830" stroke-width="14" stroke-linecap="round" />
+          <ellipse cx="-86" cy="150" rx="24" ry="30" fill="#1d1830" />
+          <ellipse cx="86" cy="150" rx="24" ry="30" fill="#1d1830" />
+          <ellipse cx="0" cy="0" rx="95" ry="106" fill="#c98b62" />
+          <ellipse cx="-95" cy="12" rx="15" ry="23" fill="#b97d55" />
+          <ellipse cx="95" cy="12" rx="15" ry="23" fill="#b97d55" />
+          <g fill="#231919">
+            <circle cx="-70" cy="-62" r="36" /><circle cx="-32" cy="-90" r="40" /><circle cx="14" cy="-98" r="40" />
+            <circle cx="56" cy="-82" r="38" /><circle cx="84" cy="-48" r="30" /><circle cx="-90" cy="-26" r="24" />
+          </g>
+          <path d="M-54,-18 L-18,-22" stroke="#231919" stroke-width="9" stroke-linecap="round" />
+          <path d="M18,-22 L54,-18" stroke="#231919" stroke-width="9" stroke-linecap="round" />
+          <path d="M-48,12 Q-35,0 -22,12" fill="none" stroke="#1a1010" stroke-width="7" stroke-linecap="round" />
+          <path d="M22,12 Q35,0 48,12" fill="none" stroke="#1a1010" stroke-width="7" stroke-linecap="round" />
+          <path d="M-32,46 Q0,88 32,46 Z" fill="#6e2430" />
+          <path d="M-24,50 Q0,62 24,50" fill="#fff" />
+          <g transform="translate(-150 300)">
+            <rect x="0" y="0" width="128" height="58" rx="29" fill="#fff" stroke="#E6458C" stroke-width="4" />
+            <text x="64" y="40" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="30" fill="#7A5CF5">1854</text>
+          </g>
+        </g>
+
+        <rect width="1080" height="1920" fill="url(#warm)" />
+      </svg>
+      <div id="bub-boy" class="bubble clip" data-start="0" data-duration="3" data-track-index="1"><span class="who">1854</span>Uyuyamadın mı sen de?</div>
+      <div id="bub-girl" class="bubble clip" data-start="0" data-duration="3" data-track-index="2"><span class="who">7128</span>Yok. Kafamda çok şey var</div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#lampA", { x: 0 }, { x: -700, duration: 3, ease: "none" }, 0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
