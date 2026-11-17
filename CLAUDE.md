@@ -163,7 +163,7 @@ Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resm
 - Seslendirme ElevenLabs ile yapılır (anahtar ortam ayarlarında kayıtlı). Seçili ses: **Liam** (`TX3LPaxmHKxFdv7VOQHJ`), model `eleven_v4`, dil `tr`.
 - Logo: `assets/brand/pottzi-logo.png`; uygulama ekranı referansları: `assets/referans/`.
 
-## 10. Git kuralları
+## 10. Repo kuralları
 
-- **`main` dalına dokunma.** Kullanıcı açıkça istemedikçe `main`'i okuma, değiştirme, oraya push etme. Kullanıcı söylediğinde bakılır/işlem yapılır.
-- Tüm çalışmalar çalışma dalında yapılır ve oraya push edilir.
+- **Uygulamanın kod reposuna (`pottzi/pottzi`) dokunma.** Kullanıcı açıkça istemedikçe o repoya erişim isteme, okuma, değiştirme. Kullanıcı söylediğinde bakılır.
+- Bu repo (`pottzi/Pottzi-videolar`) serbesttir: `main` dahil tüm dallarda çalışılabilir.
