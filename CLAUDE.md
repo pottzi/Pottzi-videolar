@@ -162,3 +162,8 @@ Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resm
 - Videolar [HyperFrames](https://hyperframes.heygen.com) ile HTML'den render edilir (`.claude/settings.json` eklentiyi yükler).
 - Seslendirme ElevenLabs ile yapılır (anahtar ortam ayarlarında kayıtlı). Seçili ses: **Liam** (`TX3LPaxmHKxFdv7VOQHJ`), model `eleven_v4`, dil `tr`.
 - Logo: `assets/brand/pottzi-logo.png`; uygulama ekranı referansları: `assets/referans/`.
+
+## 10. Git kuralları
+
+- **`main` dalına dokunma.** Kullanıcı açıkça istemedikçe `main`'i okuma, değiştirme, oraya push etme. Kullanıcı söylediğinde bakılır/işlem yapılır.
+- Tüm çalışmalar çalışma dalında yapılır ve oraya push edilir.
