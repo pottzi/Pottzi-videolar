@@ -101,6 +101,12 @@ Pottzi bir **flört uygulaması değildir.** Tinder ya da benzeri uygulamalarla 
 
 Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resmi değerler gelirse onlar geçerlidir.
 
+**Uygulamadan ve logodan ölçülen renkler (videolarda bunları kullan):**
+- Logo degradesi: mercan `#FE6D6A` → pembe `#F4698D` → mor `#B655CD` → mavi `#4B54EC`
+- Uygulama ana degradesi (butonlar, sayaç, giden mesaj balonu, rozetler): mor `#6F4BF1` → pembe `#D857AE`
+- İkincil buton degradesi: mor `#6F31F3` → gök mavisi `#69A1FA`
+- Düşünce odası başlığı: pembe `#D477B6`
+
 **Yazı tipi:** Poppins (Bold başlıklar, Medium vurgu, Regular gövde metni). Türkçe karakterler (ğ, ü, ş, ı, ö, ç, İ) her zaman doğru görünmeli.
 
 **Logo:** Mor-pembe degradeli, üstünde iki nokta olan bir "P" konuşma balonu.
