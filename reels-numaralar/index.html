@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="tr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #F3EFFC; }
+      #root { position: relative; width: 100%; height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="20.8" data-width="1080" data-height="1920">
+      <div id="nm" class="clip" data-composition-id="nm" data-composition-src="compositions/nm.html"
+        data-start="0" data-duration="17" data-track-index="0" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="outro" class="clip" data-composition-id="outro" data-composition-src="compositions/outro.html"
+        data-start="16.9" data-duration="3.9" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index: 2"></div>
+      <audio id="n1" class="clip" src="assets/audio/n1.mp3" data-start="0.2" data-track-index="2" data-volume="1.58"></audio>
+      <audio id="n2" class="clip" src="assets/audio/n2.mp3" data-start="6.45" data-track-index="3" data-volume="1.58"></audio>
+      <audio id="n3" class="clip" src="assets/audio/n3.mp3" data-start="9.0" data-track-index="4" data-volume="1.58"></audio>
+      <audio id="n4" class="clip" src="assets/audio/n4.mp3" data-start="13.8" data-track-index="5" data-volume="1.58"></audio>
+      <audio id="kapanis" class="clip" src="assets/audio/kapanis.mp3" data-start="17.15" data-track-index="6" data-volume="1.58"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

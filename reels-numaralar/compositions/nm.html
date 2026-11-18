@@ -1,0 +1,194 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Poppins", sans-serif; background: #F3EFFC; color: #15131F; }
+    .blob { position: absolute; border-radius: 50%; }
+    #b1 { left: -300px; top: -200px; width: 1000px; height: 1000px; background: radial-gradient(circle, rgba(255,107,91,0.22), rgba(255,107,91,0) 65%); }
+    #b2 { left: 400px; top: 1000px; width: 1100px; height: 1100px; background: radial-gradient(circle, rgba(122,92,245,0.22), rgba(122,92,245,0) 65%); }
+    #mosaic { position: absolute; inset: 0; }
+    .m { position: absolute; width: 140px; height: 64px; border-radius: 32px; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 700;
+      font-variant-numeric: tabular-nums; opacity: 0; }
+    .m.g { background: linear-gradient(90deg, #7A5CF5, #E6458C); color: #fff; }
+    .m.w { background: #fff; color: #7A5CF5; border: 3px solid #E6458C; }
+    #veil { position: absolute; inset: 0; background: rgba(243,239,252,0.0); }
+
+    .cap { position: absolute; left: 110px; right: 110px; text-align: center; font-weight: 800; letter-spacing: -0.02em; }
+    #c1 { top: 380px; font-size: 76px; line-height: 1.12; }
+    #c2 { top: 1250px; font-size: 104px; opacity: 0; }
+    #c3 { top: 330px; font-size: 64px; line-height: 1.18; opacity: 0; }
+    #c4 { top: 1290px; font-size: 66px; line-height: 1.18; opacity: 0; }
+    #c5 { top: 1290px; font-size: 64px; line-height: 1.2; opacity: 0; }
+    .g { background: linear-gradient(90deg, #FF6B5B, #E6458C 50%, #7A5CF5); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .card { background: rgba(255,255,255,0.88); border-radius: 44px; padding: 26px 30px; box-shadow: 0 20px 50px rgba(80,50,160,0.14); }
+
+    #badge { position: absolute; left: 140px; top: 840px; width: 800px; height: 240px; border-radius: 120px; background: linear-gradient(90deg, #7A5CF5, #E6458C);
+      box-shadow: 0 30px 80px rgba(122,92,245,0.4); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 150px; font-weight: 800;
+      font-variant-numeric: tabular-nums; letter-spacing: 0.01em; }
+    #badge-n { position: relative; }
+    #badge5 { position: absolute; left: 140px; top: 840px; width: 800px; height: 240px; border-radius: 120px; background: #fff; border: 6px dashed #b9a8f5;
+      display: flex; align-items: center; justify-content: center; gap: 14px; color: #7A5CF5; font-size: 130px; font-weight: 800; opacity: 0; }
+    #badge5 i { display: inline-block; width: 78px; height: 112px; border-radius: 20px; background: #F3EFFC; border: 4px solid #c9b8ff; }
+    #badge-new { position: absolute; left: 140px; top: 840px; width: 800px; height: 240px; border-radius: 120px; background: linear-gradient(90deg, #FF6B5B, #E6458C 50%, #7A5CF5);
+      box-shadow: 0 30px 90px rgba(230,69,140,0.45); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 140px; font-weight: 800;
+      font-variant-numeric: tabular-nums; opacity: 0; }
+    #check { position: absolute; left: 860px; top: 790px; width: 110px; height: 110px; border-radius: 50%; background: #2fbf71; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 12px 30px rgba(47,191,113,0.4); opacity: 0; }
+    #glow { position: absolute; left: 40px; top: 660px; width: 1000px; height: 600px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,107,91,0.35), rgba(230,69,140,0.15) 60%, rgba(230,69,140,0)); opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="nm" data-width="1080" data-height="1920">
+    <div id="b1" class="blob" data-layout-ignore></div><div id="b2" class="blob" data-layout-ignore></div>
+    <div id="mosaic" data-layout-ignore>
+      <div id="m0" class="m w" style="left:-22px;top:150px">7412</div>
+      <div id="m1" class="m w" style="left:142px;top:150px">7630</div>
+      <div id="m2" class="m g" style="left:306px;top:150px">9624</div>
+      <div id="m3" class="m w" style="left:470px;top:150px">8388</div>
+      <div id="m4" class="m g" style="left:634px;top:150px">3051</div>
+      <div id="m5" class="m g" style="left:798px;top:150px">4971</div>
+      <div id="m6" class="m w" style="left:962px;top:150px">8826</div>
+      <div id="m7" class="m w" style="left:-22px;top:254px">0687</div>
+      <div id="m8" class="m w" style="left:142px;top:254px">6491</div>
+      <div id="m9" class="m w" style="left:306px;top:254px">2581</div>
+      <div id="m10" class="m g" style="left:470px;top:254px">8657</div>
+      <div id="m11" class="m g" style="left:634px;top:254px">0585</div>
+      <div id="m12" class="m w" style="left:798px;top:254px">3964</div>
+      <div id="m13" class="m g" style="left:962px;top:254px">7602</div>
+      <div id="m14" class="m w" style="left:-22px;top:358px">9683</div>
+      <div id="m15" class="m g" style="left:142px;top:358px">8506</div>
+      <div id="m16" class="m w" style="left:306px;top:358px">4820</div>
+      <div id="m17" class="m w" style="left:470px;top:358px">1393</div>
+      <div id="m18" class="m g" style="left:634px;top:358px">4558</div>
+      <div id="m19" class="m w" style="left:798px;top:358px">9032</div>
+      <div id="m20" class="m w" style="left:962px;top:358px">1364</div>
+      <div id="m21" class="m w" style="left:-22px;top:462px">5166</div>
+      <div id="m22" class="m g" style="left:142px;top:462px">8404</div>
+      <div id="m23" class="m w" style="left:306px;top:462px">1151</div>
+      <div id="m24" class="m g" style="left:470px;top:462px">1769</div>
+      <div id="m25" class="m g" style="left:634px;top:462px">4767</div>
+      <div id="m26" class="m w" style="left:798px;top:462px">0277</div>
+      <div id="m27" class="m g" style="left:962px;top:462px">0009</div>
+      <div id="m28" class="m w" style="left:-22px;top:566px">0858</div>
+      <div id="m29" class="m g" style="left:142px;top:566px">6512</div>
+      <div id="m30" class="m w" style="left:306px;top:566px">9278</div>
+      <div id="m31" class="m g" style="left:470px;top:566px">4421</div>
+      <div id="m32" class="m g" style="left:634px;top:566px">5099</div>
+      <div id="m33" class="m w" style="left:798px;top:566px">6719</div>
+      <div id="m34" class="m g" style="left:962px;top:566px">1934</div>
+      <div id="m35" class="m g" style="left:-22px;top:670px">1656</div>
+      <div id="m36" class="m w" style="left:142px;top:670px">7618</div>
+      <div id="m37" class="m w" style="left:306px;top:670px">2912</div>
+      <div id="m38" class="m g" style="left:470px;top:670px">3087</div>
+      <div id="m39" class="m w" style="left:634px;top:670px">3125</div>
+      <div id="m40" class="m g" style="left:798px;top:670px">2146</div>
+      <div id="m41" class="m g" style="left:962px;top:670px">6288</div>
+      <div id="m42" class="m w" style="left:-22px;top:774px">6894</div>
+      <div id="m43" class="m g" style="left:142px;top:774px">0008</div>
+      <div id="m44" class="m g" style="left:306px;top:774px">9712</div>
+      <div id="m45" class="m g" style="left:470px;top:774px">0322</div>
+      <div id="m46" class="m w" style="left:634px;top:774px">6460</div>
+      <div id="m47" class="m w" style="left:798px;top:774px">9864</div>
+      <div id="m48" class="m g" style="left:962px;top:774px">1644</div>
+      <div id="m49" class="m g" style="left:-22px;top:878px">2398</div>
+      <div id="m50" class="m g" style="left:142px;top:878px">4232</div>
+      <div id="m51" class="m w" style="left:306px;top:878px">5390</div>
+      <div id="m52" class="m g" style="left:470px;top:878px">6328</div>
+      <div id="m53" class="m g" style="left:634px;top:878px">1477</div>
+      <div id="m54" class="m g" style="left:798px;top:878px">3982</div>
+      <div id="m55" class="m g" style="left:962px;top:878px">6041</div>
+      <div id="m56" class="m g" style="left:-22px;top:982px">7426</div>
+      <div id="m57" class="m w" style="left:142px;top:982px">9622</div>
+      <div id="m58" class="m g" style="left:306px;top:982px">9414</div>
+      <div id="m59" class="m g" style="left:470px;top:982px">6326</div>
+      <div id="m60" class="m g" style="left:634px;top:982px">2526</div>
+      <div id="m61" class="m w" style="left:798px;top:982px">3742</div>
+      <div id="m62" class="m w" style="left:962px;top:982px">4088</div>
+      <div id="m63" class="m w" style="left:-22px;top:1086px">2597</div>
+      <div id="m64" class="m g" style="left:142px;top:1086px">9076</div>
+      <div id="m65" class="m w" style="left:306px;top:1086px">6361</div>
+      <div id="m66" class="m g" style="left:470px;top:1086px">9889</div>
+      <div id="m67" class="m g" style="left:634px;top:1086px">0777</div>
+      <div id="m68" class="m w" style="left:798px;top:1086px">0635</div>
+      <div id="m69" class="m g" style="left:962px;top:1086px">4181</div>
+      <div id="m70" class="m g" style="left:-22px;top:1190px">6417</div>
+      <div id="m71" class="m w" style="left:142px;top:1190px">9773</div>
+      <div id="m72" class="m g" style="left:306px;top:1190px">8521</div>
+      <div id="m73" class="m g" style="left:470px;top:1190px">1127</div>
+      <div id="m74" class="m w" style="left:634px;top:1190px">7853</div>
+      <div id="m75" class="m g" style="left:798px;top:1190px">1215</div>
+      <div id="m76" class="m w" style="left:962px;top:1190px">3342</div>
+      <div id="m77" class="m g" style="left:-22px;top:1294px">1134</div>
+      <div id="m78" class="m g" style="left:142px;top:1294px">7303</div>
+      <div id="m79" class="m g" style="left:306px;top:1294px">0764</div>
+      <div id="m80" class="m w" style="left:470px;top:1294px">6043</div>
+      <div id="m81" class="m g" style="left:634px;top:1294px">2156</div>
+      <div id="m82" class="m w" style="left:798px;top:1294px">2268</div>
+      <div id="m83" class="m w" style="left:962px;top:1294px">5423</div>
+      <div id="m84" class="m w" style="left:-22px;top:1398px">8552</div>
+      <div id="m85" class="m w" style="left:142px;top:1398px">2300</div>
+      <div id="m86" class="m w" style="left:306px;top:1398px">0294</div>
+      <div id="m87" class="m w" style="left:470px;top:1398px">5857</div>
+      <div id="m88" class="m g" style="left:634px;top:1398px">0550</div>
+      <div id="m89" class="m w" style="left:798px;top:1398px">1227</div>
+      <div id="m90" class="m g" style="left:962px;top:1398px">5097</div>
+    </div>
+    <div id="veil"></div>
+    <div id="glow" data-layout-ignore></div>
+
+    <div id="c1" class="cap"><span class="card" style="display:inline-block">4 haneli<br />Pottzi numaraları...</span></div>
+    <div id="badge"><span id="badge-n">P-0001</span></div>
+    <div id="badge5"><span>P-</span><i></i><i></i><i></i><i></i><i></i></div>
+    <div id="badge-new">P-10001</div>
+    <div id="check"><svg width="64" height="64" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
+    <div id="c2" class="cap"><span class="card" style="display:inline-block;padding:14px 50px"><span class="g">tükendi.</span></span></div>
+    <div id="c3" class="cap"><span class="card" style="display:inline-block">Pottzi'yi küçük bir oda<br />gibi tasarlamıştık.</span></div>
+    <div id="c4" class="cap"><span class="card" style="display:inline-block">Şimdi <span class="g">herkese</span> yer var.</span></div>
+    <div id="c5" class="cap"><span class="card" style="display:inline-block">Sıradaki numara<br /><span class="g">senin</span> olabilir.</span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function build() {
+        const N = 91, END = 17.0, DONE = 6.3;
+        // sayaç P-0001 -> P-9999
+        const bn = document.getElementById("badge-n");
+        const c = { v: 1 };
+        tl.fromTo(c, { v: 1 }, { v: 9999, duration: DONE - 0.4, ease: "power2.in", onUpdate: () => { bn.textContent = "P-" + String(Math.round(c.v)).padStart(4, "0"); } }, 0.4);
+        tl.fromTo("#badge", { scale: 1 }, { scale: 1.04, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.4);
+        // mozaik doluyor
+        for (let i = 0; i < N; i++) {
+          const t = 0.6 + Math.pow(i / N, 0.55) * (DONE - 0.9);
+          tl.fromTo("#m" + i, { opacity: 0, scale: 0.6 }, { opacity: 0.45, scale: 1, duration: 0.25, ease: "back.out(2)" }, t);
+        }
+        // 9999: bitti
+        tl.fromTo("#check", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)" }, DONE);
+        tl.fromTo("#badge", { x: 0 }, { x: -12, duration: 0.06, yoyo: true, repeat: 5, ease: "none", immediateRender: false }, DONE + 0.05);
+        tl.to("#c1", { opacity: 0, y: -40, duration: 0.3 }, DONE - 0.1);
+        tl.fromTo("#c2", { opacity: 0, y: 40, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, DONE + 0.2);
+        tl.to("#veil", { backgroundColor: "rgba(243,239,252,0.8)", duration: 0.3 }, DONE + 0.1);
+        // yeni hane açılıyor
+        const OPEN = 7.6;
+        tl.to(["#c2", "#check"], { opacity: 0, duration: 0.3 }, OPEN);
+        tl.to("#badge", { opacity: 0, scale: 0.9, duration: 0.3 }, OPEN);
+        tl.fromTo("#badge5", { opacity: 0, scaleX: 0.8 }, { opacity: 1, scaleX: 1, duration: 0.45, ease: "back.out(1.6)" }, OPEN + 0.15);
+        tl.to("#badge5", { opacity: 0, duration: 0.25 }, 8.9);
+        tl.fromTo("#badge-new", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, 8.95);
+        tl.fromTo("#glow", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.8 }, 8.95);
+        // kapılar açılıyor: mozaik dağılır
+        for (let i = 0; i < N; i++) {
+          const ang = (i * 137.5) % 360, rad = ang * Math.PI / 180;
+          tl.to("#m" + i, { x: Math.cos(rad) * 900, y: Math.sin(rad) * 900, opacity: 0, duration: 1.4, ease: "power2.in" }, 9.0 + (i % 12) * 0.02);
+        }
+        tl.to("#veil", { backgroundColor: "rgba(243,239,252,0)", duration: 0.6 }, 9.2);
+        // metinler
+        tl.fromTo("#c3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.0);
+        tl.to("#c3", { opacity: 0, y: -30, duration: 0.3 }, 13.4);
+        tl.fromTo("#c4", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.2);
+        tl.to("#c4", { opacity: 0, y: -30, duration: 0.3 }, 13.4);
+        tl.fromTo("#c5", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.75);
+        tl.fromTo("#badge-new", { scale: 1 }, { scale: 1.05, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 13.8);
+        tl.fromTo(["#b1", "#b2"], { x: 0 }, { x: 60, duration: END, ease: "sine.inOut" }, 0);
+        tl.set({}, {}, END);
+        window.__timelines["nm"] = tl;
+      }
+      document.fonts.ready.then(build);
+    })();
+  </script>
+</template>
