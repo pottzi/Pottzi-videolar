@@ -106,7 +106,7 @@
         </g>
       </g>
     </svg>
-    <div id="k-cap1" class="k-cap"><span>Konuşacak konu bulamayınca Konu aç'a bastım, karşıma bu çıktı:</span></div>
+    <div id="k-cap1" class="k-cap"><span>Konuşacak konu bulamayınca Konu aç butonuna bastım, karşıma bu çıktı:</span></div>
     <div id="k-cap2" class="k-cap"><span>Bazen en güzel sohbet, tek bir soruyla başlar.</span></div>
     <div id="k-cap3" class="k-cap"><span>Konu aç, tam da sohbetin tıkandığı o an için tasarlandı.</span></div>
   </div>
@@ -114,7 +114,7 @@
     (function () {
       const tl = gsap.timeline({ paused: true });
       function build() {
-        const END = 28.7, ITEMS = [{"id": "k-g0", "t": 0.35, "al": "0% 100%"}, {"id": "k-g1", "t": 0.95, "al": "100% 100%"}, {"id": "k-topic", "t": 4.2, "al": "50% 0%"}, {"id": "k-m0", "t": 8.85, "al": "0% 100%"}, {"id": "k-m1", "t": 12.05, "al": "100% 100%"}, {"id": "k-m2", "t": 14.35, "al": "0% 100%"}, {"id": "k-m3", "t": 15.95, "al": "100% 100%"}, {"id": "k-m4", "t": 18.75, "al": "0% 100%"}];
+        const END = 28.7, ITEMS = [{"id": "k-g0", "t": 0.35, "al": "0% 100%"}, {"id": "k-g1", "t": 0.95, "al": "100% 100%"}, {"id": "k-topic", "t": 4.2, "al": "50% 0%"}, {"id": "k-m0", "t": 9.0, "al": "0% 100%"}, {"id": "k-m1", "t": 12.05, "al": "100% 100%"}, {"id": "k-m2", "t": 14.35, "al": "0% 100%"}, {"id": "k-m3", "t": 15.95, "al": "100% 100%"}, {"id": "k-m4", "t": 18.75, "al": "0% 100%"}];
         // sayaç (gerçek zamanlı)
         const d = document.getElementById("k-dig"), c = { s: 161 };
         tl.fromTo(c, { s: 161 }, { s: 161 - END, duration: END, ease: "none", onUpdate: () => { const v = Math.ceil(c.s); d.textContent = String(Math.floor(v / 60)).padStart(2, "0") + ":" + String(v % 60).padStart(2, "0"); } }, 0);
@@ -146,7 +146,7 @@
         [1.6, 6.8, 13.5, 21.0, 26.2].forEach(blink);
         face("open", "o", 4.4); tl.to(["#c-g-head", "#c-g-hairback"], { rotation: -4, svgOrigin: "0 95", duration: 0.4 }, 4.4);
         tl.to("#c-g-brows", { y: -6, duration: 0.3 }, 4.4);
-        laugh(10.2, 1.4); face("open", "s", 11.7); tl.to("#c-g-brows", { y: 0, duration: 0.3 }, 10.2);
+        laugh(10.6, 1.2); face("open", "s", 11.9); tl.to("#c-g-brows", { y: 0, duration: 0.3 }, 10.6);
         tl.to(["#c-g-head", "#c-g-hairback"], { rotation: 3, svgOrigin: "0 95", duration: 0.4 }, 8.0);
         face("happy", "s", 14.2); face("open", "s", 15.0);
         laugh(18.4, 1.5); face("happy", "s", 20.0);
