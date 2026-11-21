@@ -1,0 +1,160 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Poppins", sans-serif; color: #15131F; background: #F3EFFC; }
+    .blob { position: absolute; border-radius: 50%; }
+    #k-b1 { left: -320px; top: -200px; width: 1000px; height: 1000px; background: radial-gradient(circle, rgba(254,109,106,0.22), rgba(254,109,106,0) 65%); }
+    #k-b2 { left: 420px; top: 1000px; width: 1100px; height: 1100px; background: radial-gradient(circle, rgba(75,84,236,0.18), rgba(75,84,236,0) 65%); }
+    .k-cap { position: absolute; left: 90px; right: 90px; top: 222px; text-align: center; }
+    .k-cap span { display: inline-block; padding: 16px 32px; border-radius: 36px; background: rgba(255,255,255,0.94); font-size: 40px; font-weight: 700; line-height: 1.3;
+      box-shadow: 0 14px 40px rgba(40,20,80,0.14); }
+    #k-cap2 { opacity: 0; }
+
+    #k-phone { position: absolute; left: 210px; top: 410px; width: 660px; height: 960px; transform: scale(0.94); transform-origin: 50% 0; border-radius: 80px; background: #15111f; padding: 14px;
+      box-shadow: 0 40px 90px rgba(40,20,90,0.25); }
+    #k-screen { position: relative; width: 100%; height: 100%; border-radius: 68px; overflow: hidden; background: #fcfcff; }
+    #k-head { position: absolute; left: 0; right: 0; top: 40px; height: 110px; }
+    #k-x { position: absolute; left: 26px; top: 20px; width: 70px; height: 70px; border-radius: 22px; border: 2px solid #e4e1ec; background: #fff; }
+    #k-x svg { position: absolute; left: 18px; top: 18px; }
+    #k-id { position: absolute; left: 116px; top: 14px; font-size: 38px; font-weight: 700; background: linear-gradient(90deg, #d76fd8, #7fb2f5); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    #k-on { position: absolute; left: 116px; top: 64px; font-size: 26px; color: #55505f; display: flex; align-items: center; gap: 10px; }
+    #k-on i { width: 11px; height: 11px; border-radius: 50%; background: #5cc96b; display: inline-block; }
+    #k-pill { position: absolute; right: 74px; top: 18px; width: 180px; height: 76px; border-radius: 38px; background: linear-gradient(90deg, #6F4BF1, #D857AE); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 42px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    #k-dots { position: absolute; right: 30px; top: 34px; display: flex; flex-direction: column; gap: 6px; }
+    #k-dots i { width: 9px; height: 9px; border-radius: 50%; background: #2b2633; display: block; }
+    #k-bar { position: absolute; left: 0; right: 0; top: 162px; height: 5px; background: linear-gradient(90deg, #5ab4d6, #6a8cf0); transform-origin: 0 50%; }
+
+    #k-chat { position: absolute; left: 0; right: 0; top: 172px; height: 600px; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 30px); mask-image: linear-gradient(to bottom, transparent 0, #000 30px); }
+    #k-col { position: absolute; left: 26px; right: 26px; top: 26px; display: flex; flex-direction: column; gap: 16px; }
+    #k-topic { align-self: center; width: 520px; border-radius: 30px; padding: 20px 26px; text-align: center; opacity: 0;
+      background: linear-gradient(#fff, #fff) padding-box, linear-gradient(90deg, #FE6D6A, #D857AE, #6F4BF1) border-box; border: 3px solid transparent; box-shadow: 0 12px 30px rgba(111,75,241,0.16); }
+    #k-topic b { display: block; font-size: 22px; letter-spacing: 0.2em; color: #6F4BF1; }
+    #k-topic div { font-size: 31px; font-weight: 700; line-height: 1.3; margin-top: 4px; }
+    .k-msg { display: flex; opacity: 0; max-width: 480px; }
+    .k-msg.them { align-self: flex-start; } .k-msg.me { align-self: flex-end; }
+    .k-b { display: flex; align-items: flex-end; gap: 12px; padding: 18px 24px; font-size: 31px; line-height: 1.3; font-weight: 600; }
+    .them .k-b { background: #fff; border-radius: 30px 30px 30px 8px; box-shadow: 0 8px 22px rgba(80,60,140,0.10); }
+    .me .k-b { background: linear-gradient(90deg, #6F4BF1, #D857AE); color: #fff; border-radius: 30px 30px 8px 30px; }
+    .k-t { font-size: 22px; font-weight: 500; white-space: nowrap; color: #77727f; }
+    .me .k-t { color: rgba(255,255,255,0.85); }
+
+    #k-comp { position: absolute; left: 22px; right: 22px; top: 800px; height: 90px; }
+    #k-spark { position: absolute; left: 0; top: 0; width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, #e07ad8, #6fb4f5); }
+    #k-spark svg { position: absolute; left: 22px; top: 22px; }
+    #k-ring { position: absolute; left: -10px; top: -10px; width: 110px; height: 110px; border-radius: 50%; border: 4px solid #D857AE; opacity: 0; }
+    #k-in { position: absolute; left: 106px; right: 0; top: 0; height: 90px; border-radius: 45px; background: #fff; box-shadow: 0 8px 22px rgba(80,60,140,0.10); }
+    #k-in span { position: absolute; left: 30px; top: 26px; font-size: 28px; color: #9a96a3; }
+    #k-send { position: absolute; right: 8px; top: 8px; width: 74px; height: 74px; border-radius: 50%; background: linear-gradient(135deg, #6F4BF1, #D857AE); }
+    #k-tip { position: absolute; left: 0; top: -70px; padding: 8px 18px; border-radius: 18px; background: #15131F; color: #fff; font-size: 24px; font-weight: 600; opacity: 0; white-space: nowrap; }
+  </style>
+  <div id="root" data-composition-id="kn" data-width="1080" data-height="1920">
+    <div id="k-b1" class="blob" data-layout-ignore></div><div id="k-b2" class="blob" data-layout-ignore></div>
+    <div id="k-phone" data-layout-allow-overflow data-layout-allow-caption-zone>
+      <div id="k-screen">
+        <div id="k-head">
+          <div id="k-x"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" stroke="#2b2633" stroke-width="2.4" stroke-linecap="round" /></svg></div>
+          <div id="k-id">P-8212</div><div id="k-on"><i></i>Çevrimiçi</div>
+          <div id="k-pill"><span id="k-dig">02:41</span></div>
+          <div id="k-dots"><i></i><i></i><i></i></div>
+        </div>
+        <div id="k-bar"></div>
+        <div id="k-chat"><div id="k-col">
+          <div id="k-topic"><b>KONU</b><div>Yanlış kişiye attığın en utanç verici mesaj neydi?</div></div>
+          <div id="k-m0" class="k-msg them"><div class="k-b"><span>Patronuma “canım” yazdım 🙈</span><span class="k-t">01:12</span></div></div>
+          <div id="k-m1" class="k-msg me"><div class="k-b"><span>Ben annemi iş grubuna ekledim :D</span><span class="k-t">01:12 <svg width="30" height="18" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+          <div id="k-m2" class="k-msg them"><div class="k-b"><span>Annen ne yazdı?</span><span class="k-t">01:13</span></div></div>
+          <div id="k-m3" class="k-msg me"><div class="k-b"><span>“Yemek hazır” yazdı. 40 kişiye.</span><span class="k-t">01:13 <svg width="30" height="18" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+          <div id="k-m4" class="k-msg them"><div class="k-b"><span>Efsane 😂😂</span><span class="k-t">01:13</span></div></div>
+        </div></div>
+        <div id="k-comp">
+          <div id="k-tip">Konu aç</div>
+          <div id="k-ring"></div>
+          <div id="k-spark"><svg width="46" height="46" viewBox="0 0 24 24"><path d="M10 3l1.8 5.2L17 10l-5.2 1.8L10 17l-1.8-5.2L3 10l5.2-1.8L10 3zm8 10l.9 2.1L21 16l-2.1.9L18 19l-.9-2.1L15 16l2.1-.9L18 13z" fill="#fff" /></svg></div>
+          <div id="k-in"><span>Mesaj yaz...</span><i id="k-send"></i></div>
+        </div>
+      </div>
+    </div>
+    <svg id="c-girlwrap" width="1080" height="1920" viewBox="0 0 1080 1920" data-layout-ignore>
+      <defs>
+        
+        <radialGradient id="c-glow" cx="0.5" cy="0.3" r="0.6"><stop offset="0" stop-color="rgba(200,220,255,0.35)" /><stop offset="1" stop-color="rgba(200,220,255,0)" /></radialGradient>
+      </defs>
+      <g id="c-girl" transform="translate(540 1470) scale(1.05)">
+        <g id="c-g-hairback"><path d="M60,-110 C150,-120 190,-20 170,80 C160,150 120,190 132,250 C90,210 110,150 118,90 C126,20 110,-40 60,-60 Z" fill="#a8401f" /></g>
+        <rect x="-28" y="70" width="56" height="70" rx="20" fill="#efc6ad" />
+        <path d="M-165,300 C-165,190 -105,140 0,140 C105,140 165,190 165,300 L172,640 L-172,640 Z" fill="#3FB8AF" />
+        <path d="M-60,140 Q0,190 60,140" fill="none" stroke="#2c9690" stroke-width="10" stroke-linecap="round" />
+        <g id="c-g-head">
+          <ellipse cx="0" cy="0" rx="92" ry="104" fill="#f8d9c4" />
+          <ellipse cx="-92" cy="12" rx="14" ry="22" fill="#f0c8b0" /><ellipse cx="92" cy="12" rx="14" ry="22" fill="#f0c8b0" />
+          <path d="M-100,-6 C-108,-112 -40,-138 0,-136 C44,-138 108,-112 100,-6 C84,-80 40,-98 0,-98 C-40,-98 -84,-80 -100,-6 Z" fill="#c4512a" /><circle cx="58" cy="-108" r="18" fill="#7A5CF5" />
+          
+          
+          <g id="c-g-brows"><path d="M-50,-16 Q-34,-26 -18,-16" fill="none" stroke="#a8401f" stroke-width="6" stroke-linecap="round" /><path d="M18,-16 Q34,-26 50,-16" fill="none" stroke="#a8401f" stroke-width="6" stroke-linecap="round" /></g>
+          <g id="c-g-eo"><g id="c-g-pupils"><ellipse cx="-34" cy="10" rx="10" ry="13" fill="#3a6b4a" /><ellipse cx="34" cy="10" rx="10" ry="13" fill="#3a6b4a" /><circle cx="-31" cy="5" r="3" fill="#fff" /><circle cx="37" cy="5" r="3" fill="#fff" /></g></g>
+          <g id="c-g-eh" opacity="0"><path d="M-46,14 Q-34,2 -22,14" fill="none" stroke="#2a1a14" stroke-width="7" stroke-linecap="round" /><path d="M22,14 Q34,2 46,14" fill="none" stroke="#2a1a14" stroke-width="7" stroke-linecap="round" /></g>
+          <circle cx="-56" cy="40" r="17" fill="#ff8a8a" opacity="0.45" /><circle cx="56" cy="40" r="17" fill="#ff8a8a" opacity="0.45" /><g fill="#c9784f" opacity="0.7"><circle cx="-46" cy="34" r="3" /><circle cx="-36" cy="42" r="3" /><circle cx="-54" cy="44" r="3" /><circle cx="46" cy="34" r="3" /><circle cx="36" cy="42" r="3" /><circle cx="54" cy="44" r="3" /></g>
+          <g id="c-g-mf"><path d="M-16,58 Q0,62 16,58" fill="none" stroke="#8a3b3b" stroke-width="6" stroke-linecap="round" /></g>
+          <g id="c-g-msad" opacity="0"><path d="M-18,64 Q0,54 18,64" fill="none" stroke="#8a3b3b" stroke-width="6" stroke-linecap="round" /></g>
+          <path id="c-g-tear" d="M-40,22 C-49,38 -49,49 -40,54 C-31,49 -31,38 -40,22 Z" fill="#9fd0ff" opacity="0" />
+          <g id="c-g-ml" opacity="0"><path d="M-28,46 Q0,84 28,46 Z" fill="#8a2f3a" /><path d="M-20,50 Q0,60 20,50" fill="#fff" /></g>
+          <g id="c-g-mo" opacity="0"><ellipse cx="0" cy="58" rx="12" ry="15" fill="#8a2f3a" /></g>
+          <g id="c-g-ms" opacity="0"><path d="M-24,50 Q0,70 24,50" fill="none" stroke="#8a3b3b" stroke-width="6" stroke-linecap="round" /></g>
+          <ellipse cx="0" cy="-10" rx="120" ry="140" fill="url(#c-glow)" />
+        </g>
+      </g>
+    </svg>
+    <div id="k-cap1" class="k-cap"><span>Konu aç'a bastım, karşıma bu çıktı:</span></div>
+    <div id="k-cap2" class="k-cap"><span>Bazen en güzel sohbet, tek bir soruyla başlar.</span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function build() {
+        const END = 17.2, ITEMS = [{"id": "k-topic", "t": 2.6, "al": "50% 0%"}, {"id": "k-m0", "t": 4.5, "al": "0% 100%"}, {"id": "k-m1", "t": 6.6, "al": "100% 100%"}, {"id": "k-m2", "t": 8.7, "al": "0% 100%"}, {"id": "k-m3", "t": 10.4, "al": "100% 100%"}, {"id": "k-m4", "t": 12.5, "al": "0% 100%"}];
+        // sayaç (gerçek zamanlı)
+        const d = document.getElementById("k-dig"), c = { s: 161 };
+        tl.fromTo(c, { s: 161 }, { s: 161 - END, duration: END, ease: "none", onUpdate: () => { const v = Math.ceil(c.s); d.textContent = String(Math.floor(v / 60)).padStart(2, "0") + ":" + String(v % 60).padStart(2, "0"); } }, 0);
+        tl.fromTo("#k-bar", { scaleX: 161 / 180 }, { scaleX: (161 - END) / 180, duration: END, ease: "none" }, 0);
+        // Konu aç dokunuşu
+        tl.fromTo("#k-tip", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3 }, 0.6);
+        tl.to("#k-tip", { opacity: 0, duration: 0.2 }, 2.3);
+        tl.fromTo("#k-spark", { scale: 1 }, { scale: 1.08, duration: 0.35, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0.4);
+        tl.fromTo("#k-spark", { scale: 1 }, { scale: 0.85, duration: 0.1, yoyo: true, repeat: 1, immediateRender: false }, 2.1);
+        tl.fromTo("#k-ring", { opacity: 0.9, scale: 0.8 }, { opacity: 0, scale: 1.8, duration: 0.5, immediateRender: false }, 2.1);
+        // mesajlar + kaydırma
+        const Hh = document.getElementById("k-chat").clientHeight; let lastY = 0;
+        ITEMS.forEach((m) => {
+          const el = document.getElementById(m.id);
+          const bottom = 26 + el.offsetTop + el.offsetHeight, y = Math.min(0, Hh - 24 - bottom);
+          if (y !== lastY) { tl.fromTo("#k-col", { y: lastY }, { y: y, duration: 0.3, ease: "power3.out", immediateRender: false }, m.t - 0.04); lastY = y; }
+          tl.fromTo(el, { opacity: 0, y: 26, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "back.out(1.8)", transformOrigin: m.al }, m.t);
+        });
+        // kız: ifadeler
+        const P = { eo: "#c-g-eo", eh: "#c-g-eh", f: "#c-g-mf", s: "#c-g-ms", l: "#c-g-ml", o: "#c-g-mo", sad: "#c-g-msad" };
+        function face(e, m, t) {
+          tl.set(P.eo, { opacity: e === "open" ? 1 : 0 }, t); tl.set(P.eh, { opacity: e === "happy" ? 1 : 0 }, t);
+          ["f", "s", "l", "o", "sad"].forEach((k) => tl.set(P[k], { opacity: k === m ? 1 : 0 }, t));
+        }
+        function laugh(t, dur) { face("happy", "l", t); tl.fromTo("#c-girlwrap", { y: 0 }, { y: -8, duration: 0.11, yoyo: true, repeat: Math.round(dur / 0.11) | 1, immediateRender: false }, t); }
+        function blink(t) { tl.fromTo("#c-g-eo", { scaleY: 1 }, { scaleY: 0.1, duration: 0.07, yoyo: true, repeat: 1, transformOrigin: "50% 50%", immediateRender: false }, t); }
+        face("open", "s", 0); tl.set("#c-g-pupils", { y: -6 }, 0);
+        tl.fromTo("#c-g-head", { y: 0 }, { y: 3, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 10 }, 0);
+        [1.3, 3.9, 9.6, 14.6].forEach(blink);
+        face("open", "o", 2.8); tl.to(["#c-g-head", "#c-g-hairback"], { rotation: -4, svgOrigin: "0 95", duration: 0.4 }, 2.8);
+        tl.to("#c-g-brows", { y: -6, duration: 0.3 }, 2.8);
+        laugh(4.9, 1.0); face("open", "s", 6.0); tl.to("#c-g-brows", { y: 0, duration: 0.3 }, 4.9);
+        tl.to(["#c-g-head", "#c-g-hairback"], { rotation: 3, svgOrigin: "0 95", duration: 0.4 }, 6.4);
+        face("happy", "s", 7.0); face("open", "s", 8.4);
+        laugh(10.8, 1.4); face("happy", "s", 12.2); laugh(12.8, 1.2); face("happy", "s", 14.0);
+        // altyazılar
+        tl.to("#k-cap1", { opacity: 0, y: -30, duration: 0.3 }, 3.3);
+        tl.fromTo("#k-cap2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 13.6);
+        tl.fromTo(["#k-b1", "#k-b2"], { x: 0 }, { x: 60, duration: END, ease: "sine.inOut" }, 0);
+        tl.set({}, {}, END);
+        window.__timelines["kn"] = tl;
+      }
+      document.fonts.ready.then(build);
+    })();
+  </script>
+</template>
