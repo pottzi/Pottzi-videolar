@@ -7,7 +7,7 @@
     .k-cap { position: absolute; left: 90px; right: 90px; top: 222px; text-align: center; }
     .k-cap span { display: inline-block; padding: 16px 32px; border-radius: 36px; background: rgba(255,255,255,0.94); font-size: 40px; font-weight: 700; line-height: 1.3;
       box-shadow: 0 14px 40px rgba(40,20,80,0.14); }
-    #k-cap2 { opacity: 0; }
+    #k-cap2, #k-cap3 { opacity: 0; }
 
     #k-phone { position: absolute; left: 210px; top: 410px; width: 660px; height: 960px; transform: scale(0.94); transform-origin: 50% 0; border-radius: 80px; background: #15111f; padding: 14px;
       box-shadow: 0 40px 90px rgba(40,20,90,0.25); }
@@ -59,6 +59,8 @@
         </div>
         <div id="k-bar"></div>
         <div id="k-chat"><div id="k-col">
+          <div id="k-g0" class="k-msg them"><div class="k-b"><span>Selam</span><span class="k-t">01:11</span></div></div>
+          <div id="k-g1" class="k-msg me"><div class="k-b"><span>Selam :)</span><span class="k-t">01:11 <svg width="30" height="18" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
           <div id="k-topic"><b>KONU</b><div>Yanlış kişiye attığın en utanç verici mesaj neydi?</div></div>
           <div id="k-m0" class="k-msg them"><div class="k-b"><span>Patronuma “canım” yazdım 🙈</span><span class="k-t">01:12</span></div></div>
           <div id="k-m1" class="k-msg me"><div class="k-b"><span>Ben annemi iş grubuna ekledim :D</span><span class="k-t">01:12 <svg width="30" height="18" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
@@ -106,12 +108,13 @@
     </svg>
     <div id="k-cap1" class="k-cap"><span>Konu aç'a bastım, karşıma bu çıktı:</span></div>
     <div id="k-cap2" class="k-cap"><span>Bazen en güzel sohbet, tek bir soruyla başlar.</span></div>
+    <div id="k-cap3" class="k-cap"><span>Konu aç, tam da sohbetin tıkandığı o an için tasarlandı.</span></div>
   </div>
   <script>
     (function () {
       const tl = gsap.timeline({ paused: true });
       function build() {
-        const END = 17.2, ITEMS = [{"id": "k-topic", "t": 2.6, "al": "50% 0%"}, {"id": "k-m0", "t": 4.5, "al": "0% 100%"}, {"id": "k-m1", "t": 6.6, "al": "100% 100%"}, {"id": "k-m2", "t": 8.7, "al": "0% 100%"}, {"id": "k-m3", "t": 10.4, "al": "100% 100%"}, {"id": "k-m4", "t": 12.5, "al": "0% 100%"}];
+        const END = 22.1, ITEMS = [{"id": "k-g0", "t": 0.35, "al": "0% 100%"}, {"id": "k-g1", "t": 0.95, "al": "100% 100%"}, {"id": "k-topic", "t": 2.6, "al": "50% 0%"}, {"id": "k-m0", "t": 4.5, "al": "0% 100%"}, {"id": "k-m1", "t": 6.6, "al": "100% 100%"}, {"id": "k-m2", "t": 8.7, "al": "0% 100%"}, {"id": "k-m3", "t": 10.4, "al": "100% 100%"}, {"id": "k-m4", "t": 12.5, "al": "0% 100%"}];
         // sayaç (gerçek zamanlı)
         const d = document.getElementById("k-dig"), c = { s: 161 };
         tl.fromTo(c, { s: 161 }, { s: 161 - END, duration: END, ease: "none", onUpdate: () => { const v = Math.ceil(c.s); d.textContent = String(Math.floor(v / 60)).padStart(2, "0") + ":" + String(v % 60).padStart(2, "0"); } }, 0);
@@ -138,9 +141,9 @@
         }
         function laugh(t, dur) { face("happy", "l", t); tl.fromTo("#c-girlwrap", { y: 0 }, { y: -8, duration: 0.11, yoyo: true, repeat: Math.round(dur / 0.11) | 1, immediateRender: false }, t); }
         function blink(t) { tl.fromTo("#c-g-eo", { scaleY: 1 }, { scaleY: 0.1, duration: 0.07, yoyo: true, repeat: 1, transformOrigin: "50% 50%", immediateRender: false }, t); }
-        face("open", "s", 0); tl.set("#c-g-pupils", { y: -6 }, 0);
-        tl.fromTo("#c-g-head", { y: 0 }, { y: 3, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 10 }, 0);
-        [1.3, 3.9, 9.6, 14.6].forEach(blink);
+        face("open", "s", 0); tl.set("#c-g-pupils", { y: -6 }, 0); face("open", "f", 1.4);
+        tl.fromTo("#c-g-head", { y: 0 }, { y: 3, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 13 }, 0);
+        [1.6, 3.9, 9.6, 14.6, 19.2].forEach(blink);
         face("open", "o", 2.8); tl.to(["#c-g-head", "#c-g-hairback"], { rotation: -4, svgOrigin: "0 95", duration: 0.4 }, 2.8);
         tl.to("#c-g-brows", { y: -6, duration: 0.3 }, 2.8);
         laugh(4.9, 1.0); face("open", "s", 6.0); tl.to("#c-g-brows", { y: 0, duration: 0.3 }, 4.9);
@@ -150,6 +153,10 @@
         // altyazılar
         tl.to("#k-cap1", { opacity: 0, y: -30, duration: 0.3 }, 3.3);
         tl.fromTo("#k-cap2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 13.6);
+        tl.to("#k-cap2", { opacity: 0, y: -30, duration: 0.3 }, 17.05);
+        tl.fromTo("#k-cap3", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 17.3);
+        tl.fromTo("#k-spark", { scale: 1 }, { scale: 1.15, duration: 0.4, yoyo: true, repeat: 5, ease: "sine.inOut", immediateRender: false }, 17.4);
+        tl.fromTo("#k-ring", { opacity: 0.8, scale: 0.9 }, { opacity: 0, scale: 1.9, duration: 0.8, repeat: 2, immediateRender: false }, 17.4);
         tl.fromTo(["#k-b1", "#k-b2"], { x: 0 }, { x: 60, duration: END, ease: "sine.inOut" }, 0);
         tl.set({}, {}, END);
         window.__timelines["kn"] = tl;
