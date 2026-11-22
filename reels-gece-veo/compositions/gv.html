@@ -1,0 +1,110 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Poppins", sans-serif; color: #15131F; background: #000; }
+    #vid { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    #shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 50%, rgba(10,6,30,0.55) 100%); }
+    #bigclock { position: absolute; left: 0; right: 0; top: 250px; text-align: center; }
+    #bigclock b { font-size: 190px; font-weight: 800; letter-spacing: 0.04em; color: #ff8a6b; text-shadow: 0 0 40px rgba(255,120,90,0.8), 0 0 90px rgba(255,90,90,0.5); font-variant-numeric: tabular-nums; }
+    .cap { position: absolute; left: 90px; right: 150px; top: 1380px; text-align: center; opacity: 0; }
+    .cap span { display: inline-block; padding: 18px 34px; border-radius: 38px; background: rgba(255,255,255,0.94); font-size: 46px; font-weight: 700; line-height: 1.3; box-shadow: 0 14px 40px rgba(0,0,0,0.3); }
+
+    /* tam ekran telefon sahnesi */
+    #ins { position: absolute; inset: 0; opacity: 0; background: radial-gradient(ellipse at 50% 40%, #2b2160, #0b0820 75%); }
+    #ph { position: absolute; left: 190px; top: 300px; width: 700px; height: 1300px; border-radius: 90px; background: #15131F; padding: 22px; box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 160px rgba(159,140,255,0.35); }
+    #scr { position: relative; width: 100%; height: 100%; border-radius: 70px; background: #f6f4fd; overflow: hidden; }
+    #notch { position: absolute; left: 50%; top: 18px; width: 170px; height: 44px; margin-left: -85px; border-radius: 22px; background: #15131F; }
+    .hd { position: absolute; left: 0; right: 0; top: 0; height: 120px; background: #fff; border-bottom: 4px solid #e6e3f3; }
+    #ins .hd { top: 80px; }
+    .hd .id { position: absolute; left: 36px; top: 16px; font-size: 38px; font-weight: 700; background: linear-gradient(90deg, #d76fd8, #7fb2f5); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hd .on { position: absolute; left: 36px; top: 66px; font-size: 24px; color: #55505f; display: flex; align-items: center; gap: 10px; }
+    .hd .on i { width: 11px; height: 11px; border-radius: 50%; background: #5cc96b; display: inline-block; }
+    .pill { position: absolute; right: 26px; top: 24px; width: 170px; height: 72px; border-radius: 36px; background: linear-gradient(90deg, #6F4BF1, #D857AE); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    #konu { position: absolute; left: 30px; right: 30px; top: 240px; padding: 26px 30px; border-radius: 30px; background: #fff; box-shadow: 0 10px 30px rgba(80,60,140,0.12); }
+    #konu small { display: block; font-size: 22px; font-weight: 700; letter-spacing: 0.12em; color: #D477B6; }
+    #konu p { font-size: 32px; font-weight: 600; line-height: 1.3; margin-top: 6px; }
+    #ib { position: absolute; left: 30px; top: 470px; }
+    #dots { position: absolute; left: 30px; top: 470px; padding: 26px 30px; border-radius: 34px 34px 34px 8px; background: #fff; display: flex; gap: 10px; box-shadow: 0 8px 22px rgba(80,60,140,0.12); opacity: 0; }
+    #dots i { width: 16px; height: 16px; border-radius: 50%; background: #b9b3cc; display: block; }
+
+    /* yüzen sohbet kartı */
+    #card { position: absolute; left: 70px; width: 860px; top: 1030px; height: 590px; border-radius: 48px; background: rgba(252,252,255,0.95); overflow: hidden; opacity: 0;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.45); }
+    #card .hd .pill { width: 160px; height: 64px; top: 28px; font-size: 36px; }
+    #chat { position: absolute; left: 0; right: 0; top: 124px; bottom: 0; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 26px); mask-image: linear-gradient(to bottom, transparent 0, #000 26px); }
+    #col { position: absolute; left: 26px; right: 26px; top: 22px; display: flex; flex-direction: column; gap: 16px; }
+    .msg { display: flex; max-width: 620px; }
+    #col .msg { opacity: 0; } #col #f0 { opacity: 1; }
+    .msg.them { align-self: flex-start; } .msg.me { align-self: flex-end; }
+    .b { display: flex; align-items: flex-end; gap: 12px; padding: 18px 26px; font-size: 34px; line-height: 1.3; font-weight: 600; }
+    .them .b { background: #fff; border-radius: 32px 32px 32px 8px; box-shadow: 0 8px 22px rgba(80,60,140,0.12); }
+    .me .b { background: linear-gradient(90deg, #6F4BF1, #D857AE); color: #fff; border-radius: 32px 32px 8px 32px; }
+    .t { font-size: 22px; font-weight: 500; white-space: nowrap; color: #77727f; }
+    .me .t { color: rgba(255,255,255,0.85); }
+  </style>
+  <div id="root" data-composition-id="gv" data-width="1080" data-height="1920">
+    <video id="vid" class="clip" src="../assets/video/kurgu.mp4" data-start="0" data-duration="32" data-track-index="0" muted playsinline></video>
+    <div id="shade"></div>
+    <div id="bigclock"><b>02:47</b></div>
+    <div id="cap1" class="cap"><span>Herkes uyuyor ama ben uyuyamadım...</span></div>
+
+    <div id="ins">
+      <div id="ph"><div id="scr"><div id="notch"></div>
+        <div class="hd"><div class="id">P-2093</div><div class="on"><i></i>Çevrimiçi</div><div class="pill"><span class="dig">03:00</span></div></div>
+        <div id="konu"><small>KONU</small><p>Bu saatte seni uyutmayan şey ne?</p></div>
+        <div id="dots"><i></i><i></i><i></i></div>
+        <div id="ib" style="opacity:0"><div id="x9" class="msg them"><div class="b"><span>Sen de mi uyuyamadın?</span><span class="t">02:47</span></div></div></div>
+      </div></div>
+    </div>
+
+    <div id="card" data-layout-allow-occlusion>
+      <div class="hd"><div class="id">P-2093</div><div class="on"><i></i>Çevrimiçi</div><div class="pill"><span class="dig">03:00</span></div></div>
+      <div id="chat"><div id="col">
+<div id="f0" class="msg them"><div class="b"><span>Sen de mi uyuyamadın?</span><span class="t">02:47</span></div></div>
+<div id="m0" class="msg me"><div class="b"><span>Kafam çok dolu...</span><span class="t">02:47 <svg width="28" height="16" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+<div id="m1" class="msg them"><div class="b"><span>Anlat. Sabaha kadar vaktim var 🌙</span><span class="t">02:48</span></div></div>
+<div id="m2" class="msg me"><div class="b"><span>Yarın sınavım var ve hiç hazır hissetmiyorum</span><span class="t">02:48 <svg width="28" height="16" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+<div id="m3" class="msg them"><div class="b"><span>Geçen hafta ben de aynısını yaşadım. Derin nefes al, sen yaparsın 💜</span><span class="t">02:48</span></div></div>
+<div id="m4" class="msg me"><div class="b"><span>Teşekkürler... gerçekten iyi geldi</span><span class="t">02:49 <svg width="28" height="16" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      </div></div>
+    </div>
+    <div id="cap2" class="cap"><span>Bazen ihtiyacın olan tek şey, seni tanımayan biri.</span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function build() {
+        const END = 32.0, INS = 7.6, INSX = 10.4, FIN = 26.9, ITEMS = [{"id": "m0", "t": 10.6, "al": "100% 100%"}, {"id": "m1", "t": 12.7, "al": "0% 100%"}, {"id": "m2", "t": 15.5, "al": "100% 100%"}, {"id": "m3", "t": 19.0, "al": "0% 100%"}, {"id": "m4", "t": 24.2, "al": "100% 100%"}];
+        // açılış
+        tl.fromTo("#bigclock", { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }, 0);
+        tl.fromTo("#cap1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.5);
+        tl.to(["#bigclock", "#cap1"], { opacity: 0, duration: 0.35 }, 5.4);
+        // telefon sahnesi
+        tl.fromTo("#ins", { opacity: 0 }, { opacity: 1, duration: 0.25 }, INS);
+        tl.fromTo("#ph", { scale: 0.85, y: 80 }, { scale: 1, y: 0, duration: 0.6, ease: "power3.out" }, INS);
+        tl.fromTo("#dots", { opacity: 0 }, { opacity: 1, duration: 0.15 }, INS + 0.35);
+        tl.fromTo("#dots i", { y: 0 }, { y: -8, duration: 0.22, yoyo: true, repeat: 1, stagger: 0.1, ease: "sine.inOut" }, INS + 0.45);
+        tl.to("#dots", { opacity: 0, duration: 0.1 }, 8.35);
+        tl.fromTo("#ib", { opacity: 0, y: 20, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(1.7)", transformOrigin: "0% 100%" }, 8.4);
+        tl.to("#ins", { opacity: 0, duration: 0.3 }, INSX - 0.3);
+        // sayaç
+        const digs = document.querySelectorAll(".dig"), c = { s: 180 };
+        tl.fromTo(c, { s: 180 }, { s: 180 - (FIN - INS), duration: FIN - INS, ease: "none", onUpdate: () => { const v = Math.ceil(c.s), s = String(Math.floor(v / 60)).padStart(2, "0") + ":" + String(v % 60).padStart(2, "0"); digs.forEach((d) => (d.textContent = s)); } }, INS);
+        // yüzen kart
+        tl.fromTo("#card", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, INSX - 0.1);
+        const Hh = document.getElementById("chat").clientHeight; let lastY = 0;
+        ITEMS.forEach((m) => {
+          const el = document.getElementById(m.id);
+          const bottom = 22 + el.offsetTop + el.offsetHeight, y = Math.min(0, Hh - 26 - bottom);
+          if (y !== lastY) { tl.fromTo("#col", { y: lastY }, { y: y, duration: 0.35, ease: "power3.out", immediateRender: false }, m.t - 0.05); lastY = y; }
+          tl.fromTo(el, { opacity: 0, y: 26, scale: 0.88 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "back.out(1.7)", transformOrigin: m.al }, m.t);
+        });
+        tl.to("#card", { opacity: 0, y: 40, duration: 0.45, ease: "power2.in" }, FIN);
+        tl.fromTo("#cap2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, FIN + 0.4);
+        tl.set({}, {}, END);
+        window.__timelines["gv"] = tl;
+      }
+      document.fonts.ready.then(build);
+    })();
+  </script>
+</template>
