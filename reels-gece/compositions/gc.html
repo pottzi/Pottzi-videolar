@@ -1,0 +1,157 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Poppins", sans-serif; color: #15131F; background: #0e0b22; }
+    #room { position: absolute; left: 0; top: 0; }
+    #cool { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,11,40,0.55), rgba(14,11,40,0.35)); }
+    #warm { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 70%, rgba(255,170,110,0.55), rgba(255,140,120,0.15) 55%, rgba(255,120,140,0) 80%); opacity: 0; }
+    #bigclock { position: absolute; left: 0; right: 0; top: 480px; text-align: center; }
+    #bigclock b { font-size: 230px; font-weight: 800; letter-spacing: 0.04em; color: #ff8a6b; text-shadow: 0 0 40px rgba(255,120,90,0.8), 0 0 90px rgba(255,90,90,0.5); font-variant-numeric: tabular-nums; }
+    #cap1, #cap2 { position: absolute; left: 100px; right: 100px; text-align: center; }
+    #cap1 { top: 800px; }
+    #cap2 { top: 330px; opacity: 0; }
+    .cap span { display: inline-block; padding: 18px 34px; border-radius: 38px; background: rgba(255,255,255,0.94); font-size: 44px; font-weight: 700; line-height: 1.3; box-shadow: 0 14px 40px rgba(0,0,0,0.25); }
+
+    #card { position: absolute; left: 100px; right: 100px; top: 290px; height: 850px; border-radius: 52px; background: #fcfcff; overflow: hidden; opacity: 0;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.45), 0 0 120px rgba(159,192,255,0.25); }
+    #hd { position: absolute; left: 0; right: 0; top: 0; height: 130px; border-bottom: 5px solid #dfe6fb; }
+    #hd .x { position: absolute; left: 30px; top: 30px; width: 70px; height: 70px; border-radius: 22px; border: 2px solid #e4e1ec; }
+    #hd .x svg { position: absolute; left: 18px; top: 18px; }
+    #hd .id { position: absolute; left: 124px; top: 22px; font-size: 40px; font-weight: 700; background: linear-gradient(90deg, #d76fd8, #7fb2f5); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    #hd .on { position: absolute; left: 124px; top: 74px; font-size: 26px; color: #55505f; display: flex; align-items: center; gap: 10px; }
+    #hd .on i { width: 11px; height: 11px; border-radius: 50%; background: #5cc96b; display: inline-block; }
+    #pill { position: absolute; right: 30px; top: 27px; width: 180px; height: 76px; border-radius: 38px; background: linear-gradient(90deg, #6F4BF1, #D857AE); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 42px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    #chat { position: absolute; left: 0; right: 0; top: 135px; bottom: 0; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 30px); mask-image: linear-gradient(to bottom, transparent 0, #000 30px); }
+    #col { position: absolute; left: 28px; right: 28px; top: 28px; display: flex; flex-direction: column; gap: 18px; }
+    .msg { display: flex; opacity: 0; max-width: 620px; }
+    .msg.them { align-self: flex-start; } .msg.me { align-self: flex-end; }
+    .b { display: flex; align-items: flex-end; gap: 12px; padding: 20px 28px; font-size: 36px; line-height: 1.3; font-weight: 600; }
+    .them .b { background: #fff; border-radius: 34px 34px 34px 8px; box-shadow: 0 8px 22px rgba(80,60,140,0.12); }
+    .me .b { background: linear-gradient(90deg, #6F4BF1, #D857AE); color: #fff; border-radius: 34px 34px 8px 34px; }
+    .t { font-size: 24px; font-weight: 500; white-space: nowrap; color: #77727f; }
+    .me .t { color: rgba(255,255,255,0.85); }
+  </style>
+  <div id="root" data-composition-id="gc" data-width="1080" data-height="1920">
+    <svg id="room" width="1080" height="1920" viewBox="0 0 1080 1920" data-layout-ignore>
+      <defs>
+        <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d1a45" /><stop offset="1" stop-color="#2a2258" /></linearGradient>
+        <linearGradient id="night" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1236" /><stop offset="1" stop-color="#2a2a6e" /></linearGradient>
+        <radialGradient id="lampg" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="rgba(255,200,130,0.9)" /><stop offset="1" stop-color="rgba(255,170,110,0)" /></radialGradient>
+      </defs>
+      <rect width="1080" height="1920" fill="url(#wall)" />
+      <rect x="620" y="200" width="380" height="520" rx="24" fill="url(#night)" stroke="#3a3375" stroke-width="16" />
+      <path d="M810 200 V720 M620 460 H1000" stroke="#3a3375" stroke-width="10" />
+      <circle cx="900" cy="300" r="46" fill="#fff4cf" /><circle cx="922" cy="288" r="40" fill="#0f1640" />
+      <g fill="#fff"><circle cx="680" cy="270" r="3" /><circle cx="760" cy="350" r="2" /><circle cx="700" cy="560" r="2.5" /><circle cx="950" cy="600" r="2" /><circle cx="860" cy="520" r="3" /></g>
+      <!-- yatak başlığı -->
+      <rect x="180" y="1080" width="720" height="380" rx="70" fill="#3b2f6e" />
+      <rect x="230" y="1260" width="270" height="120" rx="50" fill="#e9e4f7" /><rect x="580" y="1260" width="270" height="120" rx="50" fill="#e9e4f7" />
+      <!-- komodin + saat + lamba -->
+      <rect x="20" y="1300" width="230" height="300" rx="20" fill="#2e2660" />
+      <rect x="50" y="1230" width="170" height="74" rx="14" fill="#151030" /><text id="ns-clock" x="135" y="1284" text-anchor="middle" font-family="Poppins" font-weight="800" font-size="46" fill="#ff8a6b">02:47</text>
+      <circle id="lamp-glow" cx="135" cy="1120" r="230" fill="url(#lampg)" opacity="0" />
+      <path d="M95 1210 L175 1210 L160 1140 L110 1140 Z" fill="#f2b98f" /><rect x="128" y="1210" width="14" height="22" fill="#d9a27f" />
+    </svg>
+    <svg id="c-girlwrap" width="1080" height="1920" viewBox="0 0 1080 1920" data-layout-ignore>
+      <defs>
+        
+        <radialGradient id="c-glow" cx="0.5" cy="0.3" r="0.6"><stop offset="0" stop-color="rgba(200,220,255,0.35)" /><stop offset="1" stop-color="rgba(200,220,255,0)" /></radialGradient>
+      </defs>
+      <g id="c-girl" transform="translate(540 1330) scale(1.05)">
+        <g id="c-g-hairback"><path d="M-124,-50 C-160,60 -160,200 -150,330 L150,330 C160,200 160,60 124,-50 Z" fill="#141016" /></g>
+        <rect x="-28" y="70" width="56" height="70" rx="20" fill="#e3b99c" />
+        <path d="M-165,300 C-165,190 -105,140 0,140 C105,140 165,190 165,300 L172,640 L-172,640 Z" fill="#8f7fd6" />
+        <path d="M-60,140 Q0,190 60,140" fill="none" stroke="#7565c4" stroke-width="10" stroke-linecap="round" />
+        <g id="c-g-head">
+          <ellipse cx="0" cy="0" rx="92" ry="104" fill="#f1cfb5" />
+          <ellipse cx="-92" cy="12" rx="14" ry="22" fill="#e8c0a4" /><ellipse cx="92" cy="12" rx="14" ry="22" fill="#e8c0a4" />
+          <path d="M-104,0 C-112,-108 -45,-136 0,-134 C45,-136 112,-108 104,0 C92,-50 50,-92 4,-112 C-46,-92 -92,-50 -104,0 Z" fill="#221b24" /><path d="M-102,-10 L-128,320 L-100,320 L-82,18 Z" fill="#221b24" /><path d="M102,-10 L128,320 L100,320 L82,18 Z" fill="#221b24" />
+          
+          
+          <g id="c-g-brows"><path d="M-50,-16 Q-34,-26 -18,-16" fill="none" stroke="#141016" stroke-width="6" stroke-linecap="round" /><path d="M18,-16 Q34,-26 50,-16" fill="none" stroke="#141016" stroke-width="6" stroke-linecap="round" /></g>
+          <g id="c-g-eo"><g id="c-g-pupils"><ellipse cx="-34" cy="10" rx="10" ry="13" fill="#2a1a14" /><ellipse cx="34" cy="10" rx="10" ry="13" fill="#2a1a14" /><circle cx="-31" cy="5" r="3" fill="#fff" /><circle cx="37" cy="5" r="3" fill="#fff" /></g></g>
+          <g id="c-g-eh" opacity="0"><path d="M-46,14 Q-34,2 -22,14" fill="none" stroke="#2a1a14" stroke-width="7" stroke-linecap="round" /><path d="M22,14 Q34,2 46,14" fill="none" stroke="#2a1a14" stroke-width="7" stroke-linecap="round" /></g>
+          <circle cx="-56" cy="40" r="17" fill="#ff8a8a" opacity="0.45" /><circle cx="56" cy="40" r="17" fill="#ff8a8a" opacity="0.45" />
+          <g id="c-g-mf"><path d="M-16,58 Q0,62 16,58" fill="none" stroke="#8a3b3b" stroke-width="6" stroke-linecap="round" /></g>
+          <g id="c-g-msad" opacity="0"><path d="M-18,64 Q0,54 18,64" fill="none" stroke="#8a3b3b" stroke-width="6" stroke-linecap="round" /></g>
+          <path id="c-g-tear" d="M-40,22 C-49,38 -49,49 -40,54 C-31,49 -31,38 -40,22 Z" fill="#9fd0ff" opacity="0" />
+          <g id="c-g-ms" opacity="0"><path d="M-24,50 Q0,70 24,50" fill="none" stroke="#8a3b3b" stroke-width="6" stroke-linecap="round" /></g>
+          
+        </g>
+      </g>
+    </svg>
+    <svg id="blanket" width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0" data-layout-ignore>
+      <path d="M120,1560 C260,1500 820,1500 960,1560 L1000,1920 L80,1920 Z" fill="#6c5fc4" />
+      <path d="M120,1560 C260,1500 820,1500 960,1560" fill="none" stroke="#8d81da" stroke-width="18" />
+      <g id="phone"><rect x="490" y="1490" width="100" height="150" rx="18" fill="#15131F" /><rect x="500" y="1502" width="80" height="126" rx="12" fill="#9fc0ff" /></g>
+      <circle id="hand1" cx="482" cy="1585" r="30" fill="#e3b99c" /><circle id="hand2" cx="598" cy="1585" r="30" fill="#e3b99c" />
+    </svg>
+    <div id="cool"></div>
+    <div id="warm"></div>
+    <div id="bigclock"><b id="bc">02:47</b></div>
+    <div id="cap1" class="cap"><span>Herkes uyuyor. Ben değilim.</span></div>
+    <div id="card" data-layout-allow-occlusion>
+      <div id="hd"><div class="x"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" stroke="#2b2633" stroke-width="2.4" stroke-linecap="round" /></svg></div>
+        <div class="id">P-2093</div><div class="on"><i></i>Çevrimiçi</div><div id="pill"><span id="dig">03:00</span></div></div>
+      <div id="chat"><div id="col">
+<div id="m0" class="msg them"><div class="b"><span>Sen de mi uyuyamadın?</span><span class="t">02:47</span></div></div>
+<div id="m1" class="msg me"><div class="b"><span>Kafam çok dolu...</span><span class="t">02:47 <svg width="30" height="18" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+<div id="m2" class="msg them"><div class="b"><span>Anlat. Sabaha kadar vaktim var 🌙</span><span class="t">02:48</span></div></div>
+<div id="m3" class="msg me"><div class="b"><span>Yarın sınavım var ve hiç hazır hissetmiyorum</span><span class="t">02:48 <svg width="30" height="18" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+<div id="m4" class="msg them"><div class="b"><span>Geçen hafta ben de aynısını yaşadım. Derin nefes al, sen yaparsın 💜</span><span class="t">02:48</span></div></div>
+<div id="m5" class="msg me"><div class="b"><span>Teşekkürler... gerçekten iyi geldi</span><span class="t">02:49 <svg width="30" height="18" viewBox="0 0 34 20"><path d="M2 11l5 5L17 5M13 15l1 1L26 5" stroke="rgba(255,255,255,0.9)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+      </div></div>
+    </div>
+    <div id="cap2" class="cap"><span>Bazen ihtiyacın olan tek şey, seni tanımayan biri.</span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function build() {
+        const END = 29.0, CARD = 5.5, FIN = 24.6, ITEMS = [{"id": "m0", "t": 6.0, "al": "0% 100%"}, {"id": "m1", "t": 7.8, "al": "100% 100%"}, {"id": "m2", "t": 9.8, "al": "0% 100%"}, {"id": "m3", "t": 12.55, "al": "100% 100%"}, {"id": "m4", "t": 16.2, "al": "0% 100%"}, {"id": "m5", "t": 21.45, "al": "100% 100%"}];
+        // kanca: büyük saat
+        tl.fromTo("#bigclock", { scale: 1 }, { scale: 1.04, duration: 0.9, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0);
+        tl.to(["#bigclock", "#cap1"], { opacity: 0, y: -40, duration: 0.4 }, CARD - 0.4);
+        // kız: ifadeler
+        const P = ["#c-g-eo", "#c-g-eh", "#c-g-mf", "#c-g-msad", "#c-g-ms"];
+        function face(e, m, t) { tl.set(P[0], { opacity: e === "open" ? 1 : 0 }, t); tl.set(P[1], { opacity: e === "happy" ? 1 : 0 }, t); ["flat", "sad", "smile"].forEach((k, i) => tl.set(P[2 + i], { opacity: k === m ? 1 : 0 }, t)); }
+        function blink(t) { tl.fromTo("#c-g-eo", { scaleY: 1 }, { scaleY: 0.1, duration: 0.08, yoyo: true, repeat: 1, transformOrigin: "50% 50%", immediateRender: false }, t); }
+        face("open", "sad", 0); tl.set("#c-g-pupils", { y: -8 }, 0); tl.set("#c-g-brows", { y: 4 }, 0);
+        [1.8, 3.6, 8.6, 14.1, 19.3, 23.5, 27.2].forEach(blink);
+        tl.fromTo("#c-g-head", { y: 0 }, { y: 4, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 13 }, 0);
+        // iç çekiş, telefona bakış
+        tl.fromTo("#c-girlwrap", { y: 0 }, { y: -10, duration: 0.6, yoyo: true, repeat: 1, ease: "sine.inOut" }, 3.4);
+        tl.to("#c-g-pupils", { y: 8, duration: 0.4 }, 4.8);
+        tl.fromTo(["#phone", "#hand1", "#hand2"], { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 4.6);
+        face("open", "flat", 6.2);
+        tl.to("#c-g-brows", { y: 0, duration: 0.5 }, 16.5);
+        face("open", "smile", 19.5);
+        face("happy", "smile", 21.6);
+        // sohbet kartı
+        tl.fromTo("#card", { opacity: 0, y: 60, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, CARD);
+        const d = document.getElementById("dig"), c = { s: 180 };
+        tl.fromTo(c, { s: 180 }, { s: 180 - (FIN - CARD), duration: FIN - CARD, ease: "none", onUpdate: () => { const v = Math.ceil(c.s); d.textContent = String(Math.floor(v / 60)).padStart(2, "0") + ":" + String(v % 60).padStart(2, "0"); } }, CARD);
+        const Hh = document.getElementById("chat").clientHeight; let lastY = 0;
+        ITEMS.forEach((m) => {
+          const el = document.getElementById(m.id);
+          const bottom = 28 + el.offsetTop + el.offsetHeight, y = Math.min(0, Hh - 28 - bottom);
+          if (y !== lastY) { tl.fromTo("#col", { y: lastY }, { y: y, duration: 0.35, ease: "power3.out", immediateRender: false }, m.t - 0.05); lastY = y; }
+          tl.fromTo(el, { opacity: 0, y: 26, scale: 0.88 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "back.out(1.7)", transformOrigin: m.al }, m.t);
+        });
+        // oda ısınıyor
+        tl.fromTo("#warm", { opacity: 0 }, { opacity: 1, duration: 11, ease: "sine.inOut" }, 10);
+        tl.to("#cool", { opacity: 0.25, duration: 11, ease: "sine.inOut" }, 10);
+        tl.fromTo("#lamp-glow", { opacity: 0 }, { opacity: 1, duration: 3 }, 16.5);
+        // saat ilerliyor
+        const ns = document.getElementById("ns-clock");
+        tl.set(ns, { textContent: "02:48" }, 11); tl.set(ns, { textContent: "02:49" }, 21);
+        // final
+        tl.to("#card", { opacity: 0, y: -40, scale: 0.96, duration: 0.45, ease: "power2.in" }, FIN - 0.2);
+        tl.fromTo("#cap2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, FIN + 0.1);
+        tl.set({}, {}, END);
+        window.__timelines["gc"] = tl;
+      }
+      document.fonts.ready.then(build);
+    })();
+  </script>
+</template>
