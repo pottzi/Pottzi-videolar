@@ -170,7 +170,7 @@ Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resm
 - Yardımcı araçlar `araclar/` içinde (altyazı/Whisper, ses efekti, arka plan silme, görsel büyütme); yeni oturumda `bash araclar/kurulum.sh`. Hazır ses efektleri `assets/efektler/`.
 - Türkçe seslendirme sesleri: Nil, Ecem, Gözde, Derya (kadın); Alican, Mehmet (erkek). `data-volume="1.8"`.
 - Gerçek uygulama ekran görüntüleri ve ölçülmüş renkler: `assets/referans/app/` (notlar `NOTLAR.md`). Uygulamanın **koyu** (`#171722`) ve **açık** teması var; telefon ekranı çizerken bunlardan birine birebir uy.
-- Logo: `assets/brand/pottzi-logo.png`; uygulama ekranı referansları: `assets/referans/`.
+- Logo: kapanışlarda kullanıcının tercih ettiği şeffaf logo `assets/brand/pottzi-logo-seffaf.png` (beyaz zeminde, ortada); eski `assets/brand/pottzi-logo.png`; uygulama ekranı referansları: `assets/referans/`.
 
 ## 10. Repo kuralları
 
