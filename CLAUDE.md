@@ -172,6 +172,16 @@ Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resm
 - Gerçek uygulama ekran görüntüleri ve ölçülmüş renkler: `assets/referans/app/` (notlar `NOTLAR.md`). Uygulamanın **koyu** (`#171722`) ve **açık** teması var; telefon ekranı çizerken bunlardan birine birebir uy.
 - Logo: kapanışlarda kullanıcının tercih ettiği şeffaf logo `assets/brand/pottzi-logo-seffaf.png` (beyaz zeminde, ortada); eski `assets/brand/pottzi-logo.png`; uygulama ekranı referansları: `assets/referans/`.
 
+## 9b. Meta reklam kalıbı (kullanıcının standart isteği)
+
+Kullanıcı genelde sadece yeni bir **konuşan kız videosu** (Veo) atar. Yapılacak:
+1. Şablon proje: `reels-meta-2/` (kopyala, `kadin.mp4` / `kadin.mp3`'ü yenisiyle değiştir).
+2. Format **4:5, 1080×1350**. Kız tam ekran, **1x hız** (yavaşlatma/hızlandırma yok), ses `loudnorm I=-16`.
+3. Konuşmayı `araclar/altyazi.py` ile çıkar, kelime kelime Pottzi degradeli altyazı (Türkçe büyük harf `tr-TR`; "Potsy" → "Pottzi" gibi hataları düzelt).
+4. Ardından aynı **"sohbet bulundu" ekran kaydı** (`reels-meta-2/assets/video/kayit.mp4`, 2x hız) telefon çerçevesinde, degradeli zeminde, çizilmiş temiz durum çubuğuyla; tık/melodi/klavye/mesaj efektleri olaylara denk.
+5. Kapanış: beyaz zeminde `pottzi-logo-seffaf.png`, 2 sn.
+6. Render: `videolar/<tarih>_meta-reklam-<ad>-4x5.mp4`.
+
 ## 10. Repo kuralları
 
 - **Uygulamanın kod reposuna (`pottzi/pottzi`) dokunma.** Kullanıcı açıkça istemedikçe o repoya erişim isteme, okuma, değiştirme. Kullanıcı söylediğinde bakılır.
