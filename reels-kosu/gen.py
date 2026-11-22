@@ -40,7 +40,7 @@ RUNNER = f'''<g id="runner"><g id="rn-bob">
     <g id="rn-mf" opacity="0"><path d="M38,34 L50,34" fill="none" stroke="#c94f6d" stroke-width="4" stroke-linecap="round" /></g>
   </g></g>
   {limb_leg("lf", LEG)}
-  {limb_arm("rf", TOP, SKIN, '<g id="rn-phone" opacity="0" transform="translate(6 70) rotate(95)"><rect x="-17" y="-30" width="34" height="58" rx="8" fill="#15131F" /><rect x="-13" y="-25" width="26" height="46" rx="5" fill="#b9c8ff" /><rect x="-9" y="-19" width="18" height="5" rx="2" fill="#D857AE" /><rect x="-9" y="-10" width="14" height="4" rx="2" fill="#fff" /><rect x="-9" y="-3" width="16" height="4" rx="2" fill="#fff" /></g>')}
+  {limb_arm("rf", TOP, SKIN, '<g id="rn-phone" opacity="0" transform="translate(6 70) rotate(100)"><rect x="-17" y="-30" width="34" height="58" rx="8" fill="#15131F" /><rect x="-13" y="-25" width="26" height="46" rx="5" fill="#b9c8ff" /><rect x="-9" y="-19" width="18" height="5" rx="2" fill="#D857AE" /><rect x="-9" y="-10" width="14" height="4" rx="2" fill="#fff" /><rect x="-9" y="-3" width="16" height="4" rx="2" fill="#fff" /></g>')}
 </g></g>'''
 
 # arka plan şeritleri (tekrarlı)
@@ -177,15 +177,14 @@ HTML = r'''<template>
         function stand(t) {
           const q = { duration: 0.5, ease: "power2.inOut", svgOrigin: "0 0" };
           tl.to(["#lf-thigh", "#lb-thigh", "#lf-shin", "#lb-shin"], { rotation: 0, ...q }, t);
-          tl.to("#rf-arm", { rotation: -20, ...q }, t); tl.to("#rf-fore", { rotation: -75, ...q }, t);
-          tl.to("#rb-arm", { rotation: -10, ...q }, t); tl.to("#rb-fore", { rotation: -85, ...q }, t);
+          tl.to("#rf-arm", { rotation: -62, ...q }, t); tl.to("#rf-fore", { rotation: -38, ...q }, t);
+          tl.to("#rb-arm", { rotation: 8, ...q }, t); tl.to("#rb-fore", { rotation: -14, ...q }, t);
           tl.to("#rn-bob", { y: 0, duration: 0.3 }, t);
           tl.to("#rn-hair", { rotation: 0, svgOrigin: "-10 0", duration: 0.5 }, t);
           tl.fromTo("#rn-phone", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.3, immediateRender: false }, t + 0.35);
-          tl.to("#rn-head", { rotation: 22, svgOrigin: "0 56", duration: 0.45, ease: "power2.inOut" }, t + 0.25);
-          tl.to("#rn-eye", { y: 4, x: 2, duration: 0.3 }, t + 0.3);
+          tl.to("#rn-eye", { y: 2, x: 2, duration: 0.3 }, t + 0.3);
           // yazarken parmak hareketi ve hafif nefes
-          tl.fromTo("#rf-fore", { rotation: -75 }, { rotation: -81, svgOrigin: "0 0", duration: 0.18, yoyo: true, repeat: 9, ease: "sine.inOut", immediateRender: false }, t + 0.9);
+          tl.fromTo("#rf-fore", { rotation: -38 }, { rotation: -44, svgOrigin: "0 0", duration: 0.18, yoyo: true, repeat: 9, ease: "sine.inOut", immediateRender: false }, t + 0.9);
           tl.fromTo("#rn-bob", { y: 0 }, { y: 3, duration: 1.2, yoyo: true, repeat: 7, ease: "sine.inOut", immediateRender: false }, t + 0.6);
         }
         run(0, STOP);
