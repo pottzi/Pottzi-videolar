@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="tr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #F3EFFC; }
+      #root { position: relative; width: 100%; height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="27.8" data-width="1080" data-height="1920">
+      <div id="ks" class="clip" data-composition-id="ks" data-composition-src="compositions/ks.html"
+        data-start="0" data-duration="23.9" data-track-index="0" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index: 1"></div>
+      <div id="outro" class="clip" data-composition-id="outro" data-composition-src="compositions/outro.html"
+        data-start="23.8" data-duration="4.0" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index: 2"></div>
+      <audio id="v1" class="clip" src="assets/audio/v1.mp3" data-start="0.3" data-track-index="2" data-volume="1.8"></audio>
+      <audio id="v2" class="clip" src="assets/audio/v2.mp3" data-start="5.4" data-track-index="3" data-volume="1.8"></audio>
+      <audio id="r1" class="clip" src="assets/audio/r1.mp3" data-start="8.3" data-track-index="4" data-volume="1.8"></audio>
+      <audio id="r2" class="clip" src="assets/audio/r2.mp3" data-start="11.0" data-track-index="5" data-volume="1.8"></audio>
+      <audio id="r3" class="clip" src="assets/audio/r3.mp3" data-start="13.9" data-track-index="6" data-volume="1.8"></audio>
+      <audio id="v3" class="clip" src="assets/audio/v3.mp3" data-start="16.0" data-track-index="7" data-volume="1.8"></audio>
+      <audio id="v4" class="clip" src="assets/audio/v4.mp3" data-start="20.75" data-track-index="8" data-volume="1.8"></audio>
+      <audio id="kapanis" class="clip" src="assets/audio/kapanis.mp3" data-start="24.05" data-track-index="9" data-volume="1.8"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>
