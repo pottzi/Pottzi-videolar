@@ -1,0 +1,72 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #000; font-family: "Poppins", sans-serif; }
+    #kadin { position: absolute; inset: 0; width: 1080px; height: 1350px; object-fit: cover; }
+    #cap { position: absolute; inset: 0; pointer-events: none; }
+    .grp { position: absolute; left: 70px; right: 70px; top: 930px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; opacity: 0; visibility: hidden; }
+    .w { position: relative; display: inline-block; padding: 6px 14px 10px; font-size: 64px; font-weight: 800; line-height: 1.05; color: #fff; letter-spacing: 0.01em;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.55), 0 0 3px rgba(0,0,0,0.6); }
+    .w .bg { position: absolute; inset: 0; border-radius: 16px; background: linear-gradient(90deg, #704BEF, #DA5BAC); box-shadow: 0 10px 28px rgba(112,75,239,0.45);
+      opacity: 0; transform: scaleX(0); transform-origin: 0% 50%; z-index: 0; }
+    .w .tx { position: relative; z-index: 1; }
+
+    #sahne2 { position: absolute; inset: 0; opacity: 0; background: linear-gradient(135deg, #704BEF 0%, #B655CD 55%, #DA5BAC 100%); overflow: hidden; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(70px); }
+    #b1 { left: -160px; top: -120px; width: 620px; height: 620px; background: rgba(103,183,250,0.55); }
+    #b2 { right: -200px; bottom: -200px; width: 700px; height: 700px; background: rgba(254,109,106,0.45); }
+    #phone { position: absolute; left: 245px; top: 46px; width: 590px; height: 1258px; border-radius: 86px; background: #121018; padding: 16px;
+      box-shadow: 0 40px 100px rgba(30,10,70,0.55), inset 0 0 0 3px #2c2838; }
+    #scr { position: relative; width: 558px; height: 1226px; border-radius: 72px; overflow: hidden; background: #fff; }
+    #kayit { position: absolute; left: 0; top: 0; width: 558px; height: 1212px; object-fit: cover; object-position: 50% 0%; }
+  </style>
+  <div id="root" data-composition-id="mt" data-width="1080" data-height="1350">
+    <video id="kadin" class="clip" src="../assets/video/kadin.mp4" data-start="0" data-duration="7" data-track-index="0" muted playsinline></video>
+    <div id="cap"></div>
+    <div id="sahne2">
+      <div id="b1" class="blob"></div><div id="b2" class="blob"></div>
+      <div id="phone"><div id="scr">
+        <video id="kayit" class="clip" src="../assets/video/kayit.mp4" data-start="7" data-duration="6.57" data-track-index="1" muted playsinline></video>
+      </div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function build() {
+        const W = [{"text": "Geçen", "start": 0.0, "end": 0.5}, {"text": "gün", "start": 0.5, "end": 0.62}, {"text": "Pottzi", "start": 0.62, "end": 1.06}, {"text": "diye", "start": 1.06, "end": 1.18}, {"text": "bir", "start": 1.18, "end": 1.28}, {"text": "uygulama", "start": 1.28, "end": 1.68}, {"text": "gördüm,", "start": 1.68, "end": 2.1}, {"text": "merak", "start": 2.18, "end": 2.3}, {"text": "edip", "start": 2.3, "end": 2.64}, {"text": "indirdim.", "start": 2.64, "end": 3.14}, {"text": "Açıkçası", "start": 3.26, "end": 3.58}, {"text": "nasıl", "start": 3.58, "end": 3.72}, {"text": "bir", "start": 3.72, "end": 3.86}, {"text": "şey", "start": 3.86, "end": 4.0}, {"text": "olduğunu", "start": 4.0, "end": 4.14}, {"text": "bilmiyordum,", "start": 4.14, "end": 4.66}, {"text": "sonra", "start": 4.8, "end": 4.92}, {"text": "hiç", "start": 4.92, "end": 5.1}, {"text": "tanımadığım", "start": 5.1, "end": 5.58}, {"text": "insanlarla", "start": 5.58, "end": 6.1}, {"text": "konuşmaya", "start": 6.1, "end": 6.5}, {"text": "başladım.", "start": 6.5, "end": 6.9}], G = [[0, 2], [3, 6], [7, 9], [10, 13], [14, 15], [16, 18], [19, 21]], S2 = 7.0, END = 13.57;
+        const cap = document.getElementById("cap");
+        G.forEach((g, gi) => {
+          const el = document.createElement("div"); el.className = "grp"; el.id = "g" + gi;
+          for (let i = g[0]; i <= g[1]; i++) {
+            const w = document.createElement("span"); w.className = "w"; w.id = "w" + i;
+            w.innerHTML = '<span class="bg" id="bg' + i + '"></span><span class="tx"></span>';
+            w.querySelector(".tx").textContent = W[i].text.toLocaleUpperCase("tr-TR");
+            el.appendChild(w);
+          }
+          cap.appendChild(el);
+          const start = W[g[0]].start, nx = gi + 1 < G.length ? W[G[gi + 1][0]].start : Infinity;
+          const end = Math.min(W[g[1]].end + 0.4, nx - 0.04, S2 - 0.05);
+          tl.set(el, { visibility: "visible" }, start);
+          tl.fromTo(el, { opacity: 0, y: 18, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.14, ease: "power2.out" }, start);
+          for (let i = g[0]; i <= g[1]; i++) {
+            const bg = "#bg" + i, w = W[i];
+            tl.to(bg, { opacity: 1, scaleX: 1, duration: Math.min(0.14, w.end - w.start), ease: "power2.out" }, w.start);
+            tl.fromTo("#w" + i, { scale: 1 }, { scale: 1.07, duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, w.start);
+            if (i < g[1]) { tl.to(bg, { opacity: 0, duration: 0.08 }, W[i + 1].start); tl.set(bg, { scaleX: 0 }, W[i + 1].start + 0.08); }
+          }
+          tl.to(el, { opacity: 0, duration: 0.08 }, end - 0.08);
+          tl.set(el, { visibility: "hidden" }, end);
+        });
+        // sahne 2: telefon
+        tl.fromTo("#sahne2", { opacity: 0 }, { opacity: 1, duration: 0.2 }, S2 - 0.1);
+        tl.fromTo("#phone", { y: 420, rotation: 4, scale: 0.92 }, { y: 0, rotation: 0, scale: 1, duration: 0.5, ease: "power3.out" }, S2 - 0.1);
+        tl.fromTo("#phone", { scale: 1 }, { scale: 1.035, duration: END - S2 - 0.4, ease: "sine.inOut", immediateRender: false }, S2 + 0.4);
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 80, y: 60, duration: END - S2, ease: "sine.inOut" }, S2);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -70, y: -50, duration: END - S2, ease: "sine.inOut" }, S2);
+        tl.set({}, {}, END);
+        window.__timelines["mt"] = tl;
+      }
+      document.fonts.ready.then(build);
+    })();
+  </script>
+</template>
