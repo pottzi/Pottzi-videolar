@@ -167,6 +167,9 @@ Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resm
 
 - Videolar [HyperFrames](https://hyperframes.heygen.com) ile HTML'den render edilir (`.claude/settings.json` eklentiyi yükler).
 - Seslendirme ElevenLabs ile yapılır (anahtar ortam ayarlarında kayıtlı). Seçili ses: **Liam** (`TX3LPaxmHKxFdv7VOQHJ`), model `eleven_v4`, dil `tr`.
+- Hazır HyperFrames şablonlarının tamamı (448) `sablonlar/` klasöründe; liste `sablonlar/KATALOG.md`. Elle efekt yazmadan önce buraya bak.
+- Yardımcı araçlar `araclar/` içinde (altyazı/Whisper, ses efekti, arka plan silme, görsel büyütme); yeni oturumda `bash araclar/kurulum.sh`. Hazır ses efektleri `assets/efektler/`.
+- Türkçe seslendirme sesleri: Nil, Ecem, Gözde, Derya (kadın); Alican, Mehmet (erkek). `data-volume="1.8"`.
 - Logo: `assets/brand/pottzi-logo.png`; uygulama ekranı referansları: `assets/referans/`.
 
 ## 10. Repo kuralları
