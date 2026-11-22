@@ -41,7 +41,7 @@ Pottzi bir **flört uygulaması değildir.** Tinder ya da benzeri uygulamalarla 
 
 ### Talk to Many (topluluk)
 - Kullanıcılar bir **düşünce** paylaşır, başkaları bu düşünceye cevap verir.
-- Pottzi'de "yorum" değil **"düşünce"** kelimesi kullanılır.
+- Paylaşılanlara "düşünce" denir, cevaplar uygulamada "yorum" olarak geçer; ikisi de kullanılabilir.
 - Kim olduğunu bilmeden insanlar birbirinin fikirlerine karşılık verir.
 
 ### Yakında
@@ -72,7 +72,7 @@ Pottzi bir **flört uygulaması değildir.** Tinder ya da benzeri uygulamalarla 
 **Kullan:**
 - "sohbet", "sohbet ortağı", "karşılaşma"
 - "bağlantı", "Bağlantı kuruldu"
-- "düşünce" (Talk to Many için)
+- "düşünce" ya da "yorum" (Talk to Many için; uygulamada "yorum" geçtiği için kullanıcı ikisine de izin verdi)
 - "Konu aç"
 - "Görmeden konuşmak", "sadece kelimelerle"
 - "Kim olduğunu değil, ne düşündüğünü tanı."
@@ -80,7 +80,6 @@ Pottzi bir **flört uygulaması değildir.** Tinder ya da benzeri uygulamalarla 
 
 **Kullanma:**
 - **"eşleşme"** (flört uygulamalarını çağrıştırır)
-- **"yorum"** (yerine "düşünce")
 - "aşkı bul", "ruh eşin", "kızlarla tanış" gibi her türlü flört vaadi
 - "Taciz yok", "rahatsız edilmezsin" gibi garanti edilemeyecek güvenlik vaatleri
 - App Store ve mağaza metinlerinde "anonim" ve "rastgele" kelimeleri (Apple politikası). Sosyal medya içeriğinde bu kavramı "kimliğini gizle", "görmeden", "tanımadığın biri" gibi ifadelerle anlat.
@@ -170,7 +169,7 @@ Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resm
 - Hazır HyperFrames şablonlarının tamamı (448) `sablonlar/` klasöründe; liste `sablonlar/KATALOG.md`. Elle efekt yazmadan önce buraya bak.
 - Yardımcı araçlar `araclar/` içinde (altyazı/Whisper, ses efekti, arka plan silme, görsel büyütme); yeni oturumda `bash araclar/kurulum.sh`. Hazır ses efektleri `assets/efektler/`.
 - Türkçe seslendirme sesleri: Nil, Ecem, Gözde, Derya (kadın); Alican, Mehmet (erkek). `data-volume="1.8"`.
-- Gerçek uygulama ekran görüntüleri ve ölçülmüş renkler: `assets/referans/app/` (notlar `NOTLAR.md`). **Uygulama koyu temalı** (`#171722`); telefon ekranı çizerken buna uy.
+- Gerçek uygulama ekran görüntüleri ve ölçülmüş renkler: `assets/referans/app/` (notlar `NOTLAR.md`). Uygulamanın **koyu** (`#171722`) ve **açık** teması var; telefon ekranı çizerken bunlardan birine birebir uy.
 - Logo: `assets/brand/pottzi-logo.png`; uygulama ekranı referansları: `assets/referans/`.
 
 ## 10. Repo kuralları

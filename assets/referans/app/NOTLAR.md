@@ -10,7 +10,7 @@
 | `dusunce-odasi.png` | Düşünce odası (Talk to Many): başlık, düşünce kartları, "Bu odaya düşünceni bırak..." |
 
 ## Görsel gerçekler (ölçülmüş)
-- **Uygulama koyu tema:** zemin `#171722`, kart / gelen balon `#24242E` (ince açık çerçeve), alt menü `#21212B`. Videodaki telefon ekranları koyu olmalı.
+- **Uygulamanın açık ve koyu teması var.** Bu görüntüler koyu tema: zemin `#171722`, kart / gelen balon `#24242E` (ince açık çerçeve), alt menü `#21212B`. Açık tema örneği kullanıcının Meta reklamındaki ekran kaydında (beyaz/lavanta zemin).
 - Sayaç hapı ve giden mesaj: `#704BEF → #DA5BAC`.
 - Parlak ikincil degrade (Sohbete Başla, Bağlantı kuruldu banner'ı, ✨ konu butonu, P-numarası yazısı): pembe `#DB7DE5` → mavi `#67B7FA`.
 - Devam Et butonu: `#7026F2 → #B65EF4`.
