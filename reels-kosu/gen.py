@@ -1,6 +1,6 @@
 # Koşu sahnesi üreteci: compositions/ks.html dosyasını yazar.
-SKIN, SKIN2 = "#e8b896", "#d9a27f"
-TOP, TOP2 = "#4B54EC", "#3a43c9"
+SKIN, SKIN2 = "#f8d9c4", "#efc6ad"
+TOP, TOP2 = "#3FB8AF", "#2c9690"
 LEG, LEG2 = "#3a3170", "#16112c"
 
 def limb_leg(prefix, col):
@@ -27,17 +27,17 @@ RUNNER = f'''<g id="runner"><g id="rn-bob">
   <path d="M-42,12 C-48,-60 -46,-142 -22,-180 C-2,-198 32,-194 42,-172 C54,-122 52,-42 42,12 Z" fill="{TOP}" />
   <rect x="-6" y="-214" width="28" height="44" rx="12" fill="{SKIN2}" />
   <g id="rn-head" transform="translate(8 -256)">
-    <g id="rn-hair"><path d="M-6,-62 C-72,-62 -100,-12 -96,40 C-114,72 -104,112 -82,134 C-72,104 -62,84 -42,72 C-30,44 -20,22 -8,12 Z" fill="#5a3324" /></g>
-    <ellipse cx="0" cy="0" rx="56" ry="64" fill="{SKIN}" />
-    <circle cx="54" cy="8" r="11" fill="{SKIN}" />
-    <ellipse cx="-10" cy="8" rx="11" ry="15" fill="{SKIN2}" />
-    <path d="M-58,-8 C-62,-62 -20,-74 12,-70 C42,-66 60,-42 58,-14 C42,-36 10,-42 -22,-38 C-42,-32 -54,-22 -58,-8 Z" fill="#6e3f2c" />
-    <path d="M-52,-32 Q2,-74 54,-36" fill="none" stroke="#FE6D6A" stroke-width="13" stroke-linecap="round" />
-    <path d="M18,-20 Q28,-26 38,-20" fill="none" stroke="#4a2a1d" stroke-width="5" stroke-linecap="round" />
-    <g id="rn-eye"><ellipse cx="30" cy="-4" rx="5.5" ry="7.5" fill="#2a1a14" /></g>
-    <circle cx="26" cy="20" r="10" fill="#ff8a8a" opacity="0.4" />
-    <g id="rn-ms"><path d="M30,30 Q39,37 46,29" fill="none" stroke="#8a3b3b" stroke-width="5" stroke-linecap="round" /></g>
-    <g id="rn-mf" opacity="0"><path d="M32,32 L44,32" fill="none" stroke="#8a3b3b" stroke-width="5" stroke-linecap="round" /></g>
+    <g id="rn-hair"><ellipse cx="-52" cy="10" rx="16" ry="15" fill="#c4512a" stroke="#a8401f" stroke-width="2" /><ellipse cx="-62" cy="38" rx="16" ry="15" fill="#c4512a" stroke="#a8401f" stroke-width="2" /><ellipse cx="-72" cy="66" rx="16" ry="15" fill="#c4512a" stroke="#a8401f" stroke-width="2" /><ellipse cx="-82" cy="94" rx="16" ry="15" fill="#c4512a" stroke="#a8401f" stroke-width="2" /><ellipse cx="-92" cy="122" rx="16" ry="15" fill="#c4512a" stroke="#a8401f" stroke-width="2" /><circle cx="-96" cy="148" r="8" fill="#D857AE" /></g>
+    <path d="M-50,-28 C-46,-58 -14,-66 14,-62 C42,-56 56,-34 56,-8 C56,6 60,10 62,14 C58,18 54,18 54,22 C54,40 44,58 22,62 C-6,66 -40,56 -50,30 C-56,10 -56,-12 -50,-28 Z" fill="{SKIN}" />
+    <ellipse cx="-10" cy="8" rx="10" ry="14" fill="{SKIN2}" />
+    <path d="M-58,-8 C-62,-62 -20,-74 12,-70 C42,-66 60,-42 58,-14 C40,-40 6,-48 -24,-44 C-44,-38 -54,-24 -58,-8 Z" fill="#c4512a" />
+    <path d="M20,-22 Q30,-31 42,-24" fill="none" stroke="#a8401f" stroke-width="3.5" stroke-linecap="round" />
+    <g id="rn-eye"><ellipse cx="32" cy="-2" rx="6" ry="8.5" fill="#2a1a14" /><circle cx="34" cy="-5" r="2" fill="#fff" /></g>
+    <path d="M35,-10 l5,-6 M38,-7 l7,-4 M39,-3 l8,-1" stroke="#2a1a14" stroke-width="2.6" stroke-linecap="round" />
+    <g fill="#c9784f" opacity="0.7"><circle cx="18" cy="14" r="2.5" /><circle cx="28" cy="18" r="2.5" /><circle cx="36" cy="12" r="2.5" /></g>
+    <circle cx="24" cy="20" r="12" fill="#ff8aa6" opacity="0.5" />
+    <g id="rn-ms"><path d="M36,32 Q44,39 51,32" fill="#e0607e" stroke="#c94f6d" stroke-width="3" stroke-linecap="round" /></g>
+    <g id="rn-mf" opacity="0"><path d="M38,34 L50,34" fill="none" stroke="#c94f6d" stroke-width="4" stroke-linecap="round" /></g>
   </g>
   {limb_leg("lf", LEG)}
   {limb_arm("rf", TOP, SKIN)}
