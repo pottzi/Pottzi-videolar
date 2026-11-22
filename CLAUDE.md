@@ -170,6 +170,7 @@ Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resm
 - Hazır HyperFrames şablonlarının tamamı (448) `sablonlar/` klasöründe; liste `sablonlar/KATALOG.md`. Elle efekt yazmadan önce buraya bak.
 - Yardımcı araçlar `araclar/` içinde (altyazı/Whisper, ses efekti, arka plan silme, görsel büyütme); yeni oturumda `bash araclar/kurulum.sh`. Hazır ses efektleri `assets/efektler/`.
 - Türkçe seslendirme sesleri: Nil, Ecem, Gözde, Derya (kadın); Alican, Mehmet (erkek). `data-volume="1.8"`.
+- Gerçek uygulama ekran görüntüleri ve ölçülmüş renkler: `assets/referans/app/` (notlar `NOTLAR.md`). **Uygulama koyu temalı** (`#171722`); telefon ekranı çizerken buna uy.
 - Logo: `assets/brand/pottzi-logo.png`; uygulama ekranı referansları: `assets/referans/`.
 
 ## 10. Repo kuralları
