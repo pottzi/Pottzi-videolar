@@ -14,3 +14,13 @@ Yorum: Erken veri, 2–3 gün sonra tekrar bakılacak; eski "yapay zeka" kampany
 - En iyiler: Belinay android 7,30 · Belinay ios 7,40 · Yapay zeka mert seslendirme 8,46 · red android yeni 8,49 · Karakuzu apple 9,37.
 - En kötüler: Miray sami 27,07 · Miray sami android 26,90 · Yeni Uygulama tanıtımı (16 Ağu) 19,05.
 - Kullanıcı kuralı: Meta hesabında **onay almadan hiçbir değişiklik yapılmaz**, sadece okunur. Hedef kadın kullanıcı olduğu için cinsiyet/yaş kırılımı en değerli sonraki analiz.
+
+## Cinsiyet dağılımı (1 Ağu – 23 Kas 2026, tüm hesap)
+| | Harcama | Gösterim | Tıklama | İndirme | İndirme başı | Tıklama→indirme |
+|---|---|---|---|---|---|---|
+| Kadın | 4.209 TL (%3,6) | 38.086 | 673 | 151 (%1,8) | 27,9 TL | %22 |
+| Erkek | 112.375 TL (%96) | 875.399 | 20.734 | 8.112 | 13,9 TL | %39 |
+
+- Reklamlar neredeyse tamamen erkeklere gidiyor; Meta "indirme" için optimize ettiğinden ucuz indiren erkekleri buluyor.
+- Kadınlar tıklasa da mağazada daha az indiriyor (%22 vs %39) → mağaza sayfası kadınları ikna etmiyor olabilir.
+- 23 Kas "temiz kadın" reklamları: 18 indirmenin 1'i kadın.
