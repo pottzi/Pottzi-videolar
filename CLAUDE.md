@@ -132,6 +132,7 @@ Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resm
 - **Kapanış kartı:** Logo + "Kimliğini gizle. Sesini duyur." + "Konu aç. Tanımadığın biriyle konuş." + "App Store · Google Play".
 - **Ses:** Instagram'daki trend/telifli müzikleri videoya gömme; onlar Instagram'da paylaşırken eklenir. Videoya sadece telifsiz müzik, efekt ya da ElevenLabs seslendirmesi eklenebilir.
 - **Güvenli alan:** Instagram arayüzü alt ve sağ kenarı kapattığı için önemli yazıları alttan ~300 piksel ve sağdan ~150 piksel içeride tut.
+- Render sonrası ffmpeg ile işlenen her mp4 `-movflags +faststart` ile kaydedilmeli; yoksa iPad sohbet oynatıcısında oynamaz.
 - Videolar `videolar/` klasörüne, anlaşılır isimlerle kaydedilir (örn. `2026-11-15_sayacli-sohbet.mp4`).
 
 ---
