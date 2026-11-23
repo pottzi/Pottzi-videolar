@@ -126,7 +126,7 @@ Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resm
 
 ## 6. Video teknik kuralları
 
-- **Format:** Dikey 9:16, 1080×1920, 30 fps, MP4 (H.264).
+- **Format:** Şu an sadece Meta reklamı yapılıyor: **4:5, 1080×1350**, 30 fps, MP4 (H.264). Kullanıcıya **yalnızca 4:5** gönder; 9:16/TikTok versiyonu kullanıcı istemedikçe üretme ve gönderme.
 - **Süre:** Reels/TikTok için 10–20 saniye ideal, en fazla 60 saniye.
 - **İlk 2 saniye:** İzleyiciyi durduran bir hook olmalı.
 - **Kapanış kartı:** Logo + "Kimliğini gizle. Sesini duyur." + "Konu aç. Tanımadığın biriyle konuş." + "App Store · Google Play".
