@@ -1,0 +1,19 @@
+<template>
+  <style>
+    #lgroot { position: absolute; inset: 0; background: #fff; overflow: hidden; }
+    #lglogo { position: absolute; left: 165px; top: 585px; width: 750px; height: 750px; }
+    #lgglow { position: absolute; left: 190px; top: 125px; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(182,85,205,0.35), rgba(182,85,205,0) 65%); }
+  </style>
+  <div id="lgroot" data-composition-id="lg" data-width="1080" data-height="1920">
+        <img id="lglogo" src="../assets/logo-yeni.png" alt="Pottzi" />
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#lglogo", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 0.05);
+      tl.to("#lglogo", { scale: 1.04, duration: 1.4, ease: "sine.inOut" }, 0.6);
+      tl.set({}, {}, 4.0);
+      window.__timelines["lg"] = tl;
+    })();
+  </script>
+</template>

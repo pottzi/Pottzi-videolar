@@ -1,0 +1,88 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #000; font-family: "Poppins", sans-serif; }
+    #ana { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    #cap { position: absolute; inset: 0; pointer-events: none; }
+    .grp { position: absolute; left: 80px; right: 80px; top: 1330px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; opacity: 0; visibility: hidden; }
+    .w { position: relative; display: inline-block; padding: 6px 14px 10px; font-size: 66px; font-weight: 800; line-height: 1.05; color: #fff;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.6), 0 0 3px rgba(0,0,0,0.6); }
+    .w .bg { position: absolute; inset: 0; border-radius: 16px; background: linear-gradient(90deg, #704BEF, #DA5BAC); box-shadow: 0 10px 28px rgba(112,75,239,0.45);
+      opacity: 0; transform: scaleX(0); transform-origin: 0% 50%; z-index: 0; }
+    .w .tx { position: relative; z-index: 1; }
+    #app { position: absolute; inset: 0; visibility: hidden; background: linear-gradient(135deg, #704BEF 0%, #B655CD 55%, #DA5BAC 100%); overflow: hidden; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); }
+    #b1 { left: -180px; top: 120px; width: 700px; height: 700px; background: rgba(103,183,250,0.55); }
+    #b2 { right: -220px; bottom: 80px; width: 760px; height: 760px; background: rgba(254,109,106,0.45); }
+    #phone { position: absolute; left: 234px; top: 331px; width: 612px; height: 1258px; border-radius: 86px; background: #121018; padding: 16px;
+      box-shadow: 0 40px 100px rgba(30,10,70,0.55), inset 0 0 0 3px #2c2838; }
+    #scr { position: relative; width: 580px; height: 1226px; border-radius: 72px; overflow: hidden; background: #fff; }
+    #kayit { position: absolute; left: 0; top: 56px; width: 580px; height: 1174px; object-fit: cover; object-position: 50% 0%; }
+    #sbar { position: absolute; left: 0; right: 0; top: 0; height: 56px; background: #f7f4fd; z-index: 2; }
+    #sbar .tm { position: absolute; left: 52px; top: 16px; font-size: 22px; font-weight: 600; color: #111; }
+    #sbar .isl { position: absolute; left: 50%; top: 11px; width: 150px; height: 38px; margin-left: -75px; border-radius: 20px; background: #000; }
+    #sbar .ic { position: absolute; right: 40px; top: 19px; display: flex; gap: 7px; align-items: center; }
+    #banner { position: absolute; left: 70px; right: 70px; top: 330px; height: 124px; border-radius: 62px; background: linear-gradient(90deg, #DB7DE5, #67B7FA);
+      box-shadow: 0 18px 50px rgba(120,80,200,0.5); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 40px; font-weight: 800; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="an" data-width="1080" data-height="1920">
+    <video id="ana" class="clip" src="../assets/video/ana.mp4" data-start="0" data-duration="26.03" data-track-index="0" muted playsinline></video>
+    <div id="app">
+      <div id="b1" class="blob"></div><div id="b2" class="blob"></div>
+      <div id="phone"><div id="scr">
+        <div id="sbar"><span class="tm">21:04</span><span class="isl"></span><span class="ic">
+          <svg width="26" height="16" viewBox="0 0 26 16"><rect x="0" y="10" width="4" height="6" rx="1" fill="#111"/><rect x="7" y="7" width="4" height="9" rx="1" fill="#111"/><rect x="14" y="4" width="4" height="12" rx="1" fill="#111"/><rect x="21" y="0" width="4" height="16" rx="1" fill="#111"/></svg>
+          <svg width="22" height="16" viewBox="0 0 22 16"><path d="M11 15l3.2-3.6a4.6 4.6 0 0 0-6.4 0z M4.4 8.1a9.4 9.4 0 0 1 13.2 0l-2.1 2.3a6.3 6.3 0 0 0-9 0z M1 4.6a14.3 14.3 0 0 1 20 0l-2.1 2.3a11.2 11.2 0 0 0-15.8 0z" fill="#111"/></svg>
+          <svg width="34" height="16" viewBox="0 0 34 16"><rect x="1" y="1" width="28" height="14" rx="4" fill="none" stroke="#111" stroke-width="1.6" opacity="0.5"/><rect x="3.5" y="3.5" width="21" height="9" rx="2" fill="#111"/><rect x="30.5" y="5" width="2" height="6" rx="1" fill="#111" opacity="0.5"/></svg>
+        </span></div>
+        <video id="kayit" class="clip" src="../assets/video/kayit.mp4" data-start="10.5" data-duration="3.0" data-track-index="1" muted playsinline></video>
+      </div></div>
+    </div>
+    <div id="banner">Bağlantı kuruldu! 🎉 Sohbet kalıcı oldu.</div>
+    <div id="cap"></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function build() {
+        const W = [{"text": "Kalabalığın", "start": 0.6, "end": 1.16}, {"text": "içindeydim", "start": 1.16, "end": 1.9}, {"text": "ama", "start": 1.9, "end": 2.72}, {"text": "kimse", "start": 2.72, "end": 3.24}, {"text": "beni", "start": 3.24, "end": 3.6}, {"text": "duymuyordu.", "start": 3.6, "end": 4.3}, {"text": "Sonra", "start": 13.7, "end": 14.1}, {"text": "hiç", "start": 14.1, "end": 14.68}, {"text": "tanımadığım", "start": 14.68, "end": 15.4}, {"text": "biri", "start": 15.4, "end": 15.68}, {"text": "sadece", "start": 15.68, "end": 16.4}, {"text": "kelimelerimle", "start": 16.4, "end": 17.44}, {"text": "tanıdı", "start": 17.44, "end": 17.8}, {"text": "beni.", "start": 17.8, "end": 17.98}, {"text": "Kim", "start": 20.0, "end": 20.2}, {"text": "olduğumu", "start": 20.2, "end": 20.74}, {"text": "değil,", "start": 20.74, "end": 21.0}, {"text": "ne", "start": 21.32, "end": 21.7}, {"text": "düşündüğümü", "start": 21.7, "end": 22.28}, {"text": "merak", "start": 22.28, "end": 22.54}, {"text": "etti.", "start": 22.54, "end": 22.98}], G = [[0, 1], [2, 5], [6, 9], [10, 13], [14, 16], [17, 20]], A1 = 10.5, A2 = 13.5, END = 26.03;
+        const cap = document.getElementById("cap");
+        G.forEach((g, gi) => {
+          const el = document.createElement("div"); el.className = "grp";
+          for (let i = g[0]; i <= g[1]; i++) {
+            const w = document.createElement("span"); w.className = "w"; w.id = "w" + i;
+            w.innerHTML = '<span class="bg" id="bg' + i + '"></span><span class="tx"></span>';
+            w.querySelector(".tx").textContent = W[i].text.toLocaleUpperCase("tr-TR");
+            el.appendChild(w);
+          }
+          cap.appendChild(el);
+          const start = W[g[0]].start, nx = gi + 1 < G.length ? W[G[gi + 1][0]].start : Infinity;
+          const end = Math.min(W[g[1]].end + 0.6, nx - 0.04);
+          tl.set(el, { visibility: "visible" }, start);
+          tl.fromTo(el, { opacity: 0, y: 18, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.14, ease: "power2.out" }, start);
+          for (let i = g[0]; i <= g[1]; i++) {
+            const bg = "#bg" + i, w = W[i];
+            tl.to(bg, { opacity: 1, scaleX: 1, duration: Math.min(0.14, w.end - w.start), ease: "power2.out" }, w.start);
+            tl.fromTo("#w" + i, { scale: 1 }, { scale: 1.07, duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, w.start);
+            if (i < g[1]) { tl.to(bg, { opacity: 0, duration: 0.08 }, W[i + 1].start); tl.set(bg, { scaleX: 0 }, W[i + 1].start + 0.08); }
+          }
+          tl.to(el, { opacity: 0, duration: 0.1 }, end - 0.1);
+          tl.set(el, { visibility: "hidden" }, end);
+        });
+        // uygulama sahnesi
+        tl.set("#app", { visibility: "visible" }, A1 - 0.15);
+        tl.fromTo("#app", { opacity: 0 }, { opacity: 1, duration: 0.15 }, A1 - 0.15);
+        tl.fromTo("#phone", { y: 500, rotation: 5, scale: 0.9 }, { y: 0, rotation: 0, scale: 1, duration: 0.5, ease: "power3.out" }, A1 - 0.15);
+        tl.fromTo("#phone", { scale: 1 }, { scale: 1.04, duration: 2.2, ease: "sine.inOut", immediateRender: false }, A1 + 0.4);
+        tl.to("#phone", { y: -300, scale: 0.9, opacity: 0, duration: 0.3, ease: "power2.in" }, A2 - 0.3);
+        tl.to("#app", { opacity: 0, duration: 0.2 }, A2 - 0.15);
+        tl.set("#app", { visibility: "hidden" }, A2 + 0.05);
+        // bağlantı kuruldu
+        tl.fromTo("#banner", { opacity: 0, y: -120 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" }, 18.5);
+        tl.to("#banner", { opacity: 0, y: -80, duration: 0.35, ease: "power2.in" }, 19.35);
+        tl.set({}, {}, END);
+        window.__timelines["an"] = tl;
+      }
+      document.fonts.ready.then(build);
+    })();
+  </script>
+</template>
