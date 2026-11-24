@@ -1,0 +1,40 @@
+<template>
+  <style>
+    #gvroot { position: absolute; inset: 0; overflow: hidden; background: #F3EFFC; font-family: "Poppins", sans-serif; color: #15131F; }
+    .gblob { position: absolute; border-radius: 50%; filter: blur(80px); }
+    #gb1 { left: -200px; top: -160px; width: 640px; height: 640px; background: rgba(214,119,182,0.35); }
+    #gb2 { right: -220px; bottom: -200px; width: 700px; height: 700px; background: rgba(111,75,241,0.28); }
+    #gshield { position: absolute; left: 50%; top: 150px; width: 170px; height: 170px; margin-left: -85px; border-radius: 50%;
+      background: linear-gradient(135deg, #6F4BF1, #D857AE); box-shadow: 0 24px 60px rgba(111,75,241,0.4); display: flex; align-items: center; justify-content: center; }
+    #gtitle { position: absolute; left: 0; right: 0; top: 360px; text-align: center; font-size: 76px; font-weight: 800; letter-spacing: -0.01em; }
+    #glist { position: absolute; left: 110px; right: 110px; top: 520px; display: flex; flex-direction: column; gap: 26px; }
+    .gi { display: flex; align-items: center; gap: 28px; padding: 30px 36px; border-radius: 36px; background: #fff; box-shadow: 0 14px 40px rgba(80,60,140,0.12); opacity: 0; }
+    .gi .ic { flex: none; width: 76px; height: 76px; border-radius: 24px; background: #F3EFFC; display: flex; align-items: center; justify-content: center; }
+    .gi .tx { font-size: 40px; font-weight: 700; line-height: 1.25; }
+    .gi .tx small { display: block; font-size: 30px; font-weight: 500; color: #78748C; margin-top: 4px; }
+  </style>
+  <div id="gvroot" data-composition-id="gv" data-width="1080" data-height="1350">
+    <div id="gb1" class="gblob"></div><div id="gb2" class="gblob"></div>
+    <div id="gshield"><svg width="92" height="92" viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5z" fill="#fff"/><path d="M8.5 12.2l2.3 2.3 4.7-4.9" stroke="#8a55e0" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div id="gtitle">Kontrol sende</div>
+    <div id="glist">
+      <div class="gi" id="gi1"><div class="ic"><svg width="44" height="44" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#D857AE" stroke-width="2.4" fill="none"/><path d="M5.8 5.8l12.4 12.4" stroke="#D857AE" stroke-width="2.4" stroke-linecap="round"/></svg></div><div class="tx">İstemediğin kişiyi engelle</div></div>
+      <div class="gi" id="gi2"><div class="ic"><svg width="44" height="44" viewBox="0 0 24 24"><path d="M6 21V4m0 0h10l-2 4 2 4H6" stroke="#6F4BF1" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tx">Rahatsız olursan şikâyet et</div></div>
+      <div class="gi" id="gi3"><div class="ic"><svg width="44" height="44" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8" stroke="#8a55e0" stroke-width="2.4" fill="none"/><path d="M12 9v4l2.5 2M10 2h4" stroke="#8a55e0" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></div><div class="tx">Sohbet 3 dakika<small>Devamına ikiniz birlikte karar verirsiniz.</small></div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function build() {
+        tl.fromTo("#gvroot", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0);
+        tl.fromTo("#gshield", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2)" }, 0.05);
+        tl.fromTo("#gtitle", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.2);
+        ["#gi1", "#gi2", "#gi3"].forEach((id, i) => tl.fromTo(id, { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.45 + i * 0.3));
+        tl.set({}, {}, 3.2);
+        window.__timelines["gv"] = tl;
+      }
+      document.fonts.ready.then(build);
+    })();
+  </script>
+</template>

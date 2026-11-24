@@ -51,6 +51,7 @@ Pottzi bir **flört uygulaması değildir.** Tinder ya da benzeri uygulamalarla 
 ### Önemli ürün gerçekleri (içerikte yanlış vaat verme)
 - Pottzi'de **sesli ya da görüntülü sohbet yok**, sadece yazışma var. Videolarda insanlar sesli konuşuyor olsa bile, uygulamanın yazılı olduğu doğru anlatılmalı ("sadece kelimelerle").
 - Pottzi'de **fotoğraf gönderme yok.** "Fotoğraf yok" markanın temel vaadidir.
+- Uygulamada **engelleme ve şikâyet sistemi var.** Kadın kullanıcıların güveni için içeriklerde anlatılmalı ("İstemediğin kişiyi engelle", "Rahatsız olursan şikâyet et"). Ama "taciz yok", "bir daha asla karşına çıkmaz" gibi garanti ya da doğrulanmamış ayrıntı verilmez.
 - Kullanıcıya belirli bir kişiyle (örneğin bir kadınla) konuşacağı **garanti edilmez.** Uygulama cinsiyet bilmez.
 - Uygulamanın gerçek ekranlarını taklit eden sahte arayüzler, gerçekte olmayan özellikleri gösteremez.
 
@@ -176,12 +177,15 @@ Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resm
 ## 9b. Meta reklam kalıbı (kullanıcının standart isteği)
 
 Kullanıcı genelde sadece yeni bir **konuşan kız videosu** (Veo) atar. Yapılacak:
-1. Şablon proje: `reels-meta-2/` (kopyala, `kadin.mp4` / `kadin.mp3`'ü yenisiyle değiştir).
+1. Şablon proje: `reels-meta-3/` (güven kartlı en güncel hâl) (kopyala, `kadin.mp4` / `kadin.mp3`'ü yenisiyle değiştir).
 2. Format **4:5, 1080×1350**. Kız tam ekran, **1x hız** (yavaşlatma/hızlandırma yok), ses `loudnorm I=-16`.
 3. Konuşmayı `araclar/altyazi.py` ile çıkar, kelime kelime Pottzi degradeli altyazı (Türkçe büyük harf `tr-TR`; "Potsy" → "Pottzi" gibi hataları düzelt).
 4. Ardından aynı **"sohbet bulundu" ekran kaydı** (`reels-meta-2/assets/video/kayit.mp4`, 2x hız) telefon çerçevesinde, degradeli zeminde, çizilmiş temiz durum çubuğuyla; tık/melodi/klavye/mesaj efektleri olaylara denk.
-5. Kapanış: beyaz zeminde `pottzi-logo-seffaf.png`, 2 sn.
-6. Render: `videolar/<tarih>_meta-reklam-<ad>-4x5.mp4`.
+5. Ekran kaydından sonra **"Kontrol sende" güven kartı** (engelle · şikâyet et · 3 dakika), şablon `reels-meta-3/compositions/gv.html`.
+6. Kapanış: beyaz zeminde `pottzi-logo-seffaf.png`, 2 sn.
+7. Tık (`buton`) ve klavye (`yaziyor`) sesleri kullanılmaz; kullanıcı yapay buldu.
+8. Render: `videolar/<tarih>_meta-reklam-<ad>-4x5.mp4`.
+9. Kadın hedefli videolarda kız doğal/sade görünümlü (bol kazak, az makyaj, ev ortamı) ve "Kızlar…" diye kadınlara seslenir; örnek `reels-meta-3`.
 
 ## 10. Repo kuralları
 

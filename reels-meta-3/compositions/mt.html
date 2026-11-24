@@ -1,0 +1,81 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #000; font-family: "Poppins", sans-serif; }
+    #kadin { position: absolute; inset: 0; width: 1080px; height: 1350px; object-fit: cover; }
+    #cap { position: absolute; inset: 0; pointer-events: none; }
+    .grp { position: absolute; left: 70px; right: 70px; top: 930px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; opacity: 0; visibility: hidden; }
+    .w { position: relative; display: inline-block; padding: 6px 14px 10px; font-size: 64px; font-weight: 800; line-height: 1.05; color: #fff; letter-spacing: 0.01em;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.55), 0 0 3px rgba(0,0,0,0.6); }
+    .w .bg { position: absolute; inset: 0; border-radius: 16px; background: linear-gradient(90deg, #704BEF, #DA5BAC); box-shadow: 0 10px 28px rgba(112,75,239,0.45);
+      opacity: 0; transform: scaleX(0); transform-origin: 0% 50%; z-index: 0; }
+    .w .tx { position: relative; z-index: 1; }
+
+    #sahne2 { position: absolute; inset: 0; opacity: 0; background: linear-gradient(135deg, #704BEF 0%, #B655CD 55%, #DA5BAC 100%); overflow: hidden; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(70px); }
+    #b1 { left: -160px; top: -120px; width: 620px; height: 620px; background: rgba(103,183,250,0.55); }
+    #b2 { right: -200px; bottom: -200px; width: 700px; height: 700px; background: rgba(254,109,106,0.45); }
+    #phone { position: absolute; left: 234px; top: 46px; width: 612px; height: 1258px; border-radius: 86px; background: #121018; padding: 16px;
+      box-shadow: 0 40px 100px rgba(30,10,70,0.55), inset 0 0 0 3px #2c2838; }
+    #scr { position: relative; width: 580px; height: 1226px; border-radius: 72px; overflow: hidden; background: #fff; }
+    #kayit { position: absolute; left: 0; top: 56px; width: 580px; height: 1174px; object-fit: cover; object-position: 50% 0%; }
+    #sbar { position: absolute; left: 0; right: 0; top: 0; height: 56px; background: #f7f4fd; z-index: 2; font-family: "Poppins", sans-serif; }
+    #sbar .tm { position: absolute; left: 52px; top: 16px; font-size: 22px; font-weight: 600; color: #111; }
+    #sbar .isl { position: absolute; left: 50%; top: 11px; width: 150px; height: 38px; margin-left: -75px; border-radius: 20px; background: #000; }
+    #sbar .ic { position: absolute; right: 40px; top: 19px; display: flex; gap: 7px; align-items: center; }
+  </style>
+  <div id="root" data-composition-id="mt" data-width="1080" data-height="1350">
+    <video id="kadin" class="clip" src="../assets/video/kadin.mp4" data-start="0" data-duration="10" data-track-index="0" muted playsinline></video>
+    <div id="cap"></div>
+    <div id="sahne2">
+      <div id="b1" class="blob"></div><div id="b2" class="blob"></div>
+      <div id="phone"><div id="scr">
+        <div id="sbar"><span class="tm">21:04</span><span class="isl"></span><span class="ic">
+          <svg width="26" height="16" viewBox="0 0 26 16"><rect x="0" y="10" width="4" height="6" rx="1" fill="#111"/><rect x="7" y="7" width="4" height="9" rx="1" fill="#111"/><rect x="14" y="4" width="4" height="12" rx="1" fill="#111"/><rect x="21" y="0" width="4" height="16" rx="1" fill="#111"/></svg>
+          <svg width="22" height="16" viewBox="0 0 22 16"><path d="M11 15l3.2-3.6a4.6 4.6 0 0 0-6.4 0z M4.4 8.1a9.4 9.4 0 0 1 13.2 0l-2.1 2.3a6.3 6.3 0 0 0-9 0z M1 4.6a14.3 14.3 0 0 1 20 0l-2.1 2.3a11.2 11.2 0 0 0-15.8 0z" fill="#111"/></svg>
+          <svg width="34" height="16" viewBox="0 0 34 16"><rect x="1" y="1" width="28" height="14" rx="4" fill="none" stroke="#111" stroke-width="1.6" opacity="0.5"/><rect x="3.5" y="3.5" width="21" height="9" rx="2" fill="#111"/><rect x="30.5" y="5" width="2" height="6" rx="1" fill="#111" opacity="0.5"/></svg>
+        </span></div>
+        <video id="kayit" class="clip" src="../assets/video/kayit.mp4" data-start="10" data-duration="6.57" data-track-index="1" muted playsinline></video>
+      </div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function build() {
+        const W = [{"text": "Kızlar,", "start": 0.94, "end": 1.86}, {"text": "gece", "start": 2.16, "end": 2.32}, {"text": "ikide", "start": 2.32, "end": 2.76}, {"text": "kafanız", "start": 2.76, "end": 3.16}, {"text": "doluyken", "start": 3.16, "end": 3.72}, {"text": "arkadaşlarınızı", "start": 3.72, "end": 4.66}, {"text": "uyandırmak", "start": 4.66, "end": 5.2}, {"text": "istemiyorsanız,", "start": 5.2, "end": 6.0}, {"text": "ben", "start": 6.44, "end": 7.3}, {"text": "artık", "start": 7.3, "end": 7.58}, {"text": "tanımadığım", "start": 7.58, "end": 8.18}, {"text": "biriyle", "start": 8.18, "end": 8.56}, {"text": "yazışıyorum.", "start": 8.56, "end": 9.12}], G = [[0, 0], [1, 4], [5, 7], [8, 11], [12, 12]], S2 = 10.0, END = 16.57;
+        const cap = document.getElementById("cap");
+        G.forEach((g, gi) => {
+          const el = document.createElement("div"); el.className = "grp"; el.id = "g" + gi;
+          for (let i = g[0]; i <= g[1]; i++) {
+            const w = document.createElement("span"); w.className = "w"; w.id = "w" + i;
+            w.innerHTML = '<span class="bg" id="bg' + i + '"></span><span class="tx"></span>';
+            w.querySelector(".tx").textContent = W[i].text.toLocaleUpperCase("tr-TR");
+            el.appendChild(w);
+          }
+          cap.appendChild(el);
+          const start = W[g[0]].start, nx = gi + 1 < G.length ? W[G[gi + 1][0]].start : Infinity;
+          const end = Math.min(W[g[1]].end + 0.4, nx - 0.04, S2 - 0.05);
+          tl.set(el, { visibility: "visible" }, start);
+          tl.fromTo(el, { opacity: 0, y: 18, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.14, ease: "power2.out" }, start);
+          for (let i = g[0]; i <= g[1]; i++) {
+            const bg = "#bg" + i, w = W[i];
+            tl.to(bg, { opacity: 1, scaleX: 1, duration: Math.min(0.14, w.end - w.start), ease: "power2.out" }, w.start);
+            tl.fromTo("#w" + i, { scale: 1 }, { scale: 1.07, duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, w.start);
+            if (i < g[1]) { tl.to(bg, { opacity: 0, duration: 0.08 }, W[i + 1].start); tl.set(bg, { scaleX: 0 }, W[i + 1].start + 0.08); }
+          }
+          tl.to(el, { opacity: 0, duration: 0.08 }, end - 0.08);
+          tl.set(el, { visibility: "hidden" }, end);
+        });
+        // sahne 2: telefon
+        tl.fromTo("#sahne2", { opacity: 0 }, { opacity: 1, duration: 0.2 }, S2 - 0.1);
+        tl.fromTo("#phone", { y: 420, rotation: 4, scale: 0.92 }, { y: 0, rotation: 0, scale: 1, duration: 0.5, ease: "power3.out" }, S2 - 0.1);
+        tl.fromTo("#phone", { scale: 1 }, { scale: 1.035, duration: END - S2 - 0.4, ease: "sine.inOut", immediateRender: false }, S2 + 0.4);
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 80, y: 60, duration: END - S2, ease: "sine.inOut" }, S2);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -70, y: -50, duration: END - S2, ease: "sine.inOut" }, S2);
+        tl.set({}, {}, END);
+        window.__timelines["mt"] = tl;
+      }
+      document.fonts.ready.then(build);
+    })();
+  </script>
+</template>
