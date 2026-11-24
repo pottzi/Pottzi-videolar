@@ -7,6 +7,8 @@ Kurulum (yeni oturumda): `bash araclar/kurulum.sh`
 | `altyazi.py` | Türkçe sesi kelime kelime zamanlı altyazıya çevirir (Whisper) | `python3 araclar/altyazi.py ses.mp3 cikti.json` |
 | `efekt.sh` | ElevenLabs ile ses efekti üretir | `araclar/efekt.sh "soft pop" cikti.mp3 0.6` |
 | `arkaplan.py` | Görselden arka planı siler (şeffaf PNG) | `python3 araclar/arkaplan.py girdi.png cikti.png` |
+| `auto-editor` | Videodaki sessiz yerleri/duraksamaları otomatik keser (gerçek çekim UGC'lerde ölü anlar için). Bitiş gülümsemesi gibi istenen sessiz kısımları da kesebilir, `--margin` ile ayarla | `auto-editor girdi.mp4 --margin 0.25s --no-open -o cikti.mp4` |
+| `yt-dlp` | Bağlantıdan video indirir (kendi paylaşımlarımız, referans videolar). Başkasının içeriği sadece inceleme amaçlı, reklamda kullanılmaz | `yt-dlp -o cikti.mp4 <link>` |
 | `buyut.py` | Görseli 2 kat büyütür (Real-ESRGAN, kare başı ~1,5 dk, sadece tek görseller için) | `python3 araclar/buyut.py girdi.png cikti.png` |
 
 Video arka planı silme: `npx hyperframes remove-background girdi.mp4`
