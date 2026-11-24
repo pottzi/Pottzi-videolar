@@ -37,3 +37,13 @@ Yorum: Erken veri, 2–3 gün sonra tekrar bakılacak; eski "yapay zeka" kampany
 ## Bekleyen işler
 - **"Dertleşme" reklamı** (`videolar/2026-11-24_meta-reklam-kadin4-dertlesme-4x5.mp4`, kazaklı kız ikinci konuşma) henüz Meta'ya yüklenmedi. Kadın 18–30 testinde kaybeden reklamın yerine eklenecek; kullanıcı onayıyla.
 - 2026-11-24 23:00 (TR): kadın testindeki **animasyon** reklamlarının durumuna bakılacak; zayıfsa kaldırma önerilecek (kullanıcı onayı olmadan dokunulmaz).
+
+## Kadın testi – 1. gün (2026-11-24, 11:05–23:00 TR, ~12 saat)
+| Reklam | Harcama | Gösterim | Tıklama | İndirme | Sonuna kadar izlenme |
+|---|---|---|---|---|---|
+| Kalabalıkta (animasyon) – iOS | 38,40 TL | 318 | 0 | 0* | 12 (%3,8) |
+| Kalabalıkta (animasyon) – Android | 22,03 TL | 249 | 4 | 1 | 11 (%4,4) |
+| Kızlar gece ikide – iOS | 10,20 TL | 73 | 1 | 0* | 1 (%1,4) |
+| Kızlar gece ikide – Android | 18,22 TL | 155 | 1 | 1 | 5 (%3,2) |
+- Harcamanın %100'ü kadınlara gitti (88,85 TL). *iOS indirmeleri Meta'ya gecikmeli düşebilir.
+- Karar: animasyon kalsın (daha çok izleniyor, Meta onu tercih ediyor); 3. gün değerlendirmesi beklenecek.
