@@ -24,3 +24,12 @@ Yorum: Erken veri, 2–3 gün sonra tekrar bakılacak; eski "yapay zeka" kampany
 - Reklamlar neredeyse tamamen erkeklere gidiyor; Meta "indirme" için optimize ettiğinden ucuz indiren erkekleri buluyor.
 - Kadınlar tıklasa da mağazada daha az indiriyor (%22 vs %39) → mağaza sayfası kadınları ikna etmiyor olabilir.
 - 23 Kas "temiz kadın" reklamları: 18 indirmenin 1'i kadın.
+
+## Taslak: Kadın 18–30 testi (2026-11-24, henüz yayında değil)
+- Meta uygulama kimliği: 1699205661164614 · Sayfa: 1258443587348393 · Instagram (@pottziapp): 17841423706591701
+- iOS kampanya 120251836227750761 (100 TL/gün) → reklam seti 120251836233240761 (TR, kadın, 18–30, iOS 14+, A+A kapalı)
+  - Reklamlar: "Kizlar gece ikide - iOS" 120251836238860761 · "Kalabalikta duyulmayan - iOS" 120251836238900761
+- Android kampanya 120251836227820761 (100 TL/gün) → reklam seti 120251836233260761 (TR, kadın, 18–30, Android, A+A kapalı)
+  - Reklamlar: "Kizlar gece ikide - Android" 120251836238920761 · "Kalabalikta duyulmayan - Android" 120251836238990761
+  - Uyarı: Meta taslakta "iOS App Required / iOS 14 kampanyası" hatası veriyor; Reklam Yöneticisi'nde kampanyadaki iOS 14+ seçeneği kapatılmalı.
+- Videolar: 1847667106377785 (kadin3 4:5), 29491762307106722 (animasyon 4:5)
