@@ -33,3 +33,7 @@ Yorum: Erken veri, 2–3 gün sonra tekrar bakılacak; eski "yapay zeka" kampany
   - Reklamlar: "Kizlar gece ikide - Android" 120251836238920761 · "Kalabalikta duyulmayan - Android" 120251836238990761
   - iOS 14+ ayarı kullanıcı tarafından kapatıldı. Not: Meta artık CTA içinde link_title kabul etmiyor; başlık video_data.title'da olmalı.
 - Videolar: 1847667106377785 (kadin3 4:5), 29491762307106722 (animasyon 4:5)
+
+## Bekleyen işler
+- **"Dertleşme" reklamı** (`videolar/2026-11-24_meta-reklam-kadin4-dertlesme-4x5.mp4`, kazaklı kız ikinci konuşma) henüz Meta'ya yüklenmedi. Kadın 18–30 testinde kaybeden reklamın yerine eklenecek; kullanıcı onayıyla.
+- 2026-11-24 23:00 (TR): kadın testindeki **animasyon** reklamlarının durumuna bakılacak; zayıfsa kaldırma önerilecek (kullanıcı onayı olmadan dokunulmaz).
