@@ -16,6 +16,12 @@ if [ "${1:-}" = "--tam" ]; then
   G="$R/.claude/skills/ghost-editor"
   python3 "$G/scripts/library_restore.py" --licensed-only      # Mixkit efekt + müzik, Fluent emoji (telifsiz/lisanslı)
   bash "$G/scripts/setup_looks.sh"                              # film renk tonları (LUT)
+  # DeepFilterNet modeli: GitHub'ın doğrudan dosya bağlantısı oturumda 403 verebiliyor, depoyu seyrek kopyalayıp alıyoruz
+  if [ ! -d /root/.cache/DeepFilterNet/DeepFilterNet3 ]; then
+    rm -rf /tmp/dfrepo && git clone -q --depth 1 --filter=blob:none --sparse https://github.com/Rikorose/DeepFilterNet /tmp/dfrepo \
+      && (cd /tmp/dfrepo && git sparse-checkout set models) && mkdir -p /root/.cache/DeepFilterNet \
+      && python3 -c "import zipfile; zipfile.ZipFile('/tmp/dfrepo/models/DeepFilterNet3.zip').extractall('/root/.cache/DeepFilterNet')"
+  fi
   ffmpeg -v error -y -f lavfi -i "sine=frequency=300:duration=1" /tmp/_t.wav && bash "$G/scripts/denoise.sh" /tmp/_t.wav /tmp/_t2.wav >/dev/null
   bash "$G/scripts/setup_matte.sh"                              # kişi maskesi (yazıyı kişinin arkasına koymak için)
   (cd "$R/araclar/claude-animation-skills/kit" && npm install --no-audit --no-fund --ignore-scripts -s)
