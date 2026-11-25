@@ -3,3 +3,7 @@ node_modules/
 *.log
 videolar/work-*/
 videolar/.*.hf-transaction-*/
+
+# kişisel hesap içerikleri (deneme, depoya girmez)
+kisisel/
+videolar/*kisisel*
