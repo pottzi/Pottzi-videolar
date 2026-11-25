@@ -47,3 +47,7 @@ Yorum: Erken veri, 2–3 gün sonra tekrar bakılacak; eski "yapay zeka" kampany
 | Kızlar gece ikide – Android | 18,22 TL | 155 | 1 | 1 | 5 (%3,2) |
 - Harcamanın %100'ü kadınlara gitti (88,85 TL). *iOS indirmeleri Meta'ya gecikmeli düşebilir.
 - Karar: animasyon kalsın (daha çok izleniyor, Meta onu tercih ediyor); 3. gün değerlendirmesi beklenecek.
+
+## Kadın testi – 25 Kas sabahı toplam (~20 saat)
+- 144,91 TL · 1.238 gösterim · 9 tıklama (%0,7 CTR) · 2 indirme (iOS gecikmeli olabilir).
+- Teşhis: kadınlar izliyor ama tıklamıyor. Fikir (kullanıcıyla Perşembe konuşulacak): sona net "Ücretsiz indir" çağrısı + mağaza rozetleri, 15 sn'lik kısa versiyon, başta aksiyon yazısı. Kullanıcı şimdilik beklemeyi seçti.
