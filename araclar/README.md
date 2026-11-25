@@ -34,3 +34,13 @@ Yeni oturumda kendiliğinden yüklenir. Hepsi MIT lisanslı, GitHub'dan alındı
 
 - Liste: `araclar/awesome-claude-video-skills.md` (180 video skill reposunun kataloğu; ihtiyaç olunca buradan seçilir).
 - Kurulmayanlar: **MotionClone** (GPU isteyen araştırma modeli, burada çalışmaz), **claude-shorts** (uzun videodan kısa kesit çıkarır; bizde uzun video yok), **yt-dlp** zaten kurulu.
+
+## Konuşan kişi videosu kurgusu için ekler (2026-11-25)
+`bash araclar/kurulum.sh --tam` ile kurulur (Mac gerekmez, hepsi bulut ortamında çalışır):
+- **ghost-editor kütüphanesi** (`scripts/library_restore.py --licensed-only`): Mixkit ses efektleri ve müzik, Microsoft Fluent hareketli emoji. Telifli YouTube/meme sesleri bilerek indirilmez.
+- **Yüz takibi** (`.claude/skills/ghost-editor/scripts/face_track.py`, OpenCV YuNet): yakınlaştırmalar ve altyazı yüze göre yerleşir.
+- **Ses temizleme** (`scripts/denoise.sh`, DeepFilterNet3): telefon kaydındaki uğultu/oda sesini alır.
+- **Film renk tonları** (`scripts/setup_looks.sh` → `scripts/film_look.py`): sinematik renk.
+- **Kişi maskesi** (`scripts/setup_matte.sh`, BiRefNet): yazıyı konuşan kişinin arkasına koyma efekti.
+- **Drive'dan indirme**: `gdown --folder <paylaşım bağlantısı>` (bağlantı "herkes görüntüleyebilir" olmalı).
+- Kişisel hesap videoları `kisisel/` altında çalışılır ve depoya girmez. Varsayılan stil: tam ekran, kelime kelime sarı vurgulu altyazı, başın üstünde kartlar.
