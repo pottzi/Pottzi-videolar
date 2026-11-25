@@ -1,0 +1,185 @@
+<template>
+  <style>
+    #tmroot { position: absolute; inset: 0; overflow: hidden; font-family: "Poppins", sans-serif; color: #15131F; background: #1b1430; }
+
+    /* sahne 1: telefon içinde ekran kaydı */
+    #s1 { position: absolute; inset: 0; overflow: hidden; background: linear-gradient(135deg, #704BEF 0%, #B655CD 55%, #DA5BAC 100%); }
+    .blob { position: absolute; border-radius: 50%; filter: blur(70px); }
+    #b1 { left: -160px; top: -120px; width: 620px; height: 620px; background: rgba(103,183,250,0.55); }
+    #b2 { right: -200px; bottom: -200px; width: 700px; height: 700px; background: rgba(254,109,106,0.45); }
+    #phone { position: absolute; left: 224px; top: 300px; width: 632px; height: 1155px; border-radius: 84px; background: #121018; padding: 16px;
+      box-shadow: 0 40px 100px rgba(30,10,70,0.55), inset 0 0 0 3px #2c2838; }
+    #scr { position: relative; width: 600px; height: 1123px; border-radius: 70px; overflow: hidden; background: #fbfaff; }
+    #kayit { position: absolute; left: 0; top: 56px; width: 600px; height: 1067px; object-fit: cover; }
+    #sbar { position: absolute; left: 0; right: 0; top: 0; height: 56px; background: #fbfaff; z-index: 2; }
+    #sbar .tm { position: absolute; left: 54px; top: 16px; font-size: 22px; font-weight: 600; color: #111; }
+    #sbar .isl { position: absolute; left: 50%; top: 11px; width: 150px; height: 38px; margin-left: -75px; border-radius: 20px; background: #000; }
+    #sbar .ic { position: absolute; right: 42px; top: 19px; display: flex; gap: 7px; align-items: center; }
+
+    /* sahne 2: düşünce odası (açık tema) */
+    #s2 { position: absolute; inset: 0; overflow: hidden; opacity: 0; background: linear-gradient(160deg, #A98ADF 0%, #8D66D3 18%, #9A7BDB 30%); }
+    .orb { position: absolute; border-radius: 50%; box-shadow: 0 6px 16px rgba(40,20,70,0.22); }
+    .o-blue { background: radial-gradient(circle at 35% 30%, #c8f2ff 0%, #39b5f0 30%, #0b5fae 70%, #073a78 100%); }
+    .o-green { background: radial-gradient(circle at 35% 30%, #d8f5e4 0%, #5fbf8a 35%, #23794f 75%, #154d33 100%); }
+    .o-purple { background: radial-gradient(circle at 35% 30%, #f2e6ff 0%, #a77bff 35%, #6c2fe0 75%, #3e1691 100%); }
+    .o-pink { background: radial-gradient(circle at 35% 30%, #ffe3fb 0%, #e3a1e6 35%, #a35bb8 75%, #6d3384 100%); }
+    .o-grey { background: radial-gradient(circle at 35% 30%, #ffffff 0%, #d7d7dc 40%, #8b8b94 100%); }
+    #topbar { position: absolute; left: 0; right: 0; top: 0; height: 340px; color: #fff; }
+    #chev { position: absolute; left: 44px; top: 40px; }
+    #dots { position: absolute; right: 48px; top: 56px; }
+    #pill { position: absolute; left: 50%; top: 34px; transform: translateX(-50%); height: 70px; padding: 0 34px; border-radius: 35px;
+      background: rgba(76,52,160,0.75); display: flex; align-items: center; gap: 14px; font-size: 32px; font-weight: 500; white-space: nowrap; }
+    #rtitle { position: absolute; left: 70px; right: 70px; top: 116px; text-align: center; font-size: 64px; font-weight: 600; line-height: 1.12;
+      text-shadow: 0 4px 18px rgba(60,30,110,0.3); }
+    #panel { position: absolute; left: 0; right: 0; top: 330px; bottom: 0; border-radius: 72px 72px 0 0; background: #fff; }
+
+    .card { position: absolute; left: 40px; top: 366px; width: 610px; height: 290px; padding: 30px 40px 0 124px; border-radius: 58px; background: #fff;
+      border: 2px solid #ECE8F3; box-shadow: 0 12px 28px rgba(150,110,200,0.18); opacity: 0; }
+    .card .orb { left: 36px; top: 40px; width: 62px; height: 62px; }
+    .card .hd { display: flex; align-items: baseline; gap: 20px; white-space: nowrap; }
+    .card .no { font-size: 40px; font-weight: 600; letter-spacing: 0.03em; }
+    .card .tm2 { font-size: 30px; font-weight: 500; color: #4B2BAF; }
+    .card .mr { position: absolute; right: 40px; top: 58px; }
+    .card .tx { margin-top: 10px; font-size: 33px; font-weight: 500; line-height: 1.32; }
+
+    #inbar { position: absolute; left: 0; right: 0; top: 1040px; bottom: 0; background: #fff; z-index: 50; }
+    #inbar::before { content: ""; position: absolute; left: 0; right: 0; top: -40px; height: 40px; background: linear-gradient(180deg, rgba(255,255,255,0), #fff); }
+    #inp { position: absolute; left: 40px; right: 40px; top: 30px; height: 112px; border-radius: 56px; border: 2px solid #ECE8F3; background: #fff;
+      box-shadow: 0 10px 26px rgba(150,110,200,0.16); }
+    #avatar { position: absolute; left: 20px; top: 20px; width: 72px; height: 72px; border-radius: 50%; border: 2px solid #DCD5EA; background: linear-gradient(160deg, #F3C3DE, #9F7FD8); }
+    #avatar::after { content: ""; position: absolute; right: -2px; bottom: 2px; width: 16px; height: 16px; border-radius: 50%; background: #39D46E; border: 2px solid #fff; }
+    #ph { position: absolute; left: 118px; top: 34px; font-size: 32px; color: #8E8A9C; white-space: nowrap; }
+    #send { position: absolute; right: 14px; top: 14px; width: 84px; height: 84px; border-radius: 50%; background: #5B2DE0; display: flex; align-items: center; justify-content: center; }
+    #hint { position: absolute; left: 0; right: 0; top: 166px; text-align: center; font-size: 26px; color: #78748C; }
+
+    /* altyazı */
+    #cap { position: absolute; inset: 0; pointer-events: none; z-index: 60; }
+    .grp { position: absolute; left: 40px; right: 40px; top: 900px; display: flex; justify-content: center; opacity: 0; visibility: hidden; }
+    .grp.ust { top: 70px; }
+    .box { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; padding: 12px 16px; border-radius: 30px; background: rgba(18,15,26,0.88); box-shadow: 0 14px 40px rgba(40,20,70,0.35); }
+    .w { position: relative; display: inline-block; padding: 6px 14px 10px; font-size: 60px; font-weight: 800; line-height: 1.05; color: #fff; letter-spacing: 0.01em; }
+    .w .bg { position: absolute; inset: 0; border-radius: 16px; background: linear-gradient(90deg, #704BEF, #DA5BAC); box-shadow: 0 10px 28px rgba(112,75,239,0.45);
+      opacity: 0; transform: scaleX(0); transform-origin: 0% 50%; z-index: 0; }
+    .w .tx { position: relative; z-index: 1; }
+  </style>
+  <div id="tmroot" data-composition-id="tm" data-width="1080" data-height="1350">
+    <div id="s1">
+      <div id="b1" class="blob"></div><div id="b2" class="blob"></div>
+      <div id="phone"><div id="scr">
+        <div id="sbar"><span class="tm">21:04</span><span class="isl"></span><span class="ic">
+          <svg width="26" height="16" viewBox="0 0 26 16"><rect x="0" y="10" width="4" height="6" rx="1" fill="#111"/><rect x="7" y="7" width="4" height="9" rx="1" fill="#111"/><rect x="14" y="4" width="4" height="12" rx="1" fill="#111"/><rect x="21" y="0" width="4" height="16" rx="1" fill="#111"/></svg>
+          <svg width="22" height="16" viewBox="0 0 22 16"><path d="M11 15l3.2-3.6a4.6 4.6 0 0 0-6.4 0z M4.4 8.1a9.4 9.4 0 0 1 13.2 0l-2.1 2.3a6.3 6.3 0 0 0-9 0z M1 4.6a14.3 14.3 0 0 1 20 0l-2.1 2.3a11.2 11.2 0 0 0-15.8 0z" fill="#111"/></svg>
+          <svg width="34" height="16" viewBox="0 0 34 16"><rect x="1" y="1" width="28" height="14" rx="4" fill="none" stroke="#111" stroke-width="1.6" opacity="0.5"/><rect x="3.5" y="3.5" width="21" height="9" rx="2" fill="#111"/><rect x="30.5" y="5" width="2" height="6" rx="1" fill="#111" opacity="0.5"/></svg>
+        </span></div>
+        <video id="kayit" class="clip" src="../assets/video/kayit.mp4" data-start="0" data-duration="6.0" data-track-index="0" muted playsinline></video>
+      </div></div>
+    </div>
+
+    <div id="s2">
+      <div id="topbar">
+        <div class="orb o-purple" id="ob1" style="left:26px; top:150px; width:66px; height:66px"></div>
+        <div class="orb o-blue" id="ob2" style="right:14px; top:120px; width:88px; height:88px"></div>
+        <div class="orb o-grey" id="ob3" style="right:30px; top:250px; width:44px; height:44px"></div>
+        <div class="orb o-pink" id="ob4" style="left:120px; top:292px; width:54px; height:54px"></div>
+        <div class="orb o-green" id="ob5" style="right:200px; top:296px; width:58px; height:58px"></div>
+        <svg id="chev" width="40" height="56" viewBox="0 0 20 28"><path d="M15 3L4 14l11 11" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg id="dots" width="44" height="12" viewBox="0 0 44 12"><circle cx="6" cy="6" r="5" fill="#fff"/><circle cx="22" cy="6" r="5" fill="#fff"/><circle cx="38" cy="6" r="5" fill="#fff"/></svg>
+        <div id="pill"><svg width="36" height="34" viewBox="0 0 24 22"><path d="M2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7l-4 3v-3H4a2 2 0 0 1-2-2z" fill="#fff"/><path d="M18 6h2a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-1v3l-4-3H10a2 2 0 0 1-2-2v-1h6a4 4 0 0 0 4-4z" fill="#fff"/></svg>Düşünce odası</div>
+        <div id="rtitle">Aldatılan var mı ? Yoksa tekmiyim ??</div>
+      </div>
+      <div id="panel"></div>
+      <div id="cards"></div>
+      <div id="inbar">
+        <div id="inp"><div id="avatar"></div><div id="ph">Bu odaya düşünceni bırak...</div>
+          <div id="send"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M21 3L3 10.5l7 2.5 2.5 7z" fill="#fff"/><path d="M10 13l5-5" stroke="#5B2DE0" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        </div>
+        <div id="hint">Yeni düşünce paylaştığında en üste gelir.</div>
+      </div>
+    </div>
+    <div id="cap"></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      function build() {
+        const END = 12.45, S2 = 5.5;
+        // --- altyazı: [kelime, başlangıç, bitiş] (ses parçalarının yerleştiği zamanlar)
+        const A = 0.2, B = 0.6, C = 1.6;
+        const W = [["Kızlar,",0,0.5,A],["bunu",0.78,1.06,A],["kimseye",1.06,1.6,A],["soramadım.",1.6,2.16,A],
+          ["Acaba",2.5,2.92,A],["benim",2.92,3.3,A],["gibi",3.3,3.54,A],["bu",3.54,3.82,A],["duyguyu",3.82,4.2,A],["yaşayan",4.2,4.64,A],["var",4.64,4.88,A],["mı?",4.88,5.14,A],
+          ["Sonra",5.56,5.84,B],["tek",5.84,6.3,B],["tek",6.3,6.6,B],["cevaplar",6.6,7.18,B],["gelmeye",7.18,7.52,B],["başladı.",7.52,8.06,B],
+          ["Meğer",8.42,8.84,C],["hiç",8.84,9.12,C],["yalnız",9.12,9.54,C],["değilmişim.",9.54,10.24,C]].map(a => ({ text: a[0], start: a[1] + a[3], end: a[2] + a[3] }));
+        const G = [[0,0,1],[1,3,1],[4,6,1],[7,11,1],[12,14,0],[15,17,0],[18,19,0],[20,21,0]];
+        const cap = document.getElementById("cap");
+        G.forEach((g, gi) => {
+          const el = document.createElement("div"); el.className = "grp" + (g[2] ? " ust" : ""); el.id = "g" + gi;
+          const box = document.createElement("div"); box.className = "box";
+          for (let i = g[0]; i <= g[1]; i++) {
+            const w = document.createElement("span"); w.className = "w"; w.id = "w" + i;
+            w.innerHTML = '<span class="bg" id="bg' + i + '"></span><span class="tx"></span>';
+            w.querySelector(".tx").textContent = W[i].text.toLocaleUpperCase("tr-TR");
+            box.appendChild(w);
+          }
+          el.appendChild(box); cap.appendChild(el);
+          const start = W[g[0]].start, nx = gi + 1 < G.length ? W[G[gi + 1][0]].start : Infinity;
+          const end = Math.min(W[g[1]].end + 0.45, nx - 0.04, gi === 3 ? S2 + 0.05 : Infinity);
+          tl.set(el, { visibility: "visible" }, start);
+          tl.fromTo(el, { opacity: 0, y: 18, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.14, ease: "power2.out" }, start);
+          for (let i = g[0]; i <= g[1]; i++) {
+            const bg = "#bg" + i, w = W[i];
+            tl.to(bg, { opacity: 1, scaleX: 1, duration: Math.min(0.14, w.end - w.start), ease: "power2.out" }, w.start);
+            tl.fromTo("#w" + i, { scale: 1 }, { scale: 1.07, duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, w.start);
+            if (i < g[1]) { tl.to(bg, { opacity: 0, duration: 0.08 }, W[i + 1].start); tl.set(bg, { scaleX: 0 }, W[i + 1].start + 0.08); }
+          }
+          tl.to(el, { opacity: 0, duration: 0.08 }, end - 0.08);
+          tl.set(el, { visibility: "hidden" }, end);
+        });
+
+        // --- sahne 1: telefon
+        tl.fromTo("#phone", { y: 60 }, { y: 0, duration: 0.45, ease: "power3.out" }, 0);
+        tl.fromTo("#phone", { scale: 1 }, { scale: 1.03, duration: S2 - 0.8, ease: "sine.inOut", immediateRender: false }, 0.45);
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 80, y: 60, duration: S2, ease: "sine.inOut" }, 0);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -70, y: -50, duration: S2, ease: "sine.inOut" }, 0);
+        // geçiş: telefon büyüyerek odaya dönüşür
+        tl.to("#phone", { scale: 1.35, y: -120, duration: 0.3, ease: "power3.in" }, S2 - 0.3);
+        tl.fromTo("#s2", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, S2 - 0.1);
+        tl.fromTo("#rtitle", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, S2 + 0.15);
+        ["#ob1", "#ob2", "#ob3", "#ob4", "#ob5"].forEach((o, i) => tl.fromTo(o, { y: 0 }, { y: i % 2 ? 12 : -12, duration: END - S2, ease: "sine.inOut" }, S2));
+
+        // --- sahne 2: boş oda, cevaplar tek tek en üste gelir (sol/sağ sırayla)
+        const C2 = [
+          ["k0", "P-2716", "o-green", "Yalnız değilsin. Ben de 2 ay önce öğrendim.", 6.4],
+          ["k1", "P-8093", "o-blue", "Tek değilsin. En zoru kendini suçlamayı bırakmak.", 7.35],
+          ["k2", "P-4458", "o-pink", "Ben de yaşadım. Şimdi çok daha iyiyim, söz.", 8.3],
+          ["k3", "P-1630", "o-purple", "Buraya yazman bile cesaret. Sana sarılıyorum.", 9.25],
+          ["k4", "P-7305", "o-grey", "Dünyam yıkıldı sanmıştım. Yıkılmadı, seninki de yıkılmayacak.", 10.2],
+        ];
+        const wrap = document.getElementById("cards");
+        const dots = '<svg class="mr" width="34" height="10" viewBox="0 0 34 10"><circle cx="5" cy="5" r="4" fill="#4B2BAF"/><circle cx="17" cy="5" r="4" fill="#4B2BAF"/><circle cx="29" cy="5" r="4" fill="#4B2BAF"/></svg>';
+        C2.forEach(c => {
+          const el = document.createElement("div"); el.className = "card"; el.id = c[0];
+          el.innerHTML = '<div class="orb ' + c[2] + '"></div><div class="hd"><span class="no"></span><span class="tm2">şimdi</span></div>' + dots + '<div class="tx"></div>';
+          el.querySelector(".no").textContent = c[1]; el.querySelector(".tx").textContent = c[3];
+          wrap.appendChild(el);
+        });
+        const pos = k => ({ x: (k % 2) * 390, y: k * 236 });
+        const order = [];
+        C2.forEach(c => {
+          const t = c[4];
+          order.forEach((id, k) => {
+            const p = pos(k + 1);
+            tl.set("#" + id, { zIndex: 10 + k + 1 }, t);
+            tl.to("#" + id, { x: p.x, y: p.y, duration: 0.5, ease: "power3.inOut" }, t);
+          });
+          order.unshift(c[0]);
+          tl.set("#" + c[0], { zIndex: 10 }, t);
+          tl.fromTo("#" + c[0], { x: 0, y: -40, opacity: 0, scale: 0.94 }, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, order.length > 1 ? t + 0.2 : t);
+          tl.fromTo("#" + c[0], { boxShadow: "0 12px 28px rgba(150,110,200,0.18)" }, { boxShadow: "0 0 0 4px rgba(216,87,174,0.55), 0 16px 40px rgba(216,87,174,0.35)", duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, t + 0.5);
+        });
+        tl.set({}, {}, END);
+        window.__timelines["tm"] = tl;
+      }
+      document.fonts.ready.then(build);
+    })();
+  </script>
+</template>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1350px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 100%; height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="16.2" data-width="1080" data-height="1350">
+      <div id="tm" class="clip" data-composition-id="tm" data-composition-src="compositions/tm.html"
+        data-start="0" data-duration="12.45" data-track-index="0" data-track-kind="graphics"
+        data-width="1080" data-height="1350" style="z-index: 1"></div>
+      <div id="cta" class="clip" data-composition-id="cta" data-composition-src="compositions/cta.html"
+        data-start="12.3" data-duration="3.9" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1350" style="z-index: 2"></div>
+      <audio id="vA" class="clip" src="assets/audio/vA.mp3" data-start="0.2" data-track-index="2" data-volume="1.0"></audio>
+      <audio id="vB" class="clip" src="assets/audio/vB.mp3" data-start="6.0" data-track-index="3" data-volume="1.0"></audio>
+      <audio id="vC" class="clip" src="assets/audio/vC.mp3" data-start="9.9" data-track-index="4" data-volume="1.0"></audio>
+      <audio id="vD" class="clip" src="assets/audio/vD.mp3" data-start="12.5" data-track-index="5" data-volume="1.0"></audio>
+      <audio id="muzik" class="clip" src="assets/audio/muzik.mp3" data-start="0" data-track-index="6" data-volume="0.9"></audio>
+      <audio id="d1" class="clip" src="assets/audio/baglanti-kuruldu.mp3" data-start="4.65" data-track-index="7" data-volume="0.4"></audio>
+      <audio id="w1" class="clip" src="assets/audio/whoosh.mp3" data-start="5.3" data-track-index="8" data-volume="0.45"></audio>
+      <audio id="p1" class="clip" src="assets/audio/mesaj-gelen.mp3" data-start="6.4" data-track-index="9" data-volume="0.4"></audio>
+      <audio id="p2" class="clip" src="assets/audio/mesaj-gelen.mp3" data-start="7.55" data-track-index="10" data-volume="0.4"></audio>
+      <audio id="p3" class="clip" src="assets/audio/mesaj-gelen.mp3" data-start="8.5" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="p4" class="clip" src="assets/audio/mesaj-gelen.mp3" data-start="9.45" data-track-index="12" data-volume="0.4"></audio>
+      <audio id="p5" class="clip" src="assets/audio/mesaj-gelen.mp3" data-start="10.4" data-track-index="13" data-volume="0.4"></audio>
+      <audio id="w2" class="clip" src="assets/audio/whoosh.mp3" data-start="12.2" data-track-index="14" data-volume="0.45"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>
