@@ -1,115 +1,76 @@
 <template>
   <style>
-    #itroot { position: absolute; inset: 0; overflow: hidden; font-family: "Poppins", sans-serif; color: #fff;
-      background: linear-gradient(180deg, #D97AB8 0%, #B868C6 16%, #8E5BC9 26%); }
-    .orb { position: absolute; border-radius: 50%; box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+    #itroot { position: absolute; inset: 0; overflow: hidden; font-family: "Poppins", sans-serif; color: #15131F;
+      background: linear-gradient(180deg, #DA8CC0 0%, #C47FC6 22%, #B57AD0 30%); }
+    .orb { position: absolute; border-radius: 50%; box-shadow: 0 6px 16px rgba(40,20,70,0.22); }
     .o-blue { background: radial-gradient(circle at 35% 30%, #c8f2ff 0%, #39b5f0 30%, #0b5fae 70%, #073a78 100%); }
-    .o-pink { background: radial-gradient(circle at 35% 30%, #ffe3fb 0%, #e3a1e6 35%, #a35bb8 75%, #6d3384 100%); }
-    .o-green { background: radial-gradient(circle at 35% 30%, #f4fff9 0%, #a9e6cd 35%, #3c9a78 75%, #1f6049 100%); }
+    .o-green { background: radial-gradient(circle at 35% 30%, #d8f5e4 0%, #5fbf8a 35%, #23794f 75%, #154d33 100%); }
     .o-purple { background: radial-gradient(circle at 35% 30%, #f2e6ff 0%, #a77bff 35%, #6c2fe0 75%, #3e1691 100%); }
+    .o-pink { background: radial-gradient(circle at 35% 30%, #ffe3fb 0%, #e3a1e6 35%, #a35bb8 75%, #6d3384 100%); }
     .o-grey { background: radial-gradient(circle at 35% 30%, #ffffff 0%, #d7d7dc 40%, #8b8b94 100%); }
 
-    #topbar { position: absolute; left: 0; right: 0; top: 0; height: 240px; }
-    #chev { position: absolute; left: 44px; top: 44px; }
-    #dots { position: absolute; right: 48px; top: 58px; }
-    #pill { position: absolute; left: 50%; top: 36px; transform: translateX(-50%); height: 70px; padding: 0 34px; border-radius: 35px;
-      background: #3B1F5E; display: flex; align-items: center; gap: 14px; font-size: 32px; font-weight: 500; white-space: nowrap; }
-    #rtitle { position: absolute; left: 0; right: 0; top: 122px; text-align: center; font-size: 50px; font-weight: 600; letter-spacing: 0.005em;
-      text-shadow: 0 4px 18px rgba(60,20,90,0.35); }
+    #topbar { position: absolute; left: 0; right: 0; top: 0; height: 340px; color: #fff; }
+    #chev { position: absolute; left: 44px; top: 40px; }
+    #dots { position: absolute; right: 48px; top: 56px; }
+    #pill { position: absolute; left: 50%; top: 34px; transform: translateX(-50%); height: 70px; padding: 0 34px; border-radius: 35px;
+      background: rgba(84,52,140,0.85); display: flex; align-items: center; gap: 14px; font-size: 32px; font-weight: 500; white-space: nowrap; }
+    #rtitle { position: absolute; left: 110px; right: 110px; top: 116px; text-align: center; font-size: 68px; font-weight: 600; line-height: 1.12;
+      text-shadow: 0 4px 18px rgba(80,30,100,0.3); }
 
-    #panel { position: absolute; left: 0; right: 0; top: 236px; bottom: 0; border-radius: 72px 72px 0 0;
-      background: linear-gradient(180deg, #3C2C4A 0%, #2A2233 45%, #1D1A24 100%); box-shadow: 0 -10px 40px rgba(30,10,50,0.35); }
+    #panel { position: absolute; left: 0; right: 0; top: 330px; bottom: 0; border-radius: 72px 72px 0 0; background: #fff; }
 
-    .card { position: absolute; width: 740px; min-height: 226px; padding: 34px 44px 40px 128px; border-radius: 60px; background: #24242E;
-      border: 2px solid rgba(255,255,255,0.11); box-shadow: 0 18px 40px rgba(0,0,0,0.35); }
-    .card .orb { left: 40px; top: 38px; width: 62px; height: 62px; }
-    .card .hd { display: flex; align-items: baseline; gap: 22px; }
-    .card .no { font-size: 36px; font-weight: 600; letter-spacing: 0.03em; }
-    .card .tm { font-size: 28px; font-weight: 500; color: #B9A6F5; }
-    .card .mr { position: absolute; right: 46px; top: 54px; }
-    .card .tx { margin-top: 14px; font-size: 34px; font-weight: 400; line-height: 1.4; color: #F4F2F8; }
+    .card { position: absolute; left: 40px; top: 366px; width: 610px; height: 290px; padding: 30px 40px 0 124px; border-radius: 58px; background: #fff;
+      border: 2px solid #ECE8F3; box-shadow: 0 12px 28px rgba(150,110,200,0.18); }
+    .card .orb { left: 36px; top: 40px; width: 62px; height: 62px; }
+    .card .hd { display: flex; align-items: baseline; gap: 20px; white-space: nowrap; }
+    .card .no { font-size: 40px; font-weight: 600; letter-spacing: 0.03em; }
+    .card .tm { font-size: 30px; font-weight: 500; color: #4B2BAF; }
+    .card .mr { position: absolute; right: 40px; top: 58px; }
+    .card .tx { margin-top: 10px; font-size: 33px; font-weight: 500; line-height: 1.32; }
 
-    #coms { position: absolute; left: 100px; right: 40px; top: 524px; }
-    .com { position: absolute; left: 0; right: 0; padding: 18px 34px 20px 102px; border-radius: 36px; background: #2F2C3A;
-      border: 2px solid rgba(255,255,255,0.08); box-shadow: 0 10px 26px rgba(0,0,0,0.3); opacity: 0; }
-    .com .orb { left: 30px; top: 22px; width: 48px; height: 48px; }
-    .com .no { font-size: 27px; font-weight: 600; letter-spacing: 0.03em; }
-    .com .no span { font-weight: 500; color: #B9A6F5; margin-left: 14px; font-size: 24px; }
-    .com .tx { margin-top: 4px; font-size: 32px; line-height: 1.35; color: #F4F2F8; }
-    #comlbl { position: absolute; left: 104px; top: 482px; font-size: 26px; font-weight: 600; color: #B9A6F5; letter-spacing: 0.06em; opacity: 0; }
-
-    #inbar { position: absolute; left: 0; right: 0; top: 1010px; bottom: 0; background: #1C1922; border-top: 2px solid rgba(255,255,255,0.05); z-index: 5; }
-    #inp { position: absolute; left: 40px; right: 40px; top: 34px; height: 112px; border-radius: 56px; border: 2px solid rgba(255,255,255,0.16); background: #22202B; }
-    #inglow { position: absolute; inset: -3px; border-radius: 58px; border: 3px solid #D857AE; box-shadow: 0 0 34px rgba(216,87,174,0.55); opacity: 0; }
-    #avatar { position: absolute; left: 20px; top: 20px; width: 72px; height: 72px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.35);
+    #inbar { position: absolute; left: 0; right: 0; top: 1040px; bottom: 0; background: #fff; z-index: 50; }
+    #inbar::before { content: ""; position: absolute; left: 0; right: 0; top: -40px; height: 40px; background: linear-gradient(180deg, rgba(255,255,255,0), #fff); }
+    #inp { position: absolute; left: 40px; right: 40px; top: 30px; height: 112px; border-radius: 56px; border: 2px solid #ECE8F3; background: #fff;
+      box-shadow: 0 10px 26px rgba(150,110,200,0.16); }
+    #inglow { position: absolute; inset: -3px; border-radius: 58px; border: 3px solid #D857AE; box-shadow: 0 0 30px rgba(216,87,174,0.45); opacity: 0; }
+    #avatar { position: absolute; left: 20px; top: 20px; width: 72px; height: 72px; border-radius: 50%; border: 2px solid #DCD5EA;
       background: linear-gradient(160deg, #F3C3DE, #9F7FD8); }
-    #avatar::after { content: ""; position: absolute; right: -2px; bottom: 2px; width: 16px; height: 16px; border-radius: 50%; background: #39D46E; border: 2px solid #22202B; }
-    #ph { position: absolute; left: 118px; top: 34px; font-size: 31px; color: #8E8A9C; white-space: nowrap; }
-    #typed { position: absolute; left: 118px; right: 130px; top: 34px; font-size: 31px; color: #fff; white-space: nowrap; overflow: hidden; }
-    #typed .c { opacity: 0; }
-    #caret { display: inline-block; width: 3px; height: 36px; background: #fff; vertical-align: -6px; margin-left: 2px; opacity: 0; }
-    #send { position: absolute; right: 14px; top: 14px; width: 84px; height: 84px; border-radius: 50%; background: #6A3BF0; display: flex; align-items: center; justify-content: center; }
-    #hint { position: absolute; left: 0; right: 0; top: 168px; text-align: center; font-size: 25px; color: #8E8A9C; }
+    #avatar::after { content: ""; position: absolute; right: -2px; bottom: 2px; width: 16px; height: 16px; border-radius: 50%; background: #39D46E; border: 2px solid #fff; }
+    #ph { position: absolute; left: 118px; top: 34px; font-size: 32px; color: #8E8A9C; white-space: nowrap; }
+    #typed { position: absolute; left: 118px; right: 130px; top: 34px; font-size: 32px; color: #15131F; white-space: nowrap; overflow: hidden; }
+    #typed .c { display: none; }
+    #caret { display: inline-block; width: 3px; height: 36px; background: #6A3BF0; vertical-align: -6px; margin-left: 2px; opacity: 0; }
+    #send { position: absolute; right: 14px; top: 14px; width: 84px; height: 84px; border-radius: 50%; background: #5B2DE0; display: flex; align-items: center; justify-content: center; }
+    #hint { position: absolute; left: 0; right: 0; top: 166px; text-align: center; font-size: 26px; color: #78748C; }
 
-    #cap { position: absolute; inset: 0; pointer-events: none; z-index: 8; }
-    .grp { position: absolute; left: 40px; right: 40px; top: 904px; display: flex; justify-content: center; opacity: 0; visibility: hidden; }
-    .box { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; padding: 12px 16px; border-radius: 30px; background: rgba(18,15,26,0.86); box-shadow: 0 14px 40px rgba(0,0,0,0.45); }
-    .w { position: relative; display: inline-block; padding: 6px 14px 10px; font-size: 62px; font-weight: 800; line-height: 1.05; color: #fff; letter-spacing: 0.01em;
-      text-shadow: 0 4px 16px rgba(0,0,0,0.6), 0 0 3px rgba(0,0,0,0.6); }
+    #cap { position: absolute; inset: 0; pointer-events: none; z-index: 60; }
+    .grp { position: absolute; left: 40px; right: 40px; top: 900px; display: flex; justify-content: center; opacity: 0; visibility: hidden; }
+    .box { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; padding: 12px 16px; border-radius: 30px; background: rgba(18,15,26,0.88); box-shadow: 0 14px 40px rgba(40,20,70,0.35); }
+    .w { position: relative; display: inline-block; padding: 6px 14px 10px; font-size: 62px; font-weight: 800; line-height: 1.05; color: #fff; letter-spacing: 0.01em; }
     .w .bg { position: absolute; inset: 0; border-radius: 16px; background: linear-gradient(90deg, #704BEF, #DA5BAC); box-shadow: 0 10px 28px rgba(112,75,239,0.45);
       opacity: 0; transform: scaleX(0); transform-origin: 0% 50%; z-index: 0; }
     .w .tx { position: relative; z-index: 1; }
   </style>
   <div id="itroot" data-composition-id="it" data-width="1080" data-height="1350">
     <div id="topbar">
-      <div class="orb o-purple" id="ob1" style="left:22px; top:168px; width:62px; height:62px"></div>
-      <div class="orb o-blue" id="ob2" style="right:14px; top:140px; width:84px; height:84px"></div>
-      <div class="orb o-grey" id="ob3" style="right:200px; top:24px; width:40px; height:40px; opacity:.8"></div>
+      <div class="orb o-purple" id="ob1" style="left:26px; top:150px; width:66px; height:66px"></div>
+      <div class="orb o-blue" id="ob2" style="right:14px; top:120px; width:88px; height:88px"></div>
+      <div class="orb o-grey" id="ob3" style="right:30px; top:250px; width:44px; height:44px"></div>
+      <div class="orb o-pink" id="ob4" style="left:120px; top:292px; width:54px; height:54px"></div>
       <svg id="chev" width="40" height="56" viewBox="0 0 20 28"><path d="M15 3L4 14l11 11" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <svg id="dots" width="44" height="12" viewBox="0 0 44 12"><circle cx="6" cy="6" r="5" fill="#fff"/><circle cx="22" cy="6" r="5" fill="#fff"/><circle cx="38" cy="6" r="5" fill="#fff"/></svg>
       <div id="pill"><svg width="36" height="34" viewBox="0 0 24 22"><path d="M2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7l-4 3v-3H4a2 2 0 0 1-2-2z" fill="#fff"/><path d="M18 6h2a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-1v3l-4-3H10a2 2 0 0 1-2-2v-1h6a4 4 0 0 0 4-4z" fill="#fff"/></svg>Düşünce odası</div>
-      <div id="rtitle">Kimseye söyleyemediklerim</div>
+      <div id="rtitle">Aldatılan var mı,<br>benim gibi?</div>
     </div>
     <div id="panel"></div>
-
-    <div class="card" id="cA" style="left:40px; top:276px; z-index:1">
-      <div class="orb o-blue"></div>
-      <div class="hd"><span class="no">P-4817</span><span class="tm">2 dk önce</span></div>
-      <svg class="mr" width="34" height="10" viewBox="0 0 34 10"><circle cx="5" cy="5" r="4" fill="#C7B8F7"/><circle cx="17" cy="5" r="4" fill="#C7B8F7"/><circle cx="29" cy="5" r="4" fill="#C7B8F7"/></svg>
-      <div class="tx">Herkesin yanında güçlü görünmekten çok yoruldum.</div>
-    </div>
-    <div class="card" id="cB" style="left:300px; top:470px; z-index:2">
-      <div class="orb o-pink"></div>
-      <div class="hd"><span class="no">P-2093</span><span class="tm">9 dk önce</span></div>
-      <svg class="mr" width="34" height="10" viewBox="0 0 34 10"><circle cx="5" cy="5" r="4" fill="#C7B8F7"/><circle cx="17" cy="5" r="4" fill="#C7B8F7"/><circle cx="29" cy="5" r="4" fill="#C7B8F7"/></svg>
-      <div class="tx">3 yıldır adımı yanlış yazıyorlar, düzeltmeye utanıyorum.</div>
-    </div>
-    <div class="card" id="cC" style="left:40px; top:664px; z-index:3">
-      <div class="orb o-green"></div>
-      <div class="hd"><span class="no">P-6651</span><span class="tm">14 dk önce</span></div>
-      <svg class="mr" width="34" height="10" viewBox="0 0 34 10"><circle cx="5" cy="5" r="4" fill="#C7B8F7"/><circle cx="17" cy="5" r="4" fill="#C7B8F7"/><circle cx="29" cy="5" r="4" fill="#C7B8F7"/></svg>
-      <div class="tx">Annemlere bölüm değiştirmek istediğimi hâlâ söyleyemedim.</div>
-    </div>
-    <div class="card" id="cN" style="left:40px; top:276px; z-index:4; opacity:0">
-      <div class="orb o-purple"></div>
-      <div class="hd"><span class="no">P-5420</span><span class="tm">şimdi</span></div>
-      <svg class="mr" width="34" height="10" viewBox="0 0 34 10"><circle cx="5" cy="5" r="4" fill="#C7B8F7"/><circle cx="17" cy="5" r="4" fill="#C7B8F7"/><circle cx="29" cy="5" r="4" fill="#C7B8F7"/></svg>
-      <div class="tx">Ben de itiraf edeyim: Hâlâ çocukluk ayıcığımla uyuyorum.</div>
-    </div>
-
-    <div id="comlbl">3 YORUM</div>
-    <div id="coms">
-      <div class="com" id="k1" style="top:0px"><div class="orb o-pink"></div><div class="no">P-1388<span>şimdi</span></div><div class="tx">Ben de tam olarak böyleyim. Yalnız değilsin.</div></div>
-      <div class="com" id="k2" style="top:126px"><div class="orb o-grey"></div><div class="no">P-7302<span>şimdi</span></div><div class="tx">Güçlü olmak her şeyi tek başına taşımak değil.</div></div>
-      <div class="com" id="k3" style="top:252px"><div class="orb o-blue"></div><div class="no">P-9046<span>şimdi</span></div><div class="tx">Bugün kendine biraz izin ver, olur mu?</div></div>
-    </div>
+    <div id="cards"></div>
 
     <div id="inbar">
       <div id="inp"><div id="inglow"></div>
         <div id="avatar"></div>
         <div id="ph">Bu odaya düşünceni bırak...</div>
         <div id="typed"></div>
-        <div id="send"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M21 3L3 10.5l7 2.5 2.5 7z" fill="#fff"/><path d="M10 13l5-5" stroke="#6A3BF0" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div id="send"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M21 3L3 10.5l7 2.5 2.5 7z" fill="#fff"/><path d="M10 13l5-5" stroke="#5B2DE0" stroke-width="1.8" stroke-linecap="round"/></svg></div>
       </div>
       <div id="hint">Yeni düşünce paylaştığında en üste gelir.</div>
     </div>
@@ -128,7 +89,8 @@
         const G = [[0,0],[1,2],[3,5],[6,8],[9,11],[12,14],[15,16],[17,19]];
         const cap = document.getElementById("cap");
         G.forEach((g, gi) => {
-          const el = document.createElement("div"); el.className = "grp"; el.id = "g" + gi; const box = document.createElement("div"); box.className = "box";
+          const el = document.createElement("div"); el.className = "grp"; el.id = "g" + gi;
+          const box = document.createElement("div"); box.className = "box";
           for (let i = g[0]; i <= g[1]; i++) {
             const w = document.createElement("span"); w.className = "w"; w.id = "w" + i;
             w.innerHTML = '<span class="bg" id="bg' + i + '"></span><span class="tx"></span>';
@@ -150,53 +112,63 @@
           tl.set(el, { visibility: "hidden" }, end);
         });
 
-        // --- sahne 1: oda ve itiraflar (ilk karede kart A zaten görünür: hook)
-        tl.fromTo("#cA", { y: 30, opacity: 0.6, scale: 0.97 }, { y: 0, opacity: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 0);
-        tl.fromTo("#cB", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "back.out(1.4)" }, 0.3);
-        tl.fromTo("#cC", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "back.out(1.4)" }, 0.65);
-        ["#ob1", "#ob2", "#ob3"].forEach((o, i) => tl.fromTo(o, { y: 0 }, { y: i % 2 ? 14 : -14, duration: END, ease: "sine.inOut" }, 0));
+        // --- düşünce kartları: sırayla sol/sağ, en yeni en üstte
+        // [id, numara, zaman, küre, metin, geliş saniyesi (null = başta var)]
+        const C = [
+          ["k0", "P-8815", "1 sa önce", "o-green", "Herkes “unut gitsin” diyor. Keşke o kadar kolay olsa.", null],
+          ["k1", "P-6142", "21 dk önce", "o-blue", "En yakın arkadaşımlaymış. İkisini birden kaybettim.", null],
+          ["k2", "P-3307", "8 dk önce", "o-pink", "Aylarca “suç bende mi” diye kendimi sorguladım.", null],
+          ["k3", "P-1274", "şimdi", "o-purple", "Ben de yaşadım. Geçiyor, söz veriyorum.", 1.5],
+          ["k4", "P-9530", "şimdi", "o-green", "Suçlu sen değilsin. Bunu bil yeter.", 4.5],
+          ["k5", "P-4461", "şimdi", "o-blue", "Bu odayı görünce yalnız olmadığımı anladım.", 6.6],
+          ["k6", "P-5420", "şimdi", "o-pink", "3 yıl sonra ilk kez birine anlattım.", 10.5],
+        ];
+        const wrap = document.getElementById("cards");
+        const dots = '<svg class="mr" width="34" height="10" viewBox="0 0 34 10"><circle cx="5" cy="5" r="4" fill="#4B2BAF"/><circle cx="17" cy="5" r="4" fill="#4B2BAF"/><circle cx="29" cy="5" r="4" fill="#4B2BAF"/></svg>';
+        C.forEach(c => {
+          const el = document.createElement("div"); el.className = "card"; el.id = c[0];
+          el.innerHTML = '<div class="orb ' + c[3] + '"></div><div class="hd"><span class="no"></span><span class="tm"></span></div>' + dots + '<div class="tx"></div>';
+          el.querySelector(".no").textContent = c[1]; el.querySelector(".tm").textContent = c[2]; el.querySelector(".tx").textContent = c[4];
+          wrap.appendChild(el);
+        });
+        const pos = k => ({ x: (k % 2) * 390, y: k * 236 });
+        // başlangıç: k2 en üstte (slot 0), k1 slot 1, k0 slot 2
+        const order = ["k2", "k1", "k0"];
+        order.forEach((id, k) => { const p = pos(k); gsap.set("#" + id, { x: p.x, y: p.y, zIndex: 10 + k }); });
+        C.forEach(c => { if (c[5] !== null) gsap.set("#" + c[0], { opacity: 0, zIndex: 9 }); });
+        tl.fromTo("#cards", { y: 16 }, { y: 0, duration: 0.35, ease: "power3.out" }, 0);
+        // yeni düşünce gelince herkes bir sıra aşağı (ve karşı tarafa) kayar
+        C.filter(c => c[5] !== null).forEach(c => {
+          const t = c[5];
+          order.forEach((id, k) => {
+            const p = pos(k + 1);
+            tl.set("#" + id, { zIndex: 10 + k + 1 }, t);
+            tl.to("#" + id, { x: p.x, y: p.y, duration: 0.5, ease: "power3.inOut" }, t);
+          });
+          order.unshift(c[0]);
+          tl.set("#" + c[0], { zIndex: 10 }, t);
+          tl.fromTo("#" + c[0], { x: 0, y: -40, opacity: 0, scale: 0.94 }, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, t + 0.2);
+          tl.fromTo("#" + c[0], { boxShadow: "0 12px 28px rgba(150,110,200,0.18)" }, { boxShadow: "0 0 0 4px rgba(216,87,174,0.55), 0 16px 40px rgba(216,87,174,0.35)", duration: 0.3, yoyo: true, repeat: 1, immediateRender: false }, t + 0.5);
+        });
+        ["#ob1", "#ob2", "#ob3", "#ob4"].forEach((o, i) => tl.fromTo(o, { y: 0 }, { y: i % 2 ? 12 : -12, duration: END, ease: "sine.inOut" }, 0));
 
-        // --- sahne 2: kart A öne çıkar, yorumlar gelir
-        const F = 3.35;
-        tl.to("#cB", { x: 420, opacity: 0, duration: 0.45, ease: "power2.in" }, F);
-        tl.to("#cC", { x: -420, opacity: 0, duration: 0.45, ease: "power2.in" }, F + 0.05);
-        tl.to("#cA", { width: 1000, duration: 0.55, ease: "power3.inOut" }, F + 0.2);
-        tl.to("#comlbl", { opacity: 1, duration: 0.3 }, F + 0.75);
-        [["#k1", 5.45], ["#k2", 6.25], ["#k3", 7.05]].forEach(([k, t]) =>
-          tl.fromTo(k, { y: 50, opacity: 0, scale: 0.96 }, { y: 0, opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, t));
-
-        // --- sahne 3: geri akışa dön, sen de yaz
-        const B = 8.35;
-        tl.to(["#k1", "#k2", "#k3", "#comlbl"], { opacity: 0, y: 30, duration: 0.3, ease: "power2.in", stagger: 0.04 }, B);
-        tl.to("#cA", { width: 740, duration: 0.5, ease: "power3.inOut" }, B + 0.15);
-        tl.to("#cB", { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, B + 0.3);
-        tl.to("#cC", { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, B + 0.4);
-        tl.fromTo("#inglow", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 8.85);
+        // --- sen de yaz: kutuya yazılır, gönderilir, en üste gelir (k6)
+        tl.fromTo("#inglow", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 8.8);
         tl.to("#ph", { opacity: 0, duration: 0.1 }, 9.05);
-        // yazma
-        const txt = "Ben de itiraf edeyim: Hâlâ çocukluk ayıcığımla uyuyorum.";
+        const txt = C[6][4];
         const typed = document.getElementById("typed");
-        const T0 = 9.1, DT = 0.026;
+        const T0 = 9.1, DT = 0.03;
         for (let i = 0; i < txt.length; i++) {
-          const s = document.createElement("span"); s.className = "c"; s.id = "ch" + i; s.textContent = txt[i]; typed.appendChild(s);
-          tl.set(s, { opacity: 1 }, T0 + i * DT);
+          const s = document.createElement("span"); s.className = "c"; s.textContent = txt[i]; typed.appendChild(s);
+          tl.set(s, { display: "inline" }, T0 + i * DT);
         }
         const caret = document.createElement("span"); caret.id = "caret"; typed.appendChild(caret);
         tl.set("#caret", { opacity: 1 }, T0);
-        const TE = T0 + txt.length * DT; // ~10.56
-        // yazı taşarsa sola kaydır
-        tl.fromTo("#typed", { scrollLeft: 0 }, { scrollLeft: 260, duration: TE - T0 - 0.85, ease: "none" }, T0 + 0.85);
+        const TE = T0 + txt.length * DT; // ~10.18
         tl.fromTo("#send", { scale: 1 }, { scale: 0.86, duration: 0.09, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, TE + 0.12);
         tl.set(["#typed", "#caret"], { opacity: 0 }, TE + 0.25);
         tl.set("#ph", { opacity: 1 }, TE + 0.3);
         tl.to("#inglow", { opacity: 0, duration: 0.3 }, TE + 0.3);
-        // yeni düşünce en üste gelir, diğerleri aşağı kayar
-        const N = TE + 0.3;
-        tl.to("#cA", { x: 260, y: 194, duration: 0.45, ease: "power3.inOut" }, N);
-        tl.to("#cB", { x: -260, y: 194, duration: 0.45, ease: "power3.inOut" }, N);
-        tl.to("#cC", { x: 260, y: 194, duration: 0.45, ease: "power3.inOut" }, N);
-        tl.fromTo("#cN", { y: -60, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, N + 0.15);
-        tl.fromTo("#cN", { boxShadow: "0 0 0 0 rgba(216,87,174,0)" }, { boxShadow: "0 0 50px 6px rgba(216,87,174,0.6)", duration: 0.35, yoyo: true, repeat: 1, immediateRender: false }, N + 0.5);
         tl.set({}, {}, END);
         window.__timelines["it"] = tl;
       }
