@@ -51,3 +51,7 @@ Yorum: Erken veri, 2–3 gün sonra tekrar bakılacak; eski "yapay zeka" kampany
 ## Kadın testi – 25 Kas sabahı toplam (~20 saat)
 - 144,91 TL · 1.238 gösterim · 9 tıklama (%0,7 CTR) · 2 indirme (iOS gecikmeli olabilir).
 - Teşhis: kadınlar izliyor ama tıklamıyor. Fikir (kullanıcıyla Perşembe konuşulacak): sona net "Ücretsiz indir" çağrısı + mağaza rozetleri, 15 sn'lik kısa versiyon, başta aksiyon yazısı. Kullanıcı şimdilik beklemeyi seçti.
+
+## Kadın testi durduruldu (2026-11-25, kullanıcı isteğiyle)
+- Toplam ~30 saat: 175,47 TL · 1.433 gösterim · 11 tıklama (%0,8) · 2 indirme (ikisi Android). iOS 80 TL'ye 1 tıklama, 0 indirme.
+- İki kampanya PAUSED (silinmedi; yeniden açılabilir). Ders: kadınlar izliyor ama tıklamıyor → net "indir" çağrısı ve daha kısa video denenmeli.
