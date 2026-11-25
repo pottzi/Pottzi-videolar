@@ -170,6 +170,7 @@ Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resm
 - Seslendirme ElevenLabs ile yapılır (anahtar ortam ayarlarında kayıtlı). Seçili ses: **Liam** (`TX3LPaxmHKxFdv7VOQHJ`), model `eleven_v4`, dil `tr`.
 - Hazır HyperFrames şablonlarının tamamı (448) `sablonlar/` klasöründe; liste `sablonlar/KATALOG.md`. Elle efekt yazmadan önce buraya bak.
 - Yardımcı araçlar `araclar/` içinde (altyazı/Whisper, ses efekti, arka plan silme, görsel büyütme, auto-editor ile sessizlik kesme, yt-dlp ile video indirme); yeni oturumda `bash araclar/kurulum.sh`. Hazır ses efektleri `assets/efektler/`.
+- Ek video skill'leri `.claude/skills/` içinde (ghost-editor, cartoon-3d-short, motion-graphics, three.js animasyon skill'leri). Ne işe yaradıkları ve ilk kurulum notları: `araclar/README.md`. Bunların ek indirme/kurulum betikleri kullanıcı onayıyla çalıştırılır.
 - Türkçe seslendirme sesleri: Nil, Ecem, Gözde, Derya (kadın); Alican, Mehmet (erkek). `data-volume="1.8"`.
 - Gerçek uygulama ekran görüntüleri ve ölçülmüş renkler: `assets/referans/app/` (notlar `NOTLAR.md`). Uygulamanın **koyu** (`#171722`) ve **açık** teması var; telefon ekranı çizerken bunlardan birine birebir uy.
 - Logo: kapanışlarda kullanıcının tercih ettiği şeffaf logo `assets/brand/pottzi-logo-seffaf.png` (beyaz zeminde, ortada); eski `assets/brand/pottzi-logo.png`; uygulama ekranı referansları: `assets/referans/`.
