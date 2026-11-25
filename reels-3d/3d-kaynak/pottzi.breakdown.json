@@ -1,0 +1,6 @@
+{
+  "title": "Pottzi'nin içinde ne var?", "subtitle": "Yakından bakalım",
+  "labels": [["Fotoğraf", "yok · sadece kelimeler"], ["Sohbet", "tanımadığın biriyle"], ["Konu aç", "ilk soru hazır"],
+             ["Kimlik", "sadece P-numarası"], ["3 dakika", "sonra birlikte karar"], ["Kontrol sende", "engelle · şikâyet et"]],
+  "accent": "#F4698D", "hold": 2.3, "template": "pottzi-template.html", "out": "3d.mp4"
+}
