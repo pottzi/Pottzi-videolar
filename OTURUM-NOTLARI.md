@@ -59,7 +59,9 @@ Yeni oturumda önce bu dosyayı, sonra `CLAUDE.md`, `REKLAM-SONUCLARI.md` ve `ar
   - Kod: `kisisel/odaklanma/` (`goril2.py`, `parca5.py`, `index4.tpl.html`, `kur.py`, HyperFrames projesi `hf/`).
 - Devam kısmı çekildi (IMG_7997–8012) ve eklendi: `videolar/2026-11-26_kisisel-odaklanma-tam.mp4` (1:30, HDR). Kod: `kes2.py`, `kurB.py`, `indexB.tpl.html`, `hf2/`.
   - "Gidip gelmeler"de kenarlardan sekmeler (Mail, Instagram…) gelip aralarında gidip gelinir, sonra uçup gider. %2 → ekranda doğrusu %2,5 (kullanıcıya söylendi, gerekirse yeniden çekilecek).
-  - Uzun HyperFrames render'ı (55 sn+) 10 dakikayı aşar: arka planda çalıştır.
+  - Uzun HyperFrames render'ı (45 sn+) ~10 dakika sürer: arka planda çalıştır.
+  - Son hâl 1:22: 7998 eklendi (sekmeler "sekmeler"de gelir, "bedeli var"da gider), 8002 + 8004 + "sırrını açıklayacağım" kesildi, kapanış kartı 2 sn. Kod: `kes3.py`.
+  - Reels açıklamaları (kısa) bu video ve "uzun yaşam" videosu için yazıldı.
 - Ders: ffmpeg ses karışımında `apad,atrim` sonsuz döngüye girdi; `amix=...:duration=longest,loudnorm,apad=whole_dur=` kullan. ffmpeg'i `-nostdin` ile çalıştır.
 
 ## Kurulu araçlar (yeni oturumda yeniden kur)
