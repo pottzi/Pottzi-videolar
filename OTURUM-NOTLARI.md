@@ -50,6 +50,16 @@ Yeni oturumda önce bu dosyayı, sonra `CLAUDE.md`, `REKLAM-SONUCLARI.md` ve `ar
   - Parça parça çek; takılınca cümleyi tekrar et.
 - Önerilen kapanış imzası: "Ben Mert. Daha uzun değil, daha iyi yaşamak için. Birlikte."
 
+## Kişisel video 3: "İnsan ve odaklanma" (devam ediyor, 2026-11-26)
+- Konuşma kartları PDF: `kisisel/odaklanma/insan-ve-odaklanma-konusma.pdf` (Kart A–D açılış, Kart 1–8 devam).
+- Açılış bitti: `videolar/2026-11-26_kisisel-odaklanma-goril-C.mp4` (34 sn, HDR). Kullanıcı onayladı.
+  - Akış: 0–3 sn "👀 TOPU KAÇ KERE ATTIĞIMI SAYIN!" → konuşma (IMG_7995, küçük "SAYMAYA DEVAM" kafanın solunda) →
+    IMG_7996 "Doğru bildiyseniz tebrikler, gorili gördünüz mü?" → ⏪ → 3x sayım, goril anında 1x + yakınlaşma + daire → "25 ATIŞ ✓ · 🦍 1 GORİL".
+  - Goril: Noto 🦍 siluet, koyu gri, 50 px, üst raf sağ köşe, 1,5 sn (kaynak 7.5–9.0). `goril2.py`.
+  - Kod: `kisisel/odaklanma/` (`goril2.py`, `parca5.py`, `index4.tpl.html`, `kur.py`, HyperFrames projesi `hf/`).
+- Sıradaki: kullanıcı Kart D ve sonrasını çekip Drive'a atacak, animasyonları kendisi tarif edecek. Yeni parçalar açılışın arkasına eklenecek.
+- Ders: ffmpeg ses karışımında `apad,atrim` sonsuz döngüye girdi; `amix=...:duration=longest,loudnorm,apad=whole_dur=` kullan. ffmpeg'i `-nostdin` ile çalıştır.
+
 ## Kurulu araçlar (yeni oturumda yeniden kur)
 - `bash araclar/kurulum.sh --tam`: Whisper, ghost-editor efekt/müzik kütüphanesi, film LUT'ları, DeepFilterNet (model seyrek klonla), kişi maskesi, yüz takibi, gdown, three.js kiti.
 - Fluent hareketli emoji indirilemedi (GitHub raw erişimi kapalı); sistemdeki Noto emoji kullanılıyor.
