@@ -57,7 +57,9 @@ Yeni oturumda önce bu dosyayı, sonra `CLAUDE.md`, `REKLAM-SONUCLARI.md` ve `ar
     IMG_7996 "Doğru bildiyseniz tebrikler, gorili gördünüz mü?" → ⏪ → 3x sayım, goril anında 1x + yakınlaşma + daire → "25 ATIŞ ✓ · 🦍 1 GORİL".
   - Goril: Noto 🦍 siluet, koyu gri, 50 px, üst raf sağ köşe, 1,5 sn (kaynak 7.5–9.0). `goril2.py`.
   - Kod: `kisisel/odaklanma/` (`goril2.py`, `parca5.py`, `index4.tpl.html`, `kur.py`, HyperFrames projesi `hf/`).
-- Sıradaki: kullanıcı Kart D ve sonrasını çekip Drive'a atacak, animasyonları kendisi tarif edecek. Yeni parçalar açılışın arkasına eklenecek.
+- Devam kısmı çekildi (IMG_7997–8012) ve eklendi: `videolar/2026-11-26_kisisel-odaklanma-tam.mp4` (1:30, HDR). Kod: `kes2.py`, `kurB.py`, `indexB.tpl.html`, `hf2/`.
+  - "Gidip gelmeler"de kenarlardan sekmeler (Mail, Instagram…) gelip aralarında gidip gelinir, sonra uçup gider. %2 → ekranda doğrusu %2,5 (kullanıcıya söylendi, gerekirse yeniden çekilecek).
+  - Uzun HyperFrames render'ı (55 sn+) 10 dakikayı aşar: arka planda çalıştır.
 - Ders: ffmpeg ses karışımında `apad,atrim` sonsuz döngüye girdi; `amix=...:duration=longest,loudnorm,apad=whole_dur=` kullan. ffmpeg'i `-nostdin` ile çalıştır.
 
 ## Kurulu araçlar (yeni oturumda yeniden kur)
