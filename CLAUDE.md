@@ -135,6 +135,7 @@ Renk kodları mevcut görsellerden çıkarılmış yaklaşık değerlerdir. Resm
 - **Güvenli alan:** Instagram arayüzü alt ve sağ kenarı kapattığı için önemli yazıları alttan ~300 piksel ve sağdan ~150 piksel içeride tut.
 - Render sonrası ffmpeg ile işlenen her mp4 `-movflags +faststart` ile kaydedilmeli; yoksa iPad sohbet oynatıcısında oynamaz. Kullanıcı sıkıştırılmış değil tam kalite ister (yavaş açılması internetten).
 - Videolar `videolar/` klasörüne, anlaşılır isimlerle kaydedilir (örn. `2026-11-15_sayacli-sohbet.mp4`).
+- **HDR kaynak HDR kalır.** Kullanıcının gönderdiği iPhone HDR (HLG, 10-bit HEVC) videolar SDR'ye çevrilmez: parçalar `libx265` 10-bit, `bt2020 / arib-std-b67` etiketleriyle kesilir, HyperFrames HDR'yi otomatik algılayıp HEVC Main10 çıkarır. Kişi maskesi gibi katmanlar videonun üstüne değil, yazıya maske olarak uygulanır (görüntü orijinal kalsın). HDR render geçici olarak ~1,1 GB disk ister; önce gereksiz ara dosyaları temizle.
 
 ---
 
