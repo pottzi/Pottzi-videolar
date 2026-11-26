@@ -2,6 +2,8 @@
 
 Bu dosya, bu repoda çalışan Claude Code'a Pottzi'nin ne olduğunu, nasıl konuştuğunu ve nasıl göründüğünü anlatır. Bu repoda Pottzi için video, animasyon ve sosyal medya içeriği üretilir. Her işe başlamadan önce bu dosyayı oku ve kurallara uy.
 
+**Yeni oturumda ilk iş:** `OTURUM-NOTLARI.md` dosyasını oku. Kullanıcının tercihleri, yarım kalan işler ve kişisel hesap videolarının (spor hocası, 9:16) kuralları orada.
+
 ---
 
 ## 1. Pottzi nedir?

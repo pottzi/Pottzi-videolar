@@ -1,0 +1,131 @@
+<template>
+  <style>
+    #edroot { position: absolute; inset: 0; overflow: hidden; background: transparent; font-family: "Montserrat", sans-serif; }
+    #vwrap { position: absolute; inset: 0; transform-origin: 50% 42%; }
+    #ben, #maske { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    #ben { z-index: -1; }
+    #hook { position: absolute; inset: 0; opacity: 0; -webkit-mask-size: 1080px 1920px; mask-size: 1080px 1920px; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+    #hook .hk { position: absolute; left: 0; right: 0; top: 300px; text-align: center; }
+    #mpre { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0.01; }
+    #hook .a { font-size: 112px; font-weight: 900; color: #15131F; letter-spacing: -0.01em; line-height: 1; }
+    #hook .b { font-size: 250px; font-weight: 900; color: #FFD93D; line-height: 0.95; -webkit-text-stroke: 6px #15131F; paint-order: stroke fill; letter-spacing: 0.01em; }
+    #acik { position: absolute; left: 0; right: 0; top: 190px; display: flex; justify-content: center; opacity: 0; }
+    #acik div { background: #15131F; color: #FFD93D; font-size: 54px; font-weight: 900; padding: 14px 34px; border-radius: 22px; transform: rotate(-3deg); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+
+    .card { position: absolute; left: 40px; right: 40px; top: 210px; display: flex; flex-direction: column; align-items: center; gap: 16px; opacity: 0; visibility: hidden; }
+    .pill { background: rgba(21,19,31,0.92); color: #fff; border-radius: 28px; padding: 16px 32px; font-size: 48px; font-weight: 800; box-shadow: 0 14px 34px rgba(0,0,0,0.25); white-space: nowrap; }
+    .pill.y { background: #FFD93D; color: #15131F; }
+    .pill .sm { display: block; font-size: 28px; font-weight: 700; opacity: 0.75; margin-top: 2px; }
+    .big { font-size: 92px; font-weight: 900; line-height: 1.02; color: #15131F; text-align: center; letter-spacing: -0.01em; text-shadow: 0 2px 18px rgba(255,255,255,0.7); }
+    .big .y { background: #FFD93D; padding: 0 14px; border-radius: 14px; }
+    .row { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+    .chip { opacity: 0; }
+    .stamp { position: absolute; left: 0; right: 0; top: 300px; display: flex; justify-content: center; opacity: 0; visibility: hidden; }
+    .stamp div { background: #E5484D; color: #fff; font-size: 84px; font-weight: 900; padding: 18px 38px; border-radius: 22px; transform: rotate(-4deg); border: 6px solid #15131F; box-shadow: 0 20px 50px rgba(0,0,0,0.35); white-space: nowrap; }
+
+    #cap { position: absolute; left: 60px; right: 60px; top: 1300px; height: 220px; pointer-events: none; }
+    .cg { position: absolute; left: 0; right: 0; top: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0 22px; opacity: 0; visibility: hidden; }
+    .cw { font-size: 76px; font-weight: 900; color: #fff; line-height: 1.12; -webkit-text-stroke: 3px #000; paint-order: stroke fill; text-shadow: 0 6px 18px rgba(0,0,0,0.6); }
+
+    #end { position: absolute; inset: 0; opacity: 0; visibility: hidden; background: radial-gradient(ellipse at 50% 40%, #23232e 0%, #0b0b10 70%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px; padding: 0 70px; text-align: center; }
+    #end .a { font-size: 52px; font-weight: 700; color: #cfcfd6; line-height: 1.2; }
+    #end .b { font-size: 108px; font-weight: 900; color: #fff; line-height: 1.02; }
+    #end .b span { color: #FFD93D; }
+    #end .c { font-size: 44px; font-weight: 700; color: #cfcfd6; }
+  </style>
+  <div id="edroot" data-composition-id="ed" data-width="1080" data-height="1920">
+    <div id="vwrap">
+      <video id="ben" class="clip" src="../assets/video/ben.mp4" data-start="0" data-duration="__VDUR__" data-track-index="0" muted playsinline></video>
+      <div id="hook"><div class="hk"><div class="a">UZUN YAŞAMANIN</div><div class="b">SIRRI</div></div></div>
+    </div>
+    <div id="mpre"><img src="../assets/maske/m000.png" alt=""><img src="../assets/maske/m001.png" alt=""><img src="../assets/maske/m002.png" alt=""><img src="../assets/maske/m003.png" alt=""><img src="../assets/maske/m004.png" alt=""><img src="../assets/maske/m005.png" alt=""><img src="../assets/maske/m006.png" alt=""><img src="../assets/maske/m007.png" alt=""><img src="../assets/maske/m008.png" alt=""><img src="../assets/maske/m009.png" alt=""><img src="../assets/maske/m010.png" alt=""><img src="../assets/maske/m011.png" alt=""><img src="../assets/maske/m012.png" alt=""><img src="../assets/maske/m013.png" alt=""><img src="../assets/maske/m014.png" alt=""><img src="../assets/maske/m015.png" alt=""><img src="../assets/maske/m016.png" alt=""><img src="../assets/maske/m017.png" alt=""><img src="../assets/maske/m018.png" alt=""><img src="../assets/maske/m019.png" alt=""><img src="../assets/maske/m020.png" alt=""><img src="../assets/maske/m021.png" alt=""><img src="../assets/maske/m022.png" alt=""><img src="../assets/maske/m023.png" alt=""><img src="../assets/maske/m024.png" alt=""><img src="../assets/maske/m025.png" alt=""><img src="../assets/maske/m026.png" alt=""><img src="../assets/maske/m027.png" alt=""><img src="../assets/maske/m028.png" alt=""><img src="../assets/maske/m029.png" alt=""><img src="../assets/maske/m030.png" alt=""><img src="../assets/maske/m031.png" alt=""><img src="../assets/maske/m032.png" alt=""><img src="../assets/maske/m033.png" alt=""><img src="../assets/maske/m034.png" alt=""><img src="../assets/maske/m035.png" alt=""><img src="../assets/maske/m036.png" alt=""><img src="../assets/maske/m037.png" alt=""><img src="../assets/maske/m038.png" alt=""><img src="../assets/maske/m039.png" alt=""><img src="../assets/maske/m040.png" alt=""><img src="../assets/maske/m041.png" alt=""><img src="../assets/maske/m042.png" alt=""><img src="../assets/maske/m043.png" alt=""><img src="../assets/maske/m044.png" alt=""><img src="../assets/maske/m045.png" alt=""><img src="../assets/maske/m046.png" alt=""><img src="../assets/maske/m047.png" alt=""><img src="../assets/maske/m048.png" alt=""><img src="../assets/maske/m049.png" alt=""><img src="../assets/maske/m050.png" alt=""><img src="../assets/maske/m051.png" alt=""><img src="../assets/maske/m052.png" alt=""><img src="../assets/maske/m053.png" alt=""><img src="../assets/maske/m054.png" alt=""><img src="../assets/maske/m055.png" alt=""><img src="../assets/maske/m056.png" alt=""><img src="../assets/maske/m057.png" alt=""><img src="../assets/maske/m058.png" alt=""><img src="../assets/maske/m059.png" alt=""><img src="../assets/maske/m060.png" alt=""><img src="../assets/maske/m061.png" alt=""><img src="../assets/maske/m062.png" alt=""><img src="../assets/maske/m063.png" alt=""><img src="../assets/maske/m064.png" alt=""><img src="../assets/maske/m065.png" alt=""><img src="../assets/maske/m066.png" alt=""><img src="../assets/maske/m067.png" alt=""><img src="../assets/maske/m068.png" alt=""><img src="../assets/maske/m069.png" alt=""><img src="../assets/maske/m070.png" alt=""><img src="../assets/maske/m071.png" alt=""><img src="../assets/maske/m072.png" alt=""><img src="../assets/maske/m073.png" alt=""><img src="../assets/maske/m074.png" alt=""></div>
+    <div id="acik"><div>AÇIKLANDI 🔓</div></div>
+
+    <div class="card" id="k2"><div class="big">UZUN YAŞAMAK İÇİN<br><span class="y">NE YAPIYORSUN?</span></div></div>
+    <div class="card" id="k3"><div class="row"><div class="pill chip" id="c31">🏋️ SPOR</div><div class="pill chip" id="c32">🥗 BESLENME</div></div><div class="pill chip" id="c33">😴 UYKU<span class="sm">dünkü video</span></div></div>
+    <div class="card" id="k4"><div class="big chip" id="c41" style="font-size:120px">🧇</div><div class="pill y chip" id="c42">KOVA WAFFLE? 🤔</div></div>
+    <div class="card" id="k5"><div class="pill chip" id="c51">✅ HEPSİ ÖNEMLİ</div><div class="big chip" id="c53">AMA EN ÖNEMLİSİ:<br><span class="y">SOSYALLİK 🤝</span></div></div>
+    <div class="card" id="k6"><div class="pill">📚 148 ARAŞTIRMA · 300.000+ KİŞİ</div><div class="big chip" id="c61"><span class="y">%50</span> DAHA FAZLA<br>HAYATTA KALMA</div></div>
+    <div class="card" id="k7"><div class="pill">YALNIZLIK ≈ NEREDEYSE 1 PAKET</div><div class="big chip" id="c71">🚬 GÜNDE<br><span class="y">15 SİGARA</span></div></div>
+    <div class="card" id="k8"><div class="pill y">🎓 HARVARD</div><div class="big chip" id="c81">1938 → BUGÜN</div><div class="pill chip" id="c82">85+ YIL · AYNI İNSANLAR</div></div>
+    <div class="card" id="k9"><div class="row"><div class="pill chip" id="c91">💰 PARA ✗</div><div class="pill chip" id="c92">⭐ ŞÖHRET ✗</div></div><div class="big chip" id="c93">❤️ <span class="y">YAKIN İLİŞKİLER</span></div></div>
+    <div class="card" id="k10"><div class="row"><div class="pill chip" id="c101">50 YAŞ 😊</div><div class="pill y chip" id="c102">→ 80 YAŞ 💪</div></div><div class="pill chip" id="c103" style="font-size:34px">İlişkisinden memnun olan, 80'inde en sağlıklıydı</div></div>
+    <div class="card" id="k11"><div class="pill">🇺🇸 ABD · MAYIS 2023</div></div>
+    <div class="stamp" id="st11"><div>YALNIZLIK SALGINI</div></div>
+    <div class="card" id="k12"><div class="big chip" id="c121">YETİŞKİNLERİN<br><span class="y">~YARISI</span></div><div class="pill chip" id="c122">yalnızlık hissediyor</div></div>
+    <div class="card" id="k13"><div class="big chip" id="c131">ANTRENMAN<br>PROGRAMI <span class="y">YOK</span> 🙅</div></div>
+    <div class="card" id="k14"><div class="pill y">📝 BUGÜNÜN ÖDEVİ</div><div class="pill chip" id="c141">📞 BİRİNİ ARA ✅</div><div class="pill chip" id="c142">😊 GÜLÜMSE ✅</div><div class="pill chip" id="c143">👋 MERHABA DE ✅</div></div>
+
+    <div id="cap"></div>
+    <div id="end"><div class="a">Spor kasını çalıştırır.<br>Sohbet kalbini.</div><div class="b">UZUN YAŞAMAK<br>İSTİYORSAN,<br><span>YALNIZ YAŞAMA.</span></div><div class="c">Bugün birini ara 📞</div></div>
+  </div>
+  <script>
+    (function () {
+      const Z = __ZAMAN__;
+      const tl = gsap.timeline({ paused: true });
+      function build() {
+        const W = Z.words, VD = Z.dur, END = VD + 3.6;
+        Z.cuts.forEach((c, i) => {
+          const nx = i + 1 < Z.cuts.length ? Z.cuts[i + 1] : VD;
+          const s0 = c < 2.5 ? 1.0 : (i % 2 ? 1.1 : 1.0);
+          tl.fromTo("#vwrap", { scale: s0 }, { scale: s0 + 0.025, duration: nx - c, ease: "none", immediateRender: i === 0 }, c);
+        });
+        // altyazı
+        const groups = []; let cur = [];
+        W.forEach((w, i) => { cur.push(i); const txt = cur.map(j => W[j].w).join(" "); const nxt = W[i + 1];
+          if (/[.,?!]$/.test(w.w) || cur.length >= 3 || txt.length > 16 || !nxt || nxt.s - w.e > 0.3) { groups.push(cur); cur = []; } });
+        const cap = document.getElementById("cap");
+        groups.forEach((g, gi) => {
+          const el = document.createElement("div"); el.className = "cg";
+          g.forEach(j => { const s = document.createElement("span"); s.className = "cw"; s.id = "cw" + j; s.textContent = W[j].w.replace(/[.,]$/, "").toLocaleUpperCase("tr-TR"); el.appendChild(s); });
+          cap.appendChild(el);
+          const st = W[g[0]].s, nx = gi + 1 < groups.length ? W[groups[gi + 1][0]].s : VD;
+          const en = Math.min(W[g[g.length - 1]].e + 0.35, nx);
+          tl.set(el, { visibility: "visible" }, st);
+          tl.fromTo(el, { opacity: 0, y: 14, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.12, ease: "back.out(2)" }, st);
+          g.forEach(j => { tl.set("#cw" + j, { color: "#FFD93D" }, W[j].s); if (j !== g[g.length - 1]) tl.set("#cw" + j, { color: "#ffffff" }, W[j + 1].s); });
+          tl.set(el, { opacity: 0, visibility: "hidden" }, en);
+        });
+        const show = (id, a, b) => { tl.set(id, { visibility: "visible" }, a);
+          tl.fromTo(id, { opacity: 0, y: -30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, a);
+          tl.to(id, { opacity: 0, y: -20, duration: 0.2, ease: "power2.in" }, b - 0.2); tl.set(id, { visibility: "hidden" }, b); };
+        const pop = (id, t, big) => tl.fromTo(id, { opacity: 0, scale: big ? 0.5 : 0.7, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: "back.out(2.2)" }, t);
+        const stamp = (id, a, b) => { tl.set(id, { visibility: "visible" }, a); tl.fromTo(id, { opacity: 0, scale: 2.2 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power4.in" }, a);
+          tl.fromTo("#vwrap", { x: 0 }, { x: 10, duration: 0.05, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, a + 0.22);
+          tl.to(id, { opacity: 0, duration: 0.2 }, b - 0.2); tl.set(id, { visibility: "hidden" }, b); };
+        // hook: yazı arkada (kişi şeklinde maske, kare kare)
+        const mimgs = document.querySelectorAll("#mpre img");
+        mimgs.forEach((im, i) => { const u = "url(" + im.src + ")"; tl.set("#hook", { webkitMaskImage: u, maskImage: u }, i / 30); });
+        tl.set("#hook", { webkitMaskImage: "none", maskImage: "none" }, 2.5);
+        tl.fromTo("#hook", { opacity: 0, scale: 1.15 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 0.0);
+        tl.to("#hook", { opacity: 0, duration: 0.18 }, 2.28);
+        tl.fromTo("#acik", { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.in" }, 1.62);
+        tl.to("#acik", { opacity: 0, duration: 0.18 }, 2.35);
+        show("#k2", 2.56, 4.7);
+        show("#k3", 4.75, 9.5); pop("#c31", 4.8); pop("#c32", 5.96); pop("#c33", 8.66, true);
+        show("#k4", 9.54, 11.95); pop("#c41", 10.34, true); pop("#c42", 10.62);
+        tl.fromTo("#c41", { rotation: -10 }, { rotation: 10, duration: 0.18, yoyo: true, repeat: 5, ease: "sine.inOut", immediateRender: false }, 10.7);
+        show("#k5", 12.0, 15.3); pop("#c51", 12.7); pop("#c53", 14.18, true);
+        show("#k6", 15.38, 22.95); pop("#c61", 21.34, true);
+        show("#k7", 23.0, 26.55); pop("#c71", 24.84, true);
+        show("#k8", 26.64, 30.45); pop("#c81", 27.44, true); pop("#c82", 28.72);
+        show("#k9", 33.0, 37.55); pop("#c91", 35.52); pop("#c92", 35.9); pop("#c93", 36.28, true);
+        show("#k10", 37.6, 43.5); pop("#c101", 37.64); pop("#c102", 39.54, true); pop("#c103", 41.62);
+        show("#k11", 43.6, 46.5);
+        stamp("#st11", 46.58, 49.5);
+        show("#k12", 49.55, 51.6); pop("#c121", 49.58, true); pop("#c122", 50.74);
+        show("#k13", 52.4, 54.05); pop("#c131", 52.58, true);
+        show("#k14", 54.1, VD); pop("#c141", 57.18); pop("#c142", 58.68); pop("#c143", 59.98);
+        tl.set("#end", { visibility: "visible" }, VD - 0.1);
+        tl.fromTo("#end", { opacity: 0 }, { opacity: 1, duration: 0.3 }, VD - 0.1);
+        tl.fromTo("#end .a", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35 }, VD + 0.1);
+        tl.fromTo("#end .b", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, VD + 0.9);
+        tl.fromTo("#end .c", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3 }, VD + 2.0);
+        tl.set({}, {}, END);
+        window.__timelines["ed"] = tl;
+      }
+      document.fonts.ready.then(build);
+    })();
+  </script>
+</template>
