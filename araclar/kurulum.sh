@@ -14,7 +14,7 @@ mkdir -p /root/modeller
 if [ "${1:-}" = "--tam" ]; then
   command -v python3.11 >/dev/null || { uv python install 3.11; ln -sf "$(uv python find 3.11)" /usr/local/bin/python3.11; }
   G="$R/.claude/skills/ghost-editor"
-  python3 "$G/scripts/library_restore.py" --licensed-only      # Mixkit efekt + müzik, Fluent emoji (telifsiz/lisanslı)
+  python3 "$G/scripts/library_restore.py" --licensed-only || true  # emoji inmezse durma; Mixkit efekt + müzik, Fluent emoji (telifsiz/lisanslı)
   bash "$G/scripts/setup_looks.sh"                              # film renk tonları (LUT)
   # DeepFilterNet modeli: GitHub'ın doğrudan dosya bağlantısı oturumda 403 verebiliyor, depoyu seyrek kopyalayıp alıyoruz
   if [ ! -d /root/.cache/DeepFilterNet/DeepFilterNet3 ]; then
