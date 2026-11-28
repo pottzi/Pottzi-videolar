@@ -55,3 +55,11 @@ Yorum: Erken veri, 2–3 gün sonra tekrar bakılacak; eski "yapay zeka" kampany
 ## Kadın testi durduruldu (2026-11-25, kullanıcı isteğiyle)
 - Toplam ~30 saat: 175,47 TL · 1.433 gösterim · 11 tıklama (%0,8) · 2 indirme (ikisi Android). iOS 80 TL'ye 1 tıklama, 0 indirme.
 - İki kampanya PAUSED (silinmedi; yeniden açılabilir). Ders: kadınlar izliyor ama tıklamıyor → net "indir" çağrısı ve daha kısa video denenmeli.
+
+## UGC "Kontrol bende" (2026-11-28 yayına alındı, kullanıcı onayıyla)
+- Video: `videolar/2026-11-28_meta-reklam-ugc-kontrol-bende-4x5.mp4` (Veo kız + uygulama ekranları, 24 sn) · Meta video 1462709305371212
+- iOS kampanya 120251907023700761 (100 TL/gün, CBO) → reklam seti 120251907025810761 → reklam 120251907028010761
+- Android kampanya 120251907023720761 (100 TL/gün, CBO, iOS 14+ seçilmedi) → reklam seti 120251907025820761 → reklam 120251907028090761
+- Hedefleme: TR, kadın, 18–30 (kesin; Advantage+ kitle kapalı), sadece Instagram (akış, hikâye, reels, keşfet, profil, arama)
+- Metin: "Kızlar, burada kontrol sende 💜 …" · başlık "Kızlar, burada kontrol sende" · buton Yükle
+- Durum: ACTIVE, Meta incelemesinde (IN_PROCESS). 2–3 gün sonra tıklama/indirme kontrol edilecek.
