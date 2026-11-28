@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1350px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: #000; font-family: "Poppins", sans-serif; }
+      #vwrap { position: absolute; inset: 0; transform-origin: 50% 35%; }
+      #kadin { position: absolute; inset: 0; width: 1080px; height: 1350px; object-fit: cover; }
+
+      #cap { position: absolute; inset: 0; pointer-events: none; }
+      .grp { position: absolute; left: 70px; right: 70px; top: 905px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; opacity: 0; visibility: hidden; }
+      .w { position: relative; display: inline-block; padding: 6px 14px 10px; font-size: 62px; font-weight: 800; line-height: 1.05; color: #fff; letter-spacing: 0.01em;
+        text-shadow: 0 4px 16px rgba(0,0,0,0.55), 0 0 3px rgba(0,0,0,0.6); }
+      .w .bg { position: absolute; inset: 0; border-radius: 16px; background: linear-gradient(90deg, #704BEF, #DA5BAC); box-shadow: 0 10px 28px rgba(112,75,239,0.45); opacity: 0; transform: scaleX(0); transform-origin: 0% 50%; }
+      .w .tx { position: relative; z-index: 1; }
+
+      /* B-roll sahnesi */
+      .sc { position: absolute; inset: 0; opacity: 0; visibility: hidden; background: linear-gradient(135deg, #704BEF 0%, #B655CD 55%, #DA5BAC 100%); overflow: hidden; }
+      .blob { position: absolute; border-radius: 50%; filter: blur(70px); }
+      .b1 { left: -160px; top: -120px; width: 620px; height: 620px; background: rgba(103,183,250,0.55); }
+      .b2 { right: -200px; bottom: -200px; width: 700px; height: 700px; background: rgba(254,109,106,0.45); }
+      .chip { position: absolute; left: 0; right: 0; top: 56px; display: flex; justify-content: center; }
+      .chip div { background: #fff; color: #15131F; font-weight: 800; font-size: 46px; padding: 14px 34px; border-radius: 40px; box-shadow: 0 18px 40px rgba(30,10,70,0.35); white-space: nowrap; }
+      .phone { position: absolute; left: 255px; top: 190px; width: 570px; height: 1120px; border-radius: 80px; background: #0d0c12; padding: 14px; box-shadow: 0 40px 100px rgba(30,10,70,0.55), inset 0 0 0 3px #2c2838; }
+      .scr { position: relative; width: 542px; height: 1092px; border-radius: 68px; overflow: hidden; background: #171722; color: #fff; }
+      .sbar { position: absolute; left: 0; right: 0; top: 0; height: 60px; font-size: 21px; font-weight: 600; }
+      .sbar .tm { position: absolute; left: 50px; top: 19px; }
+      .sbar .isl { position: absolute; left: 50%; top: 12px; width: 140px; height: 36px; margin-left: -70px; border-radius: 20px; background: #000; }
+      .sbar .ic { position: absolute; right: 40px; top: 19px; font-size: 18px; letter-spacing: 2px; }
+      .hdr { position: absolute; left: 0; right: 0; top: 70px; height: 84px; display: flex; align-items: center; padding: 0 26px; gap: 16px; border-bottom: 1px solid #2a2a36; }
+      .x { width: 52px; height: 52px; border-radius: 14px; border: 1.5px solid #3a3a48; display: flex; align-items: center; justify-content: center; font-size: 26px; color: #ddd; }
+      .who .p { font-size: 25px; font-weight: 700; background: linear-gradient(90deg, #DB7DE5, #67B7FA); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .who .on { font-size: 17px; color: #9a97ad; } .who .on b { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #2fd27a; margin-right: 6px; }
+      .tmr { margin-left: auto; background: linear-gradient(90deg, #704BEF, #DA5BAC); border-radius: 26px; padding: 9px 20px; font-size: 24px; font-weight: 700; min-width: 112px; text-align: center; }
+      .dots { font-size: 30px; color: #ccc; padding-left: 6px; }
+      .msgs { position: absolute; left: 22px; right: 22px; top: 190px; display: flex; flex-direction: column; gap: 16px; }
+      .m { max-width: 78%; padding: 16px 22px; border-radius: 26px; font-size: 24px; line-height: 1.35; opacity: 0; }
+      .m.in { align-self: flex-start; background: #24242E; border: 1px solid #34343f; border-bottom-left-radius: 8px; }
+      .m.out { align-self: flex-end; background: linear-gradient(90deg, #704BEF, #DA5BAC); border-bottom-right-radius: 8px; }
+      .topic { margin: 0 auto; width: 92%; background: #24242E; border: 1px solid #3a3a48; border-radius: 24px; padding: 18px 22px; opacity: 0; }
+      .topic .k { font-size: 16px; font-weight: 700; letter-spacing: 2px; color: #DB7DE5; }
+      .topic .q { font-size: 24px; font-weight: 600; margin-top: 6px; }
+      .inp { position: absolute; left: 22px; right: 22px; bottom: 40px; height: 76px; border-radius: 38px; background: #24242E; border: 1px solid #34343f; display: flex; align-items: center; padding: 0 12px; gap: 14px; }
+      .inp .sp { width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, #DB7DE5, #67B7FA); display: flex; align-items: center; justify-content: center; font-size: 26px; }
+      .inp .ph { color: #8d8aa0; font-size: 22px; } .inp .snd { margin-left: auto; width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, #704BEF, #DA5BAC); }
+      .big { position: absolute; left: 0; right: 0; top: 330px; text-align: center; opacity: 0; }
+      .big .n { font-size: 150px; font-weight: 800; background: linear-gradient(90deg, #704BEF, #DA5BAC); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .big .t { font-size: 30px; color: #b9b6c8; font-weight: 600; margin-top: -10px; }
+      .menu { position: absolute; right: 22px; top: 150px; width: 300px; background: #262632; border: 1px solid #3a3a48; border-radius: 24px; padding: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); opacity: 0; transform-origin: 90% 0%; }
+      .menu div { padding: 18px 20px; font-size: 25px; font-weight: 600; border-radius: 16px; }
+      .menu .red { color: #ff5d68; } .menu .hl { background: rgba(255,93,104,0.16); }
+      .toast { position: absolute; left: 40px; right: 40px; bottom: 140px; background: #fff; color: #15131F; border-radius: 24px; padding: 20px 24px; font-size: 24px; font-weight: 700; text-align: center; opacity: 0; box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+      .tap { position: absolute; width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.35); border: 3px solid rgba(255,255,255,0.8); opacity: 0; }
+
+      /* kapanış */
+      #end { position: absolute; inset: 0; padding-bottom: 170px; background: #fff; opacity: 0; visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      #end .bl1 { position: absolute; left: -200px; top: -160px; width: 640px; height: 640px; border-radius: 50%; background: rgba(122,92,245,0.14); filter: blur(60px); }
+      #end .bl2 { position: absolute; right: -220px; bottom: -180px; width: 700px; height: 700px; border-radius: 50%; background: rgba(255,107,91,0.13); filter: blur(60px); }
+      #end img { width: 300px; position: relative; }
+      #end .s1 { position: relative; margin-top: 34px; font-size: 54px; font-weight: 800; color: #15131F; text-align: center; line-height: 1.15; }
+      #end .s2 { position: relative; margin-top: 14px; font-size: 32px; font-weight: 500; color: #78748C; }
+      #end .btn { position: relative; margin-top: 46px; padding: 26px 70px; border-radius: 60px; background: linear-gradient(90deg, #6F4BF1, #D857AE); color: #fff; font-size: 48px; font-weight: 800; box-shadow: 0 22px 50px rgba(111,75,241,0.4); }
+      #end .st { position: relative; margin-top: 30px; display: flex; gap: 18px; }
+      #end .st div { background: #15131F; color: #fff; border-radius: 18px; padding: 14px 28px; font-size: 30px; font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="__TOT__" data-width="1080" data-height="1350">
+      <div id="vwrap"><video id="kadin" class="clip" src="assets/kadin.mp4" data-start="0" data-duration="__VD__" data-track-index="0" muted playsinline></video></div>
+      <div id="cap"></div>
+
+      <!-- B-roll 1: fotoğraf yok -->
+      <div class="sc" id="sc1"><div class="blob b1"></div><div class="blob b2"></div>
+        <div class="chip"><div>📷 Fotoğraf yok · Profil yok</div></div>
+        <div class="phone"><div class="scr">
+          <div class="sbar"><span class="tm">23:14</span><span class="isl"></span><span class="ic">▮▮▮ ◔ ▭</span></div>
+          <div class="hdr"><div class="x">✕</div><div class="who"><div class="p">P-7128</div><div class="on"><b></b>Çevrimiçi</div></div><div class="tmr">02:41</div><div class="dots">⋮</div></div>
+          <div class="msgs">
+            <div class="topic" id="t1"><div class="k">KONU</div><div class="q">Kimseye söylemediğin saçma bir korkun var mı?</div></div>
+            <div class="m in" id="m1">Var 😅 Asansörde kimseyle göz göze gelemiyorum</div>
+            <div class="m out" id="m2">Hahah aynen ben de! Telefona bakıyormuş gibi yapıyorum</div>
+            <div class="m in" id="m3">Kimse yüzümü görmüyor diye rahatça söyleyebildim 🙈</div>
+          </div>
+          <div class="inp"><div class="sp">✨</div><div class="ph">Mesaj yaz...</div><div class="snd"></div></div>
+        </div></div>
+      </div>
+
+      <!-- B-roll 2: 3 dakika -->
+      <div class="sc" id="sc2"><div class="blob b1"></div><div class="blob b2"></div>
+        <div class="chip"><div>⏱ Sohbet sadece 3 dakika</div></div>
+        <div class="phone"><div class="scr">
+          <div class="sbar"><span class="tm">23:16</span><span class="isl"></span><span class="ic">▮▮▮ ◔ ▭</span></div>
+          <div class="hdr"><div class="x">✕</div><div class="who"><div class="p">P-3951</div><div class="on"><b></b>Çevrimiçi</div></div><div class="tmr" id="tmr2">03:00</div><div class="dots">⋮</div></div>
+          <div class="big" id="big2"><div class="n" id="bn2">3:00</div><div class="t" id="bt2">sohbet başladı</div></div>
+          <div class="inp"><div class="sp">✨</div><div class="ph">Mesaj yaz...</div><div class="snd"></div></div>
+        </div></div>
+      </div>
+
+      <!-- B-roll 3: engelle -->
+      <div class="sc" id="sc3"><div class="blob b1"></div><div class="blob b2"></div>
+        <div class="chip"><div>🚫 İstemediğini engelle</div></div>
+        <div class="phone"><div class="scr">
+          <div class="sbar"><span class="tm">23:18</span><span class="isl"></span><span class="ic">▮▮▮ ◔ ▭</span></div>
+          <div class="hdr"><div class="x">✕</div><div class="who"><div class="p">P-5604</div><div class="on"><b></b>Çevrimiçi</div></div><div class="tmr">01:52</div><div class="dots">⋮</div></div>
+          <div class="msgs"><div class="m in" id="m4" style="opacity:1">ok</div><div class="m in" id="m5" style="opacity:1">tamam da sen nerelisin</div></div>
+          <div class="menu" id="menu"><div class="red hl" id="eng">🚫 Engelle</div><div>⚠️ Şikâyet et</div></div>
+          <div class="tap" id="tap"></div>
+          <div class="toast" id="toast">P-5604 engellendi</div>
+          <div class="inp"><div class="sp">✨</div><div class="ph">Mesaj yaz...</div><div class="snd"></div></div>
+        </div></div>
+      </div>
+
+      <div id="end"><div class="bl1"></div><div class="bl2"></div>
+        <img src="assets/logo-k.png" alt="Pottzi" />
+        <div class="s1">Kimliğini gizle.<br>Sesini duyur.</div>
+        <div class="s2">Konu aç. Tanımadığın biriyle konuş.</div>
+        <div class="btn">Ücretsiz indir</div>
+        <div class="st"><div> App Store</div><div>▶ Google Play</div></div>
+      </div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const Z = __Z__;
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+      (function () {
+        const W = Z.words, VD = Z.dur, T = Z.t, B = Z.broll;
+        // kesimlerde hafif yakınlaşma
+        Z.cuts.forEach((c, i) => { const nx = i + 1 < Z.cuts.length ? Z.cuts[i + 1] : VD; const s0 = i % 2 ? 1.07 : 1.0;
+          tl.fromTo("#vwrap", { scale: s0 }, { scale: s0 + 0.02, duration: nx - c, ease: "none", immediateRender: i === 0 }, c); });
+        // altyazı (B-roll sırasında gizli)
+        const inB = t => B.some(b => t >= b[0] - 0.02 && t < b[1]);
+        const G = []; let cur = [];
+        W.forEach((w, i) => { cur.push(i); const nx = W[i + 1];
+          if (/[.,?!]$/.test(w.w) || cur.length >= 3 || !nx || nx.s - w.e > 0.3 || inB(nx.s) !== inB(w.s)) { G.push(cur); cur = []; } });
+        const cap = document.getElementById("cap");
+        G.forEach((g, gi) => {
+          if (inB(W[g[0]].s)) return;
+          const el = document.createElement("div"); el.className = "grp";
+          g.forEach(i => { const s = document.createElement("span"); s.className = "w"; s.id = "w" + i;
+            s.innerHTML = '<span class="bg" id="bg' + i + '"></span><span class="tx"></span>';
+            s.querySelector(".tx").textContent = W[i].w.replace(/[.,]$/, "").toLocaleUpperCase("tr-TR"); el.appendChild(s); });
+          cap.appendChild(el);
+          const st = W[g[0]].s, nx = gi + 1 < G.length ? W[G[gi + 1][0]].s : VD;
+          const en = Math.min(W[g[g.length - 1]].e + 0.4, nx - 0.04, VD - 0.05);
+          tl.set(el, { visibility: "visible" }, st);
+          tl.fromTo(el, { opacity: 0, y: 18, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.14, ease: "power2.out" }, st);
+          g.forEach((i, k) => { const bg = "#bg" + i;
+            tl.to(bg, { opacity: 1, scaleX: 1, duration: Math.min(0.14, W[i].e - W[i].s), ease: "power2.out" }, W[i].s);
+            tl.fromTo("#w" + i, { scale: 1 }, { scale: 1.07, duration: 0.08, yoyo: true, repeat: 1, immediateRender: false }, W[i].s);
+            if (k < g.length - 1) { tl.to(bg, { opacity: 0, duration: 0.08 }, W[g[k + 1]].s); tl.set(bg, { scaleX: 0 }, W[g[k + 1]].s + 0.08); } });
+          tl.to(el, { opacity: 0, duration: 0.08 }, en - 0.08); tl.set(el, { visibility: "hidden" }, en);
+        });
+        // B-roll giriş / çıkış
+        const scene = (id, a, b) => {
+          tl.set(id, { visibility: "visible" }, a);
+          tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.16 }, a);
+          tl.fromTo(id + " .phone", { y: 380, rotation: 4, scale: 0.92 }, { y: 0, rotation: 0, scale: 1, duration: 0.45, ease: "power3.out" }, a);
+          tl.fromTo(id + " .chip", { y: -120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(1.6)" }, a + 0.1);
+          tl.fromTo(id + " .b1", { x: 0, y: 0 }, { x: 70, y: 50, duration: b - a, ease: "sine.inOut" }, a);
+          tl.to(id, { opacity: 0, duration: 0.14 }, b - 0.14); tl.set(id, { visibility: "hidden" }, b);
+        };
+        scene("#sc1", B[0][0], B[0][1]); scene("#sc2", B[1][0], B[1][1]); scene("#sc3", B[2][0], B[2][1]);
+        // 1: konu + mesajlar
+        ["#t1", "#m1", "#m2", "#m3"].forEach((id, k) => tl.fromTo(id, { opacity: 0, y: 24, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.25, ease: "back.out(1.6)" }, B[0][0] + 0.25 + k * 0.45));
+        // 2: sayaç 3:00 -> 0:00
+        tl.fromTo("#big2", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, B[1][0] + 0.2);
+        const n = 30, d2 = (B[1][1] - B[1][0]) - 1.1;
+        for (let i = 0; i <= n; i++) { const s = Math.round(180 * (1 - i / n)), txt = Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+          const at = B[1][0] + 0.5 + d2 * Math.pow(i / n, 0.7);
+          tl.set("#bn2", { textContent: txt }, at); tl.set("#tmr2", { textContent: "0" + txt }, at); }
+        tl.set("#bt2", { textContent: "süre doldu, karar senin" }, B[1][0] + 0.5 + d2);
+        tl.fromTo("#big2", { scale: 1 }, { scale: 1.1, duration: 0.15, yoyo: true, repeat: 3, immediateRender: false }, B[1][0] + 0.5 + d2);
+        // 3: menü + engelle
+        const a3 = B[2][0];
+        tl.fromTo("#tap", { opacity: 0, scale: 0.6, left: 462, top: 82 }, { opacity: 1, scale: 1, duration: 0.15 }, a3 + 0.45);
+        tl.to("#tap", { opacity: 0, duration: 0.15 }, a3 + 0.65);
+        tl.fromTo("#menu", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(1.8)" }, a3 + 0.6);
+        tl.fromTo("#tap", { opacity: 0, scale: 0.6, left: 300, top: 172 }, { opacity: 1, scale: 1, duration: 0.15, immediateRender: false }, a3 + 1.15);
+        tl.to("#tap", { opacity: 0, duration: 0.15 }, a3 + 1.35);
+        tl.to("#menu", { opacity: 0, duration: 0.15 }, a3 + 1.3);
+        tl.to(["#m4", "#m5"], { opacity: 0.25, duration: 0.2 }, a3 + 1.35);
+        tl.fromTo("#toast", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.25, ease: "back.out(1.6)" }, a3 + 1.4);
+        // kapanış
+        tl.set("#end", { visibility: "visible" }, VD - 0.05);
+        tl.fromTo("#end", { opacity: 0 }, { opacity: 1, duration: 0.25 }, VD - 0.05);
+        tl.fromTo("#end img", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.8)" }, VD + 0.05);
+        tl.fromTo("#end .s1", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35 }, VD + 0.35);
+        tl.fromTo("#end .s2", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35 }, VD + 0.6);
+        tl.fromTo("#end .btn", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)" }, VD + 0.9);
+        tl.fromTo("#end .btn", { scale: 1 }, { scale: 1.05, duration: 0.35, yoyo: true, repeat: 3, ease: "sine.inOut", immediateRender: false }, VD + 1.5);
+        tl.fromTo("#end .st", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35 }, VD + 1.2);
+        tl.set({}, {}, Z.TOT);
+      })();
+    </script>
+  </body>
+</html>
