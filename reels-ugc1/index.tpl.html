@@ -28,11 +28,11 @@
       .chip div { background: #fff; color: #15131F; font-weight: 800; font-size: 46px; padding: 14px 34px; border-radius: 40px; box-shadow: 0 18px 40px rgba(30,10,70,0.35); white-space: nowrap; }
       .phone { position: absolute; left: 255px; top: 190px; width: 570px; height: 1120px; border-radius: 80px; background: #0d0c12; padding: 14px; box-shadow: 0 40px 100px rgba(30,10,70,0.55), inset 0 0 0 3px #2c2838; }
       .scr { position: relative; width: 542px; height: 1092px; border-radius: 68px; overflow: hidden; background: #171722; color: #fff; }
-      .sbar { position: absolute; left: 0; right: 0; top: 0; height: 60px; font-size: 21px; font-weight: 600; }
+      .sbar { position: absolute; z-index: 3; background: #171722; left: 0; right: 0; top: 0; height: 70px; font-size: 21px; font-weight: 600; }
       .sbar .tm { position: absolute; left: 50px; top: 19px; }
       .sbar .isl { position: absolute; left: 50%; top: 12px; width: 140px; height: 36px; margin-left: -70px; border-radius: 20px; background: #000; }
       .sbar .ic { position: absolute; right: 40px; top: 19px; font-size: 18px; letter-spacing: 2px; }
-      .hdr { position: absolute; left: 0; right: 0; top: 70px; height: 84px; display: flex; align-items: center; padding: 0 26px; gap: 16px; border-bottom: 1px solid #2a2a36; }
+      .hdr { position: absolute; z-index: 3; background: #171722; left: 0; right: 0; top: 70px; height: 84px; display: flex; align-items: center; padding: 0 26px; gap: 16px; border-bottom: 1px solid #2a2a36; }
       .x { width: 52px; height: 52px; border-radius: 14px; border: 1.5px solid #3a3a48; display: flex; align-items: center; justify-content: center; font-size: 26px; color: #ddd; }
       .who .p { font-size: 25px; font-weight: 700; background: linear-gradient(90deg, #DB7DE5, #67B7FA); -webkit-background-clip: text; background-clip: text; color: transparent; }
       .who .on { font-size: 17px; color: #9a97ad; } .who .on b { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #2fd27a; margin-right: 6px; }
@@ -45,7 +45,7 @@
       .topic { margin: 0 auto; width: 92%; background: #24242E; border: 1px solid #3a3a48; border-radius: 24px; padding: 18px 22px; opacity: 0; }
       .topic .k { font-size: 16px; font-weight: 700; letter-spacing: 2px; color: #DB7DE5; }
       .topic .q { font-size: 24px; font-weight: 600; margin-top: 6px; }
-      .inp { position: absolute; left: 22px; right: 22px; bottom: 40px; height: 76px; border-radius: 38px; background: #24242E; border: 1px solid #34343f; display: flex; align-items: center; padding: 0 12px; gap: 14px; }
+      .inp { position: absolute; z-index: 3; left: 22px; right: 22px; bottom: 40px; height: 76px; border-radius: 38px; background: #24242E; border: 1px solid #34343f; display: flex; align-items: center; padding: 0 12px; gap: 14px; }
       .inp .sp { width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, #DB7DE5, #67B7FA); display: flex; align-items: center; justify-content: center; font-size: 26px; }
       .inp .ph { color: #8d8aa0; font-size: 22px; } .inp .snd { margin-left: auto; width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, #704BEF, #DA5BAC); }
       .big { position: absolute; left: 0; right: 0; top: 330px; text-align: center; opacity: 0; }
@@ -67,6 +67,10 @@
       #end .btn { position: relative; margin-top: 46px; padding: 26px 70px; border-radius: 60px; background: linear-gradient(90deg, #6F4BF1, #D857AE); color: #fff; font-size: 48px; font-weight: 800; box-shadow: 0 22px 50px rgba(111,75,241,0.4); }
       #end .st { position: relative; margin-top: 30px; display: flex; gap: 18px; }
       #end .st div { background: #15131F; color: #fff; border-radius: 18px; padding: 14px 28px; font-size: 30px; font-weight: 600; }
+      .m { display: none; }
+      .ty { padding: 20px 24px; display: none; gap: 8px; }
+      .ty span { width: 12px; height: 12px; border-radius: 50%; background: #9a97ad; display: inline-block; margin: 0 3px; }
+      #ph1.on { color: #fff; }
     </style>
   </head>
   <body>
@@ -79,14 +83,16 @@
         <div class="chip"><div>📷 Fotoğraf yok · Profil yok</div></div>
         <div class="phone"><div class="scr">
           <div class="sbar"><span class="tm">23:14</span><span class="isl"></span><span class="ic">▮▮▮ ◔ ▭</span></div>
-          <div class="hdr"><div class="x">✕</div><div class="who"><div class="p">P-7128</div><div class="on"><b></b>Çevrimiçi</div></div><div class="tmr">02:41</div><div class="dots">⋮</div></div>
-          <div class="msgs">
+          <div class="hdr"><div class="x">✕</div><div class="who"><div class="p">P-7128</div><div class="on"><b></b>Çevrimiçi</div></div><div class="tmr" id="tmr1">02:41</div><div class="dots">⋮</div></div>
+          <div class="msgs" id="msgs1">
             <div class="topic" id="t1"><div class="k">KONU</div><div class="q">Kimseye söylemediğin saçma bir korkun var mı?</div></div>
             <div class="m in" id="m1">Var 😅 Asansörde kimseyle göz göze gelemiyorum</div>
             <div class="m out" id="m2">Hahah aynen ben de! Telefona bakıyormuş gibi yapıyorum</div>
             <div class="m in" id="m3">Kimse yüzümü görmüyor diye rahatça söyleyebildim 🙈</div>
+            <div class="m out" id="m4b">İyi ki söyledin, ilk kez biri anladı 😂</div>
+            <div class="m in ty" id="ty1"><span></span><span></span><span></span></div>
           </div>
-          <div class="inp"><div class="sp">✨</div><div class="ph">Mesaj yaz...</div><div class="snd"></div></div>
+          <div class="inp"><div class="sp">✨</div><div class="ph" id="ph1">Mesaj yaz...</div><div class="snd"></div></div>
         </div></div>
       </div>
 
@@ -167,7 +173,22 @@
         };
         scene("#sc1", B[0][0], B[0][1]); scene("#sc2", B[1][0], B[1][1]); scene("#sc3", B[2][0], B[2][1]);
         // 1: konu + mesajlar
-        ["#t1", "#m1", "#m2", "#m3"].forEach((id, k) => tl.fromTo(id, { opacity: 0, y: 24, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.25, ease: "back.out(1.6)" }, B[0][0] + 0.25 + k * 0.45));
+        const a1 = B[0][0], L1 = B[0][1] - a1;
+        const pop = (id, t, from) => { tl.set(id, { display: "block" }, t); tl.fromTo(id, { opacity: 0, y: 26, scale: 0.94, transformOrigin: from }, { opacity: 1, y: 0, scale: 1, duration: 0.24, ease: "back.out(1.7)" }, t); };
+        const typing = (t0, t1) => { tl.set("#ty1", { display: "flex" }, t0); tl.fromTo("#ty1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.18 }, t0);
+          tl.fromTo("#ty1 span", { y: 0 }, { y: -7, duration: 0.2, stagger: 0.1, yoyo: true, repeat: Math.max(1, Math.floor((t1 - t0) / 0.4)), ease: "sine.inOut", immediateRender: false }, t0);
+          tl.set("#ty1", { display: "none" }, t1); };
+        const typeIn = (txt, t0, t1) => { const n = txt.length; tl.set("#ph1", { className: "ph on" }, t0);
+          for (let i = 1; i <= n; i += 2) tl.set("#ph1", { textContent: txt.slice(0, i) }, t0 + (t1 - t0) * i / n);
+          tl.set("#ph1", { textContent: txt }, t1); tl.set("#ph1", { className: "ph", textContent: "Mesaj yaz..." }, t1 + 0.12); };
+        for (let i = 0; i <= Math.ceil(L1); i++) { const s = 161 - i; tl.set("#tmr1", { textContent: '0' + Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0') }, a1 + i); }
+        const S = Z.s1;  // mesaj zamanları (sahne içi sn)
+        pop("#t1", a1 + S.topic, "50% 50%");
+        typing(a1 + S.ty1, a1 + S.m1); pop("#m1", a1 + S.m1, "0% 100%");
+        typeIn("Hahah aynen ben de! Telefona bakıyormuş gibi yapıyorum", a1 + S.type2, a1 + S.m2 - 0.12); pop("#m2", a1 + S.m2, "100% 100%");
+        typing(a1 + S.ty3, a1 + S.m3); pop("#m3", a1 + S.m3, "0% 100%");
+        typeIn("İyi ki söyledin, ilk kez biri anladı 😂", a1 + S.type4, a1 + S.m4 - 0.12); pop("#m4b", a1 + S.m4, "100% 100%");
+        tl.to("#msgs1", { y: -150, duration: 0.35, ease: "power2.inOut" }, a1 + S.m4 - 0.05);
         // 2: sayaç 3:00 -> 0:00
         tl.fromTo("#big2", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, B[1][0] + 0.2);
         const n = 30, d2 = (B[1][1] - B[1][0]) - 1.1;
